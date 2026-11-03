@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.stamphog.review_runs.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs.Item.Review_runsItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs.Item.Review_runsItemRequestBuilder this[string position]
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Review_runs.Item.Review_runsItemRequestBuilder this[Guid position]
         {
             get
             {

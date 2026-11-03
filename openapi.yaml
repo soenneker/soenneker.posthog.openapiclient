@@ -1286,6 +1286,12 @@ paths:
           default: []
         description: Filter by API clients that generated the activity (the x-posthog-client
           header, or 'scout:<skill_name>' for a scout run).
+      - name: cursor
+        required: false
+        in: query
+        description: The pagination cursor value.
+        schema:
+          type: string
       - in: query
         name: detail_filters
         schema:
@@ -7007,6 +7013,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -7045,6 +7052,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -7336,6 +7344,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -7552,6 +7561,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -8111,6 +8121,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -8149,6 +8160,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 200
       - name: offset
         required: false
         in: query
@@ -8192,6 +8204,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -8258,6 +8271,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -8320,6 +8334,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 200
       - name: offset
         required: false
         in: query
@@ -8842,6 +8857,12 @@ paths:
     get:
       operationId: activity_log_list
       parameters:
+      - name: cursor
+        required: false
+        in: query
+        description: The pagination cursor value.
+        schema:
+          type: string
       - in: query
         name: item_id
         schema:
@@ -9347,6 +9368,12 @@ paths:
           default: []
         description: Filter by API clients that generated the activity (the x-posthog-client
           header, or 'scout:<skill_name>' for a scout run).
+      - name: cursor
+        required: false
+        in: query
+        description: The pagination cursor value.
+        schema:
+          type: string
       - in: query
         name: detail_filters
         schema:
@@ -9586,6 +9613,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -9742,6 +9770,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 100
       - name: offset
         required: false
         in: query
@@ -12298,6 +12327,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -12489,6 +12519,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -12926,6 +12957,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -13001,6 +13033,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -13079,6 +13112,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -13154,6 +13188,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -13338,6 +13373,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -14449,6 +14485,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -16743,6 +16780,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 5000
       - name: offset
         required: false
         in: query
@@ -17001,6 +17039,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -18524,6 +18563,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -20491,6 +20531,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -20805,6 +20846,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 200
       - name: offset
         required: false
         in: query
@@ -21422,6 +21464,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -21632,6 +21675,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -21837,6 +21881,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -21896,6 +21941,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -22069,6 +22115,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -25482,6 +25529,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 100
       - name: offset
         required: false
         in: query
@@ -32747,6 +32795,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -33120,6 +33169,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -33838,6 +33888,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -34315,6 +34366,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -34351,6 +34403,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -34644,6 +34697,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 100
       - name: offset
         required: false
         in: query
@@ -43031,6 +43085,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -43913,6 +43968,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -45638,6 +45694,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 250
       - name: offset
         required: false
         in: query
@@ -50912,49 +50969,6 @@ paths:
           description: The result of every check.
       x-product:
       - product_analytics
-  /api/projects/{project_id}/insights/explain/:
-    post:
-      operationId: insights_explain_create
-      description: 'Classify what most likely caused each moment on a chart. The caller
-        sends chapters of facts that it computed from the chart''s data, and gets
-        back one cause from a fixed list for each chapter, with a confidence. The
-        numbers stay with the caller: this endpoint runs no query and reads no insight.
-        Without a decision model on the instance, the list is empty. The organization
-        must approve AI data processing.'
-      parameters:
-      - in: query
-        name: format
-        schema:
-          type: string
-          enum:
-          - csv
-          - json
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - insights
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/InsightExplainRequest'
-        required: true
-      security:
-      - PersonalAPIKeyAuth:
-        - insight:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InsightExplain'
-            text/csv:
-              schema:
-                $ref: '#/components/schemas/InsightExplain'
-          description: The explanation of the chart.
-        '503':
-          description: The decision model failed or timed out.
-      x-product:
-      - product_analytics
   /api/projects/{project_id}/insights/generate_metadata/:
     post:
       operationId: insights_generate_metadata_create
@@ -51243,13 +51257,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/IntegrationConfig'
+              $ref: '#/components/schemas/IntegrationConfigCreate'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/IntegrationConfig'
+              $ref: '#/components/schemas/IntegrationConfigCreate'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/IntegrationConfig'
+              $ref: '#/components/schemas/IntegrationConfigCreate'
         required: true
       security:
       - PersonalAPIKeyAuth:
@@ -60232,6 +60246,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 200
       - in: query
         name: measured_only
         schema:
@@ -65997,6 +66012,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -66703,6 +66719,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -66887,6 +66904,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -68054,6 +68072,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -69206,6 +69225,7 @@ paths:
         name: person_id
         schema:
           type: string
+          format: uuid
         description: Id of the list entry.
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
@@ -69395,6 +69415,7 @@ paths:
         name: person_id
         schema:
           type: string
+          format: uuid
         description: Id of the list entry.
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
@@ -72466,6 +72487,143 @@ paths:
           description: ''
       x-product:
       - signals
+  /api/projects/{project_id}/signals/activity_summary_members/search/:
+    get:
+      operationId: signals_activity_summary_members_search
+      description: Find the project members whose activity summary matches a topic,
+        an object or a product, including people who only open the work and never
+        edit it. Returns 404 when the search is not available for this project.
+      summary: Search member activity summaries
+      parameters:
+      - in: query
+        name: exclude_user_uuids
+        schema:
+          type: array
+          items:
+            type: string
+            format: uuid
+        description: Members to leave out, such as people you already checked.
+      - in: query
+        name: include_profile
+        schema:
+          type: boolean
+          default: false
+        description: Add the one-page markdown profile to each result. Set it only
+          for the people you want to read.
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 25
+          minimum: 1
+          default: 10
+        description: The most results to return, best match first.
+      - in: query
+        name: product
+        schema:
+          enum:
+          - product_analytics
+          - dashboards
+          - web_analytics
+          - session_replay
+          - heatmaps
+          - error_tracking
+          - experiments
+          - feature_flags
+          - early_access_features
+          - surveys
+          - product_tours
+          - notebooks
+          - cohorts
+          - persons
+          - data_management
+          - data_warehouse
+          - data_pipelines
+          - workflows
+          - ai_observability
+          - mcp_analytics
+          - logs
+          - tracing
+          - endpoints
+          - revenue_analytics
+          - customer_analytics
+          - inbox
+          - canvases
+          - support
+          type: string
+          minLength: 1
+        description: |-
+          Only members who work in or visit this product.
+
+          * `product_analytics` - Product Analytics
+          * `dashboards` - Dashboards
+          * `web_analytics` - Web Analytics
+          * `session_replay` - Session Replay
+          * `heatmaps` - Heatmaps
+          * `error_tracking` - Error Tracking
+          * `experiments` - Experiments
+          * `feature_flags` - Feature Flags
+          * `early_access_features` - Early Access Features
+          * `surveys` - Surveys
+          * `product_tours` - Product Tours
+          * `notebooks` - Notebooks
+          * `cohorts` - Cohorts
+          * `persons` - Persons
+          * `data_management` - Data Management
+          * `data_warehouse` - Data Warehouse
+          * `data_pipelines` - Data Pipelines
+          * `workflows` - Workflows
+          * `ai_observability` - Ai Observability
+          * `mcp_analytics` - Mcp Analytics
+          * `logs` - Logs
+          * `tracing` - Tracing
+          * `endpoints` - Endpoints
+          * `revenue_analytics` - Revenue Analytics
+          * `customer_analytics` - Customer Analytics
+          * `inbox` - Inbox
+          * `canvases` - Canvases
+          * `support` - Support
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: query
+        schema:
+          type: string
+          maxLength: 500
+        description: Natural language or keywords, such as an object name, a topic
+          or a product area. Without a query, the search lists members with a summary,
+          the newest summary first.
+      - in: query
+        name: search_mode
+        schema:
+          enum:
+          - hybrid
+          - semantic
+          - keyword
+          type: string
+          default: hybrid
+          minLength: 1
+        description: |-
+          `hybrid` merges the keyword and semantic rankings. `semantic` ranks by meaning only, and returns 503 when the vector search fails. `keyword` matches query terms in the profile, the headline, the theme labels and the names of owned and watched objects.
+
+          * `hybrid` - Hybrid
+          * `semantic` - Semantic
+          * `keyword` - Keyword
+      tags:
+      - signals
+      security:
+      - PersonalAPIKeyAuth:
+        - signal_scout_internal:read
+      - PersonalAPIKeyAuth:
+        - signal_scout_internal:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivitySummarySearchResult'
+          description: ''
+      x-product:
+      - signals
   /api/projects/{project_id}/signals/anomalies/insight/:
     get:
       operationId: signals_anomalies_insight_retrieve
@@ -73005,6 +73163,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -73083,8 +73242,9 @@ paths:
         description: 'Inbox sort preset: priority, recommended, last_updated, newest,
           or oldest. Ignored when ordering is supplied. recommended resolves per user
           to a ranker: the priority order, or the open, action or fix outcome of the
-          served ranking model with unscored and stale reports in priority order after
-          the scored ones. The response''s ranker field names the one used.'
+          served ranking model, highest score first, with unscored and stale reports
+          in priority order after the scored ones. The response''s ranker field names
+          the one used, and its ranking_pill field says whether to show score pills.'
       - in: query
         name: source_id
         schema:
@@ -78789,6 +78949,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -78859,6 +79020,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -78950,6 +79112,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -78975,6 +79138,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -79012,6 +79176,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -79048,6 +79213,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -79302,6 +79468,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -79899,6 +80066,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 1000
       - name: offset
         required: false
         in: query
@@ -82547,8 +82715,8 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
-          default: 50
           maximum: 100
+          default: 50
           minimum: 1
       - in: query
         name: mentions
@@ -83628,8 +83796,8 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
-          default: 50
           maximum: 100
+          default: 50
           minimum: 1
       - name: offset
         required: false
@@ -92495,6 +92663,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -92519,6 +92688,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -92560,6 +92730,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -92595,6 +92766,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -92621,6 +92793,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - in: query
         name: identifier
@@ -92669,6 +92842,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: path
@@ -92712,6 +92886,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: path
@@ -92771,6 +92946,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - in: path
         name: identifier
@@ -92811,6 +92987,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - in: query
         name: include_quarantined
@@ -93121,6 +93298,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -93146,6 +93324,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -93189,6 +93368,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -93227,6 +93407,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -93271,6 +93452,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -93312,6 +93494,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -93409,6 +93592,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -93496,6 +93680,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - in: query
         name: include_quarantined
@@ -93514,6 +93699,7 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
+          maximum: 10000
       - name: offset
         required: false
         in: query
@@ -93564,6 +93750,7 @@ paths:
         name: id
         schema:
           type: string
+          format: uuid
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
@@ -105728,6 +105915,126 @@ components:
       required:
       - visits
       - works_in
+    ActivitySummarySearchHit:
+      type: object
+      properties:
+        user_uuid:
+          type: string
+          format: uuid
+          description: The member. Use it in `suggested_reviewers`.
+        first_name:
+          type: string
+          description: The member's first name.
+        last_name:
+          type: string
+          description: The member's last name.
+        github_login:
+          type:
+          - string
+          - 'null'
+          description: The member's GitHub login, lowercase. Null when no GitHub identity
+            is linked.
+        score:
+          type:
+          - number
+          - 'null'
+          format: double
+          description: The reciprocal rank fusion score. Higher is a better match.
+            Null when the request had no query.
+        matched_on:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivitySummarySearchMatch'
+          description: Why this member matched.
+        headline:
+          type:
+          - string
+          - 'null'
+          description: One or two sentences about what the member works on in this
+            project.
+        themes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivitySummaryTheme'
+          description: The main threads of the member's work.
+        modes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivitySummaryModeEnum'
+          description: How the member works in this project overall, the main mode
+            first.
+        generated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When this summary was written.
+        stale:
+          type: boolean
+          description: True when a newer version will replace this summary soon.
+        profile:
+          type:
+          - string
+          - 'null'
+          description: The one-page markdown profile. Set only when the request sets
+            `include_profile`.
+      required:
+      - first_name
+      - generated_at
+      - github_login
+      - headline
+      - last_name
+      - matched_on
+      - modes
+      - profile
+      - score
+      - stale
+      - themes
+      - user_uuid
+    ActivitySummarySearchMatch:
+      type: object
+      properties:
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/MatchKindEnum'
+          description: |-
+            `semantic` for a vector match, else the summary field a keyword matched.
+
+            * `semantic` - Semantic
+            * `headline` - Headline
+            * `themes` - Themes
+            * `owned` - Owned
+            * `watched` - Watched
+            * `profile` - Profile
+        snippet:
+          type:
+          - string
+          - 'null'
+          description: A short excerpt around the first keyword match. Null for a
+            semantic match.
+      required:
+      - kind
+      - snippet
+    ActivitySummarySearchResult:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivitySummarySearchHit'
+          description: The matching members, best match first.
+        semantic_used:
+          type: boolean
+          description: 'False when the search used keywords only: a `keyword` search,
+            a request with no query, or a `hybrid` search whose vector search failed.'
+        not_ready_count:
+          type: integer
+          description: Members with access to the project and no summary yet. The
+            search cannot find them.
+      required:
+      - not_ready_count
+      - results
+      - semantic_used
     ActivitySummaryStatusEnum:
       enum:
       - ready
@@ -113718,6 +114025,7 @@ components:
             * `America/Coral_Harbour` - America/Coral_Harbour
             * `America/Cordoba` - America/Cordoba
             * `America/Costa_Rica` - America/Costa_Rica
+            * `America/Coyhaique` - America/Coyhaique
             * `America/Creston` - America/Creston
             * `America/Cuiaba` - America/Cuiaba
             * `America/Curacao` - America/Curacao
@@ -121026,6 +121334,24 @@ components:
             $ref: '#/components/schemas/CanvasStateEntry'
           description: The canvas's shared entries plus the caller's own user-scoped
             entries.
+        count:
+          type: integer
+          description: Number of entries in the whole selection, across all pages.
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: 'URL of the next page, or null when complete. It pages the
+            same way as this request: by cursor when the request used a cursor, otherwise
+            by offset.'
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: URL of the previous page by offset, or null on the first page
+            and for a cursor request.
         next_offset:
           type:
           - integer
@@ -121043,9 +121369,12 @@ components:
           description: True when no further entries remain for this selection.
       required:
       - complete
+      - count
       - entries
+      - next
       - next_cursor
       - next_offset
+      - previous
     CanvasStateScopeEnum:
       enum:
       - user
@@ -122469,22 +122798,6 @@ components:
       - column
       title: ChartAxis
       type: object
-    ChartCauseEnum:
-      enum:
-      - outside_traffic
-      - usage
-      - one_person
-      - tracking
-      - weekly_pattern
-      - unclear
-      type: string
-      description: |-
-        * `outside_traffic` - Outside traffic
-        * `usage` - Usage
-        * `one_person` - One person
-        * `tracking` - Tracking
-        * `weekly_pattern` - Weekly pattern
-        * `unclear` - Unclear
     ChartDisplayType:
       enum:
       - Auto
@@ -131279,6 +131592,40 @@ components:
         properties:
           description: Dashboard-level property filters applied to every tile (PostHog
             property filter group).
+        breakdown_filter:
+          oneOf:
+          - $ref: '#/components/schemas/BreakdownFilter'
+          - type: 'null'
+          description: 'Dashboard-level breakdown applied to every tile that supports
+            one, replacing the tile''s own breakdown. Example: {"breakdown_type":
+            "event", "breakdown": "$browser"}. Null clears it.'
+        interval:
+          description: |-
+            Time granularity forced onto every tile that supports one. Null means each tile keeps its own.
+
+            * `second` - second
+            * `minute` - minute
+            * `hour` - hour
+            * `day` - day
+            * `week` - week
+            * `month` - month
+            * `quarter` - quarter
+            * `year` - year
+          oneOf:
+          - $ref: '#/components/schemas/IntervalTypeEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        compareFilter:
+          oneOf:
+          - $ref: '#/components/schemas/CompareFilter'
+          - type: 'null'
+          description: Period comparison forced onto every tile that supports one.
+            Null means each tile keeps its own.
+        filterTestAccounts:
+          type:
+          - boolean
+          - 'null'
+          description: True forces test accounts out of every tile, false forces them
+            in, null keeps each tile's setting.
     DashboardImport:
       type: object
       properties:
@@ -132580,7 +132927,7 @@ components:
           description: Override the end of the query window.
         interval:
           allOf:
-          - $ref: '#/components/schemas/DataCatalogMetricRunRequestIntervalEnum'
+          - $ref: '#/components/schemas/IntervalTypeEnum'
           description: |-
             Override the bucket interval. Rejected for HogQLQuery metrics.
 
@@ -132595,26 +132942,6 @@ components:
         query_id:
           type: string
           description: Client-supplied id to correlate or cancel the run.
-    DataCatalogMetricRunRequestIntervalEnum:
-      enum:
-      - second
-      - minute
-      - hour
-      - day
-      - week
-      - month
-      - quarter
-      - year
-      type: string
-      description: |-
-        * `second` - second
-        * `minute` - minute
-        * `hour` - hour
-        * `day` - day
-        * `week` - week
-        * `month` - month
-        * `quarter` - quarter
-        * `year` - year
     DataCatalogRelationshipProposal:
       type: object
       properties:
@@ -185379,101 +185706,6 @@ components:
         * `no_events` - No events to check
         * `unsupported` - This kind of insight cannot be checked
         * `inconclusive` - No check could run
-    InsightExplain:
-      type: object
-      properties:
-        chapters:
-          type: array
-          items:
-            $ref: '#/components/schemas/InsightExplainChapter'
-          description: The likely cause of each chapter the model answered, in the
-            order they were sent.
-      required:
-      - chapters
-    InsightExplainChapter:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Identifier of the chapter, as it was sent.
-        cause:
-          allOf:
-          - $ref: '#/components/schemas/ChartCauseEnum'
-          description: |-
-            What most likely caused the chapter: outside traffic, a real change in usage, one person or a test account, a tracking change, the usual weekly pattern, or unclear when no cause fits the facts.
-
-            * `outside_traffic` - Outside traffic
-            * `usage` - Usage
-            * `one_person` - One person
-            * `tracking` - Tracking
-            * `weekly_pattern` - Weekly pattern
-            * `unclear` - Unclear
-        confidence:
-          type: number
-          format: double
-          description: How sure the model is of the cause, from 0 to 1.
-      required:
-      - cause
-      - confidence
-      - id
-    InsightExplainChapterFacts:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Identifier of the chapter. The response returns the chapter
-            under the same one.
-          maxLength: 64
-        title:
-          type: string
-          description: What the chapter is about, for example 'A peak on October 2'.
-          maxLength: 200
-        summary:
-          type: string
-          description: The computed facts of the chapter in one or two sentences,
-            with their numbers and dates.
-          maxLength: 600
-        evidence:
-          type: array
-          items:
-            type: string
-            maxLength: 600
-          description: Findings about the cause of the chapter, one sentence each.
-            Empty when nothing was found. At most 6.
-          maxItems: 6
-      required:
-      - id
-      - summary
-      - title
-    InsightExplainRequest:
-      type: object
-      properties:
-        series_label:
-          type: string
-          description: Name of the series that the explanation follows.
-          maxLength: 200
-        insight_name:
-          type: string
-          default: ''
-          description: Name of the insight. Blank for an insight that has no name
-            yet.
-          maxLength: 400
-        overview:
-          type: string
-          default: ''
-          description: The computed facts of the whole chart, such as its typical
-            level, its range and how it ends.
-          maxLength: 600
-        chapters:
-          type: array
-          items:
-            $ref: '#/components/schemas/InsightExplainChapterFacts'
-          description: The chapters of the explanation in reading order. At most 8.
-            Empty when nothing stands out on the chart.
-          maxItems: 8
-      required:
-      - chapters
-      - series_label
     InsightFilterOverrideContext:
       properties:
         dashboard:
@@ -186369,7 +186601,134 @@ components:
           type: integer
           readOnly: true
         kind:
-          $ref: '#/components/schemas/IntegrationKindEnum'
+          type: string
+          description: The provider of the integration, for example 'slack' or 'github'.
+            A create accepts only the kinds that PostHog connects here. Data warehouse
+            sources also store their typed-in credentials as integrations, under a
+            kind per source type.
+          maxLength: 32
+        auth_type:
+          allOf:
+          - $ref: '#/components/schemas/IntegrationAuthTypeEnum'
+          readOnly: true
+          description: |-
+            How this integration authenticates with the provider: `oauth` for a connection the provider manages (an OAuth grant or an app installation), `token` for one static secret, or `credentials` for several typed-in fields. A kind can have several auth types.
+
+            * `oauth` - OAuth
+            * `token` - Token
+            * `credentials` - Credentials
+        config: {}
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/UserBasic'
+          readOnly: true
+        errors:
+          type: string
+          readOnly: true
+        display_name:
+          type: string
+          readOnly: true
+        files_write_requestable:
+          type: boolean
+          readOnly: true
+          description: 'Slack only: whether reconnecting can request the files:write
+            scope.'
+        installation_shared:
+          type:
+          - boolean
+          - 'null'
+          readOnly: true
+          description: GitHub only, null otherwise. Whether another project's GitHub
+            integration references the same App installation. When false, disconnecting
+            this integration also uninstalls the GitHub App from the connected account
+            or organization and removes personal GitHub connections that share it.
+        installation_status:
+          description: GitHub only, null otherwise. `unavailable` means the App was
+            uninstalled or suspended on GitHub and PostHog can no longer mint tokens
+            for it; `connected` otherwise.
+          readOnly: true
+          oneOf:
+          - $ref: '#/components/schemas/InstallationStatusEnum'
+          - $ref: '#/components/schemas/NullEnum'
+      required:
+      - auth_type
+      - created_at
+      - created_by
+      - display_name
+      - errors
+      - files_write_requestable
+      - id
+      - installation_shared
+      - installation_status
+      - kind
+    IntegrationConfigCreate:
+      type: object
+      description: The request schema of a create. A create accepts only the public
+        kinds, so the schema lists them.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        kind:
+          allOf:
+          - $ref: '#/components/schemas/IntegrationKindEnum'
+          description: |-
+            The provider of the integration, for example 'slack' or 'github'.
+
+            * `anthropic` - Anthropic
+            * `apple-ads` - Apple Ads
+            * `apns` - Apple Push
+            * `aws-redshift` - Aws Redshift
+            * `aws-s3` - Aws S3
+            * `azure-blob` - Azure Blob
+            * `bing-ads` - Bing Ads
+            * `clickup` - Clickup
+            * `customerio-app` - Customerio App
+            * `customerio-track` - Customerio Track
+            * `customerio-webhook` - Customerio Webhook
+            * `databricks` - Databricks
+            * `email` - Email
+            * `firebase` - Firebase
+            * `github` - Github
+            * `gitlab` - Gitlab
+            * `google-ads` - Google Ads
+            * `google-analytics` - Google Analytics
+            * `google-calendar` - Google Calendar
+            * `google-cloud-service-account` - Google Cloud Service Account
+            * `google-cloud-storage` - Google Cloud Storage
+            * `google-pubsub` - Google Pubsub
+            * `google-search-console` - Google Search Console
+            * `google-sheets` - Google Sheets
+            * `helpscout` - Helpscout
+            * `hubspot` - Hubspot
+            * `instagram` - Instagram
+            * `intercom` - Intercom
+            * `jira` - Jira
+            * `linear` - Linear
+            * `linkedin-ads` - Linkedin Ads
+            * `meta-ads` - Meta Ads
+            * `pardot` - Pardot
+            * `pinterest-ads` - Pinterest Ads
+            * `postgresql` - Postgresql
+            * `posthog` - Posthog
+            * `reddit-ads` - Reddit Ads
+            * `twitter-ads` - Twitter Ads
+            * `resend` - Resend
+            * `s3-compatible` - S3 Compatible
+            * `salesforce` - Salesforce
+            * `slack` - Slack
+            * `slack-posthog-code` - Slack Posthog Code
+            * `snapchat` - Snapchat
+            * `snowflake` - Snowflake
+            * `stripe` - Stripe
+            * `tiktok-ads` - Tiktok Ads
+            * `twilio` - Twilio
+            * `vercel` - Vercel
+            * `youtube-analytics` - Youtube Analytics
         auth_type:
           allOf:
           - $ref: '#/components/schemas/IntegrationAuthTypeEnum'
@@ -186754,6 +187113,26 @@ components:
       - year
       title: IntervalType
       type: string
+    IntervalTypeEnum:
+      enum:
+      - second
+      - minute
+      - hour
+      - day
+      - week
+      - month
+      - quarter
+      - year
+      type: string
+      description: |-
+        * `second` - second
+        * `minute` - minute
+        * `hour` - hour
+        * `day` - day
+        * `week` - week
+        * `month` - month
+        * `quarter` - quarter
+        * `year` - year
     InvestigationInconclusiveActionEnum:
       enum:
       - notify
@@ -204705,6 +205084,22 @@ components:
       - campaign_id
       title: MatchField
       type: string
+    MatchKindEnum:
+      enum:
+      - semantic
+      - headline
+      - themes
+      - owned
+      - watched
+      - profile
+      type: string
+      description: |-
+        * `semantic` - Semantic
+        * `headline` - Headline
+        * `themes` - Themes
+        * `owned` - Owned
+        * `watched` - Watched
+        * `profile` - Profile
     MatchedFieldEnum:
       enum:
       - name
@@ -214171,8 +214566,12 @@ components:
     PaginatedBatchExportBackfillList:
       type: object
       required:
+      - count
       - results
       properties:
+        count:
+          type: integer
+          example: 123
         next:
           type:
           - string
@@ -214217,8 +214616,12 @@ components:
     PaginatedBatchExportRunList:
       type: object
       required:
+      - count
       - results
       properties:
+        count:
+          type: integer
+          example: 123
         next:
           type:
           - string
@@ -218225,6 +218628,13 @@ components:
           description: 'The ranker that ordered the page when sort=recommended: priority,
             or open, action or fix for that outcome of the served ranking model. Null
             for every other sort. Each row''s inbox_merge_key belongs to this ranker.'
+        ranking_pill:
+          type:
+          - boolean
+          - 'null'
+          description: Whether the client shows a ranking score pill on each card,
+            when sort=recommended. The same flag arm sets this and the ranker. Null
+            for every other sort.
     PaginatedSignalSourceConfigList:
       type: object
       required:
@@ -218359,8 +218769,12 @@ components:
     PaginatedSubscriptionDeliveryList:
       type: object
       required:
+      - count
       - results
       properties:
+        count:
+          type: integer
+          example: 123
         next:
           type:
           - string
@@ -218405,8 +218819,12 @@ components:
     PaginatedSubscriptionSummaryList:
       type: object
       required:
+      - count
       - results
       properties:
+        count:
+          type: integer
+          example: 123
         next:
           type:
           - string
@@ -226736,7 +227154,12 @@ components:
           type: integer
           readOnly: true
         kind:
-          $ref: '#/components/schemas/IntegrationKindEnum'
+          type: string
+          description: The provider of the integration, for example 'slack' or 'github'.
+            A create accepts only the kinds that PostHog connects here. Data warehouse
+            sources also store their typed-in credentials as integrations, under a
+            kind per source type.
+          maxLength: 32
         auth_type:
           allOf:
           - $ref: '#/components/schemas/IntegrationAuthTypeEnum'
@@ -228313,8 +228736,8 @@ components:
         filters:
           allOf:
           - $ref: '#/components/schemas/DashboardFiltersOpenApi'
-          description: Dashboard-level filters (date range and properties) applied
-            across all tiles as the source of truth.
+          description: Dashboard-level filters (date range, properties, breakdown,
+            interval, comparison) applied across all tiles as the source of truth.
         breakdown_colors:
           type:
           - array
@@ -228769,6 +229192,7 @@ components:
             * `America/Coral_Harbour` - America/Coral_Harbour
             * `America/Cordoba` - America/Cordoba
             * `America/Costa_Rica` - America/Costa_Rica
+            * `America/Coyhaique` - America/Coyhaique
             * `America/Creston` - America/Creston
             * `America/Cuiaba` - America/Cuiaba
             * `America/Curacao` - America/Curacao
@@ -232210,8 +232634,9 @@ components:
           - string
           - 'null'
           description: Slash command for this macro, without the leading slash. Lowercase
-            letters, numbers, and hyphens. Unique within the project. Null when the
-            macro has no shortcut.
+            letters, numbers, and hyphens. A shared shortcut is unique among the project's
+            shared macros, and a personal one among the creator's personal macros.
+            Null when the macro has no shortcut.
           maxLength: 50
         body:
           type: string
@@ -232220,6 +232645,14 @@ components:
             and {{ticket.number}}. Variables are filled in when an agent inserts the
             macro.
           maxLength: 10000
+        visibility:
+          allOf:
+          - $ref: '#/components/schemas/TicketMacroVisibilityEnum'
+          description: |-
+            Who can see and use the macro. 'shared' is everyone in the project, the default. 'personal' is only the person who created it.
+
+            * `shared` - Everyone in the project
+            * `personal` - Only the creator
         usage_count:
           type: integer
           readOnly: true
@@ -238418,6 +238851,7 @@ components:
             * `America/Coral_Harbour` - America/Coral_Harbour
             * `America/Cordoba` - America/Cordoba
             * `America/Costa_Rica` - America/Costa_Rica
+            * `America/Coyhaique` - America/Coyhaique
             * `America/Creston` - America/Creston
             * `America/Cuiaba` - America/Cuiaba
             * `America/Curacao` - America/Curacao
@@ -239531,6 +239965,7 @@ components:
             * `America/Coral_Harbour` - America/Coral_Harbour
             * `America/Cordoba` - America/Cordoba
             * `America/Costa_Rica` - America/Costa_Rica
+            * `America/Coyhaique` - America/Coyhaique
             * `America/Creston` - America/Creston
             * `America/Cuiaba` - America/Cuiaba
             * `America/Curacao` - America/Curacao
@@ -278867,14 +279302,17 @@ components:
             finding a plan's steps costs several queries per report.
         inbox_merge_key:
           type:
-          - integer
+          - number
           - 'null'
+          format: double
           readOnly: true
-          description: Coarse sort key from the ranker named by the list response's
-            ranker field, for sort=recommended only. Lower keys rank first. It is
-            the score decile of the ranker's outcome (open, action or fix), then the
-            priority as a tiebreak. The priority ranker uses the priority only. Reports
-            without a usable score sort after scored ones. Null for every other sort.
+          description: Sort key from the ranker named by the list response's ranker
+            field, for sort=recommended only. Lower keys rank first, so rows from
+            several requests merge in the order of one request. For an outcome ranker
+            (open, action or fix), a scored report gets 1 minus its score, from 0
+            to 1, and a report without a usable score gets 2 plus its priority rank.
+            The priority ranker uses the priority rank only, from 0 (P0) to 5 (no
+            priority). Null for every other sort.
       required:
       - actionability
       - already_addressed
@@ -294441,11 +294879,25 @@ components:
           description: The source or consumer named in `blocked_by`. Null when allowed,
             and also when the blocker sits outside the caller's access grants, where
             `blocked_by` still gives the direction.
+        speeds_up:
+          type: array
+          items:
+            $ref: '#/components/schemas/SyncFrequencyBlocker'
+          description: Upstream materialized views that would refresh more often than
+            they do now if this cadence were chosen, because a view cannot be fresher
+            than its inputs. Only views the caller may read are listed. Empty when
+            the cadence is blocked.
+        speeds_up_withheld:
+          type: boolean
+          description: True when at least one view this cadence speeds up sits outside
+            the caller's access grants, so `speeds_up` is incomplete.
       required:
       - allowed
       - blocked_by
       - blocker
       - cadence
+      - speeds_up
+      - speeds_up_withheld
     SyncPhaseEnum:
       enum:
       - staging
@@ -301517,8 +301969,9 @@ components:
           - string
           - 'null'
           description: Slash command for this macro, without the leading slash. Lowercase
-            letters, numbers, and hyphens. Unique within the project. Null when the
-            macro has no shortcut.
+            letters, numbers, and hyphens. A shared shortcut is unique among the project's
+            shared macros, and a personal one among the creator's personal macros.
+            Null when the macro has no shortcut.
           maxLength: 50
         body:
           type: string
@@ -301527,6 +301980,14 @@ components:
             and {{ticket.number}}. Variables are filled in when an agent inserts the
             macro.
           maxLength: 10000
+        visibility:
+          allOf:
+          - $ref: '#/components/schemas/TicketMacroVisibilityEnum'
+          description: |-
+            Who can see and use the macro. 'shared' is everyone in the project, the default. 'personal' is only the person who created it.
+
+            * `shared` - Everyone in the project
+            * `personal` - Only the creator
         usage_count:
           type: integer
           readOnly: true
@@ -301566,6 +302027,14 @@ components:
       - name
       - updated_at
       - usage_count
+    TicketMacroVisibilityEnum:
+      enum:
+      - shared
+      - personal
+      type: string
+      description: |-
+        * `shared` - Everyone in the project
+        * `personal` - Only the creator
     TicketMessage:
       type: object
       description: A single message in a ticket thread (output-only).
@@ -302372,6 +302841,7 @@ components:
       - America/Coral_Harbour
       - America/Cordoba
       - America/Costa_Rica
+      - America/Coyhaique
       - America/Creston
       - America/Cuiaba
       - America/Curacao
@@ -302970,6 +303440,7 @@ components:
         * `America/Coral_Harbour` - America/Coral_Harbour
         * `America/Cordoba` - America/Cordoba
         * `America/Costa_Rica` - America/Costa_Rica
+        * `America/Coyhaique` - America/Coyhaique
         * `America/Creston` - America/Creston
         * `America/Cuiaba` - America/Cuiaba
         * `America/Curacao` - America/Curacao

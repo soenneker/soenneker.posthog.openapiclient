@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Activity_summary;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Activity_summary_members;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Anomalies;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Config;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Inbox_summary;
@@ -30,6 +31,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Activity_summary.Activity_summaryRequestBuilder Activity_summary
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Activity_summary.Activity_summaryRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The activity_summary_members property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Activity_summary_members.Activity_summary_membersRequestBuilder Activity_summary_members
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Activity_summary_members.Activity_summary_membersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The anomalies property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Anomalies.AnomaliesRequestBuilder Anomalies

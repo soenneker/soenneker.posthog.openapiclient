@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Repositor
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.review_hog.repositories.item.people.item collection</summary>
         /// <param name="position">Id of the list entry.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Repositories.Item.People.Item.WithPersonItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Repositories.Item.People.Item.WithPersonItemRequestBuilder this[string position]
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Review_hog.Repositories.Item.People.Item.WithPersonItemRequestBuilder this[Guid position]
         {
             get
             {

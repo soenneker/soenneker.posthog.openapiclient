@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "0670BBB9D74C662B624D9E205E0AFC88C4011396CAC18961C2A4561E8A56BFB69C4C6A346D6EC16E70CFBD24931FCAD3BA84A6B4DA261BC1B75AA125E4E2F47D",
+  "descriptionHash": "0374BDCB82CBEBF11F68D98E6CB0EE8DD98D6D3D46EF71A6F8C314005585ED982BAD5C10B029CFAB49F4726DEC85694F2B6EC4B6B0268CB40E45F187B82EA745",
   "descriptionLocation": "../../fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.37.0",
+  "kiotaVersion": "1.38.0",
   "clientClassName": "PostHogOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.PostHog.OpenApiClient",

@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activi
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{id}/advanced_activity_logs/{?activities*,clients*,detail_filters*,end_date*,follow*,hogql_filter*,include_values*,ip_addresses*,is_system*,item_ids*,ordering*,page*,page_size*,schema*,scopes*,search_text*,start_date*,team_ids*,users*,was_impersonated*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{id}/advanced_activity_logs/{?activities*,clients*,cursor*,detail_filters*,end_date*,follow*,hogql_filter*,include_values*,ip_addresses*,is_system*,item_ids*,ordering*,page*,page_size*,schema*,scopes*,search_text*,start_date*,team_ids*,users*,was_impersonated*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activi
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{id}/advanced_activity_logs/{?activities*,clients*,detail_filters*,end_date*,follow*,hogql_filter*,include_values*,ip_addresses*,is_system*,item_ids*,ordering*,page*,page_size*,schema*,scopes*,search_text*,start_date*,team_ids*,users*,was_impersonated*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/organizations/{id}/advanced_activity_logs/{?activities*,clients*,cursor*,detail_filters*,end_date*,follow*,hogql_filter*,include_values*,ip_addresses*,is_system*,item_ids*,ordering*,page*,page_size*,schema*,scopes*,search_text*,start_date*,team_ids*,users*,was_impersonated*}", rawUrl)
         {
         }
         /// <summary>
@@ -107,6 +107,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Advanced_activi
 #else
             [QueryParameter("clients")]
             public string[] Clients { get; set; }
+#endif
+            /// <summary>The pagination cursor value.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("cursor")]
+            public string? Cursor { get; set; }
+#nullable restore
+#else
+            [QueryParameter("cursor")]
+            public string Cursor { get; set; }
 #endif
             /// <summary>JSON-encoded map of `detail` field paths to {operation, value} filters. Allowed operations: exact, contains, in.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER

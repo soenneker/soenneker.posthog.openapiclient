@@ -47,7 +47,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_config
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.stamphog.repo_configs.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Item.Repo_configsItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Item.Repo_configsItemRequestBuilder this[string position]
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Item.Repo_configsItemRequestBuilder this[Guid position]
         {
             get
             {

@@ -29,7 +29,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.visual_review.runs.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.RunsItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.RunsItemRequestBuilder this[string position]
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Visual_review.Runs.Item.RunsItemRequestBuilder this[Guid position]
         {
             get
             {

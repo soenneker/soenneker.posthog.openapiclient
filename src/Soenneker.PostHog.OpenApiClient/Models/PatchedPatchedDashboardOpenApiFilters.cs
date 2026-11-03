@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Dashboard-level filters (date range and properties) applied across all tiles as the source of truth.
+    /// Dashboard-level filters (date range, properties, breakdown, interval, comparison) applied across all tiles as the source of truth.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class PatchedPatchedDashboardOpenApiFilters : IAdditionalDataHolder, IParsable
@@ -18,16 +18,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("breakdown_filter") is null) { _explicitNullValueBreakdownFilter = default!; _explicitNullProperties?.Remove("breakdown_filter"); }
+            else if (parseNode.GetChildNode("breakdown_filter") is { } nullNodeBreakdownFilter && nullNodeBreakdownFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownFilter = null;
+            if (parseNode.GetChildNode("compareFilter") is null) { _explicitNullValueCompareFilter = default!; _explicitNullProperties?.Remove("compareFilter"); }
+            else if (parseNode.GetChildNode("compareFilter") is { } nullNodeCompareFilter && nullNodeCompareFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompareFilter = null;
             if (parseNode.GetChildNode("date_from") is null) { _explicitNullValueDateFrom = default!; _explicitNullProperties?.Remove("date_from"); }
             else if (parseNode.GetChildNode("date_from") is { } nullNodeDateFrom && nullNodeDateFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateFrom = null;
             if (parseNode.GetChildNode("date_to") is null) { _explicitNullValueDateTo = default!; _explicitNullProperties?.Remove("date_to"); }
             else if (parseNode.GetChildNode("date_to") is { } nullNodeDateTo && nullNodeDateTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateTo = null;
+            if (parseNode.GetChildNode("filterTestAccounts") is null) { _explicitNullValueFilterTestAccounts = default!; _explicitNullProperties?.Remove("filterTestAccounts"); }
+            else if (parseNode.GetChildNode("filterTestAccounts") is { } nullNodeFilterTestAccounts && nullNodeFilterTestAccounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterTestAccounts = null;
+            if (parseNode.GetChildNode("interval") is null) { _explicitNullValueInterval = default!; _explicitNullProperties?.Remove("interval"); }
+            else if (parseNode.GetChildNode("interval") is { } nullNodeInterval && nullNodeInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Interval = null;
             if (parseNode.GetChildNode("properties") is null) { _explicitNullValueProperties = default!; _explicitNullProperties?.Remove("properties"); }
             else if (parseNode.GetChildNode("properties") is { } nullNodeProperties && nullNodeProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Properties = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Dashboard-level breakdown applied to every tile that supports one, replacing the tile&apos;s own breakdown. Example: {&quot;breakdown_type&quot;: &quot;event&quot;, &quot;breakdown&quot;: &quot;$browser&quot;}. Null clears it.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiBreakdownFilter? BreakdownFilter { get => _explicitNullValueBreakdownFilter; set { _explicitNullValueBreakdownFilter = value; AdditionalData?.Remove("breakdown_filter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_filter"); else _explicitNullProperties?.Remove("breakdown_filter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiBreakdownFilter? _explicitNullValueBreakdownFilter = default!;
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiBreakdownFilter BreakdownFilter { get => _explicitNullValueBreakdownFilter; set { _explicitNullValueBreakdownFilter = value; AdditionalData?.Remove("breakdown_filter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_filter"); else _explicitNullProperties?.Remove("breakdown_filter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiBreakdownFilter _explicitNullValueBreakdownFilter = default!;
+#endif
+        /// <summary>Period comparison forced onto every tile that supports one. Null means each tile keeps its own.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiCompareFilter? CompareFilter { get => _explicitNullValueCompareFilter; set { _explicitNullValueCompareFilter = value; AdditionalData?.Remove("compareFilter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compareFilter"); else _explicitNullProperties?.Remove("compareFilter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiCompareFilter? _explicitNullValueCompareFilter = default!;
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiCompareFilter CompareFilter { get => _explicitNullValueCompareFilter; set { _explicitNullValueCompareFilter = value; AdditionalData?.Remove("compareFilter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compareFilter"); else _explicitNullProperties?.Remove("compareFilter"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiCompareFilter _explicitNullValueCompareFilter = default!;
+#endif
         /// <summary>Dashboard-level start of the date range, e.g. &apos;-30d&apos;, &apos;-7d&apos;, or an ISO date. Applies to all tiles.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -47,6 +75,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string DateTo { get => _explicitNullValueDateTo; set { _explicitNullValueDateTo = value; AdditionalData?.Remove("date_to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_to"); else _explicitNullProperties?.Remove("date_to"); } }
         private string _explicitNullValueDateTo = default!;
+#endif
+        /// <summary>True forces test accounts out of every tile, false forces them in, null keeps each tile&apos;s setting.</summary>
+        public bool? FilterTestAccounts { get => _explicitNullValueFilterTestAccounts; set { _explicitNullValueFilterTestAccounts = value; AdditionalData?.Remove("filterTestAccounts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterTestAccounts"); else _explicitNullProperties?.Remove("filterTestAccounts"); } }
+        private bool? _explicitNullValueFilterTestAccounts = default!;
+        /// <summary>Time granularity forced onto every tile that supports one. Null means each tile keeps its own.* `second` - second* `minute` - minute* `hour` - hour* `day` - day* `week` - week* `month` - month* `quarter` - quarter* `year` - year</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiInterval? Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; AdditionalData?.Remove("interval"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiInterval? _explicitNullValueInterval = default!;
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiInterval Interval { get => _explicitNullValueInterval; set { _explicitNullValueInterval = value; AdditionalData?.Remove("interval"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interval"); else _explicitNullProperties?.Remove("interval"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiInterval _explicitNullValueInterval = default!;
 #endif
         /// <summary>Dashboard-level property filters applied to every tile (PostHog property filter group).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -83,8 +124,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "breakdown_filter", n => { BreakdownFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiBreakdownFilter>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiBreakdownFilter.CreateFromDiscriminatorValue); } },
+                { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiCompareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiCompareFilter.CreateFromDiscriminatorValue); } },
                 { "date_from", n => { DateFrom = n.GetStringValue(); } },
                 { "date_to", n => { DateTo = n.GetStringValue(); } },
+                { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
+                { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiInterval>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiInterval.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
@@ -95,8 +140,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiBreakdownFilter>("breakdown_filter", BreakdownFilter);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiCompareFilter>("compareFilter", CompareFilter);
             writer.WriteStringValue("date_from", DateFrom);
             writer.WriteStringValue("date_to", DateTo);
+            writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFiltersOpenApiInterval>("interval", Interval);
             writer.WriteObjectValue<UntypedNode>("properties", Properties);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

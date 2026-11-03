@@ -23,6 +23,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
             if (parseNode.GetChildNode("shortcut") is null) { _explicitNullValueShortcut = default!; _explicitNullProperties?.Remove("shortcut"); }
             else if (parseNode.GetChildNode("shortcut") is { } nullNodeShortcut && nullNodeShortcut.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Shortcut = null;
+            if (parseNode.GetChildNode("visibility") is null) { _explicitNullValueVisibility = default!; _explicitNullProperties?.Remove("visibility"); }
+            else if (parseNode.GetChildNode("visibility") is { } nullNodeVisibility && nullNodeVisibility.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Visibility = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -61,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
-        /// <summary>Slash command for this macro, without the leading slash. Lowercase letters, numbers, and hyphens. Unique within the project. Null when the macro has no shortcut.</summary>
+        /// <summary>Slash command for this macro, without the leading slash. Lowercase letters, numbers, and hyphens. A shared shortcut is unique among the project&apos;s shared macros, and a personal one among the creator&apos;s personal macros. Null when the macro has no shortcut.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Shortcut { get => _explicitNullValueShortcut; set { _explicitNullValueShortcut = value; AdditionalData?.Remove("shortcut"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shortcut"); else _explicitNullProperties?.Remove("shortcut"); } }
@@ -75,6 +77,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>How many times agents have inserted this macro.</summary>
         public int? UsageCount { get; private set; }
+        /// <summary>* `shared` - Everyone in the project* `personal` - Only the creator</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.TicketMacroVisibility? Visibility { get => _explicitNullValueVisibility; set { _explicitNullValueVisibility = value; AdditionalData?.Remove("visibility"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visibility"); else _explicitNullProperties?.Remove("visibility"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.TicketMacroVisibility? _explicitNullValueVisibility = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TicketMacro"/> and sets the default values.
         /// </summary>
@@ -109,6 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "shortcut", n => { Shortcut = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "usage_count", n => { UsageCount = n.GetIntValue(); } },
+                { "visibility", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketMacroVisibility>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueVisibility = default; _explicitNullProperties?.Remove("visibility"); AdditionalData["visibility"] = unknown; } else { Visibility = parsed; AdditionalData.Remove("visibility"); } } },
             };
         }
         /// <summary>
@@ -121,6 +127,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("body", Body);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("shortcut", Shortcut);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TicketMacroVisibility>("visibility", Visibility);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

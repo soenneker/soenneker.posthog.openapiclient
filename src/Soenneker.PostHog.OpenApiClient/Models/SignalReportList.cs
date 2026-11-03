@@ -99,8 +99,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string ImplementationPrUrl { get; private set; }
 #endif
-        /// <summary>Coarse sort key from the ranker named by the list response&apos;s ranker field, for sort=recommended only. Lower keys rank first. It is the score decile of the ranker&apos;s outcome (open, action or fix), then the priority as a tiebreak. The priority ranker uses the priority only. Reports without a usable score sort after scored ones. Null for every other sort.</summary>
-        public int? InboxMergeKey { get; private set; }
+        /// <summary>Sort key from the ranker named by the list response&apos;s ranker field, for sort=recommended only. Lower keys rank first, so rows from several requests merge in the order of one request. For an outcome ranker (open, action or fix), a scored report gets 1 minus its score, from 0 to 1, and a report without a usable score gets 2 plus its priority rank. The priority ranker uses the priority rank only, from 0 (P0) to 5 (no priority). Null for every other sort.</summary>
+        public double? InboxMergeKey { get; private set; }
         /// <summary>Whether this is a scout self-improvement report. Most update a team-owned skill in the skills store, but reports with a selected repository can still produce a pull request.</summary>
         public bool? IsSelfImprovementReport { get; private set; }
         /// <summary>The is_suggested_reviewer property</summary>
@@ -352,7 +352,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "implementation_pr_merged", n => { ImplementationPrMerged = n.GetBoolValue(); } },
                 { "implementation_pr_state", n => { ImplementationPrState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportImplementationPrState>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportImplementationPrState.CreateFromDiscriminatorValue); } },
                 { "implementation_pr_url", n => { ImplementationPrUrl = n.GetStringValue(); } },
-                { "inbox_merge_key", n => { InboxMergeKey = n.GetIntValue(); } },
+                { "inbox_merge_key", n => { InboxMergeKey = n.GetDoubleValue(); } },
                 { "is_self_improvement_report", n => { IsSelfImprovementReport = n.GetBoolValue(); } },
                 { "is_suggested_reviewer", n => { IsSuggestedReviewer = n.GetBoolValue(); } },
                 { "metrics", n => { Metrics = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricList>(global::Soenneker.PostHog.OpenApiClient.Models.ReportMetricList.CreateFromDiscriminatorValue)?.AsList(); } },

@@ -3,18 +3,17 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
+    /// <summary>* `shared` - Everyone in the project* `personal` - Only the creator</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public enum InsightsExplainCreateFormatParameter
-    #pragma warning restore CS1591
+    public enum TicketMacroVisibility
     {
-        [EnumMember(Value = "csv")]
+        [EnumMember(Value = "shared")]
         #pragma warning disable CS1591
-        Csv,
+        Shared,
         #pragma warning restore CS1591
-        [EnumMember(Value = "json")]
+        [EnumMember(Value = "personal")]
         #pragma warning disable CS1591
-        Json,
+        Personal,
         #pragma warning restore CS1591
     }
 }

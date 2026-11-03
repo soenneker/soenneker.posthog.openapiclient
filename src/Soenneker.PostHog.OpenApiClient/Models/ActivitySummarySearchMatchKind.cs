@@ -3,33 +3,33 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `outside_traffic` - Outside traffic* `usage` - Usage* `one_person` - One person* `tracking` - Tracking* `weekly_pattern` - Weekly pattern* `unclear` - Unclear</summary>
+    /// <summary>* `semantic` - Semantic* `headline` - Headline* `themes` - Themes* `owned` - Owned* `watched` - Watched* `profile` - Profile</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum InsightExplainChapterCause
+    public enum ActivitySummarySearchMatchKind
     {
-        [EnumMember(Value = "outside_traffic")]
+        [EnumMember(Value = "semantic")]
         #pragma warning disable CS1591
-        OutsideTraffic,
+        Semantic,
         #pragma warning restore CS1591
-        [EnumMember(Value = "usage")]
+        [EnumMember(Value = "headline")]
         #pragma warning disable CS1591
-        Usage,
+        Headline,
         #pragma warning restore CS1591
-        [EnumMember(Value = "one_person")]
+        [EnumMember(Value = "themes")]
         #pragma warning disable CS1591
-        OnePerson,
+        Themes,
         #pragma warning restore CS1591
-        [EnumMember(Value = "tracking")]
+        [EnumMember(Value = "owned")]
         #pragma warning disable CS1591
-        Tracking,
+        Owned,
         #pragma warning restore CS1591
-        [EnumMember(Value = "weekly_pattern")]
+        [EnumMember(Value = "watched")]
         #pragma warning disable CS1591
-        WeeklyPattern,
+        Watched,
         #pragma warning restore CS1591
-        [EnumMember(Value = "unclear")]
+        [EnumMember(Value = "profile")]
         #pragma warning disable CS1591
-        Unclear,
+        Profile,
         #pragma warning restore CS1591
     }
 }

@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Pull_reques
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.stamphog.pull_requests.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Pull_requests.Item.Pull_requestsItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Pull_requests.Item.Pull_requestsItemRequestBuilder this[string position]
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Pull_requests.Item.Pull_requestsItemRequestBuilder this[Guid position]
         {
             get
             {

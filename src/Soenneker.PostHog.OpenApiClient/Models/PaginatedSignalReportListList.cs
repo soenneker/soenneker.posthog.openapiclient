@@ -25,6 +25,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("previous") is { } nullNodePrevious && nullNodePrevious.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Previous = null;
             if (parseNode.GetChildNode("ranker") is null) { _explicitNullValueRanker = default!; _explicitNullProperties?.Remove("ranker"); }
             else if (parseNode.GetChildNode("ranker") is { } nullNodeRanker && nullNodeRanker.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ranker = null;
+            if (parseNode.GetChildNode("ranking_pill") is null) { _explicitNullValueRankingPill = default!; _explicitNullProperties?.Remove("ranking_pill"); }
+            else if (parseNode.GetChildNode("ranking_pill") is { } nullNodeRankingPill && nullNodeRankingPill.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RankingPill = null;
             if (parseNode.GetChildNode("results") is null) { _explicitNullValueResults = default!; _explicitNullProperties?.Remove("results"); }
             else if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
         }
@@ -64,6 +66,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Ranker { get => _explicitNullValueRanker; set { _explicitNullValueRanker = value; AdditionalData?.Remove("ranker"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ranker"); else _explicitNullProperties?.Remove("ranker"); } }
         private string _explicitNullValueRanker = default!;
 #endif
+        /// <summary>Whether the client shows a ranking score pill on each card, when sort=recommended. The same flag arm sets this and the ranker. Null for every other sort.</summary>
+        public bool? RankingPill { get => _explicitNullValueRankingPill; set { _explicitNullValueRankingPill = value; AdditionalData?.Remove("ranking_pill"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ranking_pill"); else _explicitNullProperties?.Remove("ranking_pill"); } }
+        private bool? _explicitNullValueRankingPill = default!;
         /// <summary>The results property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -103,6 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "next", n => { Next = n.GetStringValue(); } },
                 { "previous", n => { Previous = n.GetStringValue(); } },
                 { "ranker", n => { Ranker = n.GetStringValue(); } },
+                { "ranking_pill", n => { RankingPill = n.GetBoolValue(); } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportList>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportList.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -117,6 +123,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("next", Next);
             writer.WriteStringValue("previous", Previous);
             writer.WriteStringValue("ranker", Ranker);
+            writer.WriteBoolValue("ranking_pill", RankingPill);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportList>("results", Results);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
