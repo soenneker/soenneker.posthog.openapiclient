@@ -19,8 +19,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("ingestion_enabled") is null) { _explicitNullValueIngestionEnabled = default!; _explicitNullProperties?.Remove("ingestion_enabled"); }
             else if (parseNode.GetChildNode("ingestion_enabled") is { } nullNodeIngestionEnabled && nullNodeIngestionEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IngestionEnabled = null;
-            if (parseNode.GetChildNode("linear_status_sync_enabled") is null) { _explicitNullValueLinearStatusSyncEnabled = default!; _explicitNullProperties?.Remove("linear_status_sync_enabled"); }
-            else if (parseNode.GetChildNode("linear_status_sync_enabled") is { } nullNodeLinearStatusSyncEnabled && nullNodeLinearStatusSyncEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LinearStatusSyncEnabled = null;
             if (parseNode.GetChildNode("per_issue_rate_limit_bucket_size_minutes") is null) { _explicitNullValuePerIssueRateLimitBucketSizeMinutes = default!; _explicitNullProperties?.Remove("per_issue_rate_limit_bucket_size_minutes"); }
             else if (parseNode.GetChildNode("per_issue_rate_limit_bucket_size_minutes") is { } nullNodePerIssueRateLimitBucketSizeMinutes && nullNodePerIssueRateLimitBucketSizeMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PerIssueRateLimitBucketSizeMinutes = null;
             if (parseNode.GetChildNode("per_issue_rate_limit_value") is null) { _explicitNullValuePerIssueRateLimitValue = default!; _explicitNullProperties?.Remove("per_issue_rate_limit_value"); }
@@ -36,9 +34,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Whether the project ingests exception events. When false, ingestion drops every $exception event for this project before it is stored or billed, and the events cannot be recovered.</summary>
         public bool? IngestionEnabled { get => _explicitNullValueIngestionEnabled; set { _explicitNullValueIngestionEnabled = value; AdditionalData?.Remove("ingestion_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ingestion_enabled"); else _explicitNullProperties?.Remove("ingestion_enabled"); } }
         private bool? _explicitNullValueIngestionEnabled = default!;
-        /// <summary>Whether status changes on linked Linear tickets update the issue. When true, an issue resolves once every linked Linear ticket is closed and at least one is done, and a resolved issue becomes active again when a linked ticket reopens.</summary>
-        public bool? LinearStatusSyncEnabled { get => _explicitNullValueLinearStatusSyncEnabled; set { _explicitNullValueLinearStatusSyncEnabled = value; AdditionalData?.Remove("linear_status_sync_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("linear_status_sync_enabled"); else _explicitNullProperties?.Remove("linear_status_sync_enabled"); } }
-        private bool? _explicitNullValueLinearStatusSyncEnabled = default!;
         /// <summary>Bucket window over which the per-issue rate limit applies, in minutes.</summary>
         public int? PerIssueRateLimitBucketSizeMinutes { get => _explicitNullValuePerIssueRateLimitBucketSizeMinutes; set { _explicitNullValuePerIssueRateLimitBucketSizeMinutes = value; AdditionalData?.Remove("per_issue_rate_limit_bucket_size_minutes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("per_issue_rate_limit_bucket_size_minutes"); else _explicitNullProperties?.Remove("per_issue_rate_limit_bucket_size_minutes"); } }
         private int? _explicitNullValuePerIssueRateLimitBucketSizeMinutes = default!;
@@ -77,7 +72,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "ingestion_enabled", n => { IngestionEnabled = n.GetBoolValue(); } },
-                { "linear_status_sync_enabled", n => { LinearStatusSyncEnabled = n.GetBoolValue(); } },
                 { "per_issue_rate_limit_bucket_size_minutes", n => { PerIssueRateLimitBucketSizeMinutes = n.GetIntValue(); } },
                 { "per_issue_rate_limit_value", n => { PerIssueRateLimitValue = n.GetIntValue(); } },
                 { "project_rate_limit_bucket_size_minutes", n => { ProjectRateLimitBucketSizeMinutes = n.GetIntValue(); } },
@@ -92,7 +86,6 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("ingestion_enabled", IngestionEnabled);
-            writer.WriteBoolValue("linear_status_sync_enabled", LinearStatusSyncEnabled);
             writer.WriteIntValue("per_issue_rate_limit_bucket_size_minutes", PerIssueRateLimitBucketSizeMinutes);
             writer.WriteIntValue("per_issue_rate_limit_value", PerIssueRateLimitValue);
             writer.WriteIntValue("project_rate_limit_bucket_size_minutes", ProjectRateLimitBucketSizeMinutes);

@@ -145,6 +145,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recording_playli
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Session_recordings;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Sessions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Slack_app_workspace_setup;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Streamlit_apps;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions;
@@ -915,6 +916,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.SignalsRequestBuilder Signals
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.SignalsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The slack_app_workspace_setup property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Slack_app_workspace_setup.Slack_app_workspace_setupRequestBuilder Slack_app_workspace_setup
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Slack_app_workspace_setup.Slack_app_workspace_setupRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The stamphog property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.StamphogRequestBuilder Stamphog

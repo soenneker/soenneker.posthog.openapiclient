@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging.Emails.Ite
         {
         }
         /// <summary>
-        /// Get the status of one transactional email by the `message_id` that the send returned, for 30 days after the send. Needs a project secret API key with the `hog_flow:read` scope.
+        /// Get the status of one transactional email by the `message_id` that the send returned, for 30 days after the send. Needs a project secret API key with the `transactional_email:read` scope. A key with `hog_flow:read` also works, but that scope reaches the rest of Workflows too.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmailStatus"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging.Emails.Ite
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.EmailStatus>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.EmailStatus.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get the status of one transactional email by the `message_id` that the send returned, for 30 days after the send. Needs a project secret API key with the `hog_flow:read` scope.
+        /// Get the status of one transactional email by the `message_id` that the send returned, for 30 days after the send. Needs a project secret API key with the `transactional_email:read` scope. A key with `hog_flow:read` also works, but that scope reaches the rest of Workflows too.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

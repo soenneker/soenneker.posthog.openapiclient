@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Highlights
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/today/highlights/", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/today/highlights/{?refresh*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Highlights
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/today/highlights/", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/today/highlights/{?refresh*}", rawUrl)
         {
         }
         /// <summary>
@@ -41,11 +41,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Highlights
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Highlights?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Highlights?> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Highlights.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Highlights> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.PostHog.OpenApiClient.Models.Highlights> GetAsync(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Highlights.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -58,11 +58,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Highlights
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Highlights.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Highlights.EmptyPathSegmentRequestBuilder.EmptyPathSegmentRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -78,6 +78,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Highlights
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Highlights.EmptyPathSegmentRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Today.Highlights.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// The project&apos;s key metrics and up to 6 ranked items, each labeled risk or opportunity. Queries, rules and copy templates make every item; no AI is used. The highlights are computed in the background and stay fresh for 15 minutes per person, or 1 minute when a source failed. The call never waits: while they are computed, it returns `computing` with the last ready highlights of the day, so poll every 2 seconds until the status is `ready` or `failed`. 404 when the person does not have the new navigation. A scoped key needs query:read as well, because every highlight runs a query.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Retry failed sources when progressive loading is enabled. An active computation is reused.</summary>
+            [QueryParameter("refresh")]
+            public bool? Refresh { get; set; }
         }
     }
 }

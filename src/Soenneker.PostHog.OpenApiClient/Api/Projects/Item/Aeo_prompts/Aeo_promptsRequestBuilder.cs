@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Aeo_prompts.Bulk_import;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Aeo_prompts.Item;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Aeo_prompts.Overview;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Aeo_prompts.Topics;
 using System.Collections.Generic;
 using System.IO;
@@ -26,6 +27,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Aeo_prompts
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Aeo_prompts.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Aeo_prompts.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The overview property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Aeo_prompts.Overview.OverviewRequestBuilder Overview
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Aeo_prompts.Overview.OverviewRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The topics property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Aeo_prompts.Topics.TopicsRequestBuilder Topics

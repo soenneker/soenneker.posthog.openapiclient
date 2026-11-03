@@ -17,6 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("background_seconds_saved_per_month") is null) { _explicitNullValueBackgroundSecondsSavedPerMonth = default!; _explicitNullProperties?.Remove("background_seconds_saved_per_month"); }
+            else if (parseNode.GetChildNode("background_seconds_saved_per_month") is { } nullNodeBackgroundSecondsSavedPerMonth && nullNodeBackgroundSecondsSavedPerMonth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BackgroundSecondsSavedPerMonth = null;
             if (parseNode.GetChildNode("freshness_after_seconds") is null) { _explicitNullValueFreshnessAfterSeconds = default!; _explicitNullProperties?.Remove("freshness_after_seconds"); }
             else if (parseNode.GetChildNode("freshness_after_seconds") is { } nullNodeFreshnessAfterSeconds && nullNodeFreshnessAfterSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FreshnessAfterSeconds = null;
             if (parseNode.GetChildNode("freshness_today_seconds") is null) { _explicitNullValueFreshnessTodaySeconds = default!; _explicitNullProperties?.Remove("freshness_today_seconds"); }
@@ -27,6 +29,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("live_sources") is { } nullNodeLiveSources && nullNodeLiveSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LiveSources = null;
             if (parseNode.GetChildNode("lookback_seconds") is null) { _explicitNullValueLookbackSeconds = default!; _explicitNullProperties?.Remove("lookback_seconds"); }
             else if (parseNode.GetChildNode("lookback_seconds") is { } nullNodeLookbackSeconds && nullNodeLookbackSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LookbackSeconds = null;
+            if (parseNode.GetChildNode("main_saving") is null) { _explicitNullValueMainSaving = default!; _explicitNullProperties?.Remove("main_saving"); }
+            else if (parseNode.GetChildNode("main_saving") is { } nullNodeMainSaving && nullNodeMainSaving.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MainSaving = null;
+            if (parseNode.GetChildNode("read_seconds") is null) { _explicitNullValueReadSeconds = default!; _explicitNullProperties?.Remove("read_seconds"); }
+            else if (parseNode.GetChildNode("read_seconds") is { } nullNodeReadSeconds && nullNodeReadSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadSeconds = null;
             if (parseNode.GetChildNode("recomputed_by_views") is null) { _explicitNullValueRecomputedByViews = default!; _explicitNullProperties?.Remove("recomputed_by_views"); }
             else if (parseNode.GetChildNode("recomputed_by_views") is { } nullNodeRecomputedByViews && nullNodeRecomputedByViews.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecomputedByViews = null;
             if (parseNode.GetChildNode("refresh_interval_basis") is null) { _explicitNullValueRefreshIntervalBasis = default!; _explicitNullProperties?.Remove("refresh_interval_basis"); }
@@ -45,10 +51,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("unique_key") is { } nullNodeUniqueKey && nullNodeUniqueKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniqueKey = null;
             if (parseNode.GetChildNode("unknown_sources") is null) { _explicitNullValueUnknownSources = default!; _explicitNullProperties?.Remove("unknown_sources"); }
             else if (parseNode.GetChildNode("unknown_sources") is { } nullNodeUnknownSources && nullNodeUnknownSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UnknownSources = null;
+            if (parseNode.GetChildNode("waiting_seconds_saved_per_month") is null) { _explicitNullValueWaitingSecondsSavedPerMonth = default!; _explicitNullProperties?.Remove("waiting_seconds_saved_per_month"); }
+            else if (parseNode.GetChildNode("waiting_seconds_saved_per_month") is { } nullNodeWaitingSecondsSavedPerMonth && nullNodeWaitingSecondsSavedPerMonth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WaitingSecondsSavedPerMonth = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Part of saves_seconds_per_month that background refreshes spend, in seconds. Negative when refreshing the stored copy costs more background time than it saves. Null on suggestions made before this was recorded.</summary>
+        public double? BackgroundSecondsSavedPerMonth { get => _explicitNullValueBackgroundSecondsSavedPerMonth; set { _explicitNullValueBackgroundSecondsSavedPerMonth = value; AdditionalData?.Remove("background_seconds_saved_per_month"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("background_seconds_saved_per_month"); else _explicitNullProperties?.Remove("background_seconds_saved_per_month"); } }
+        private double? _explicitNullValueBackgroundSecondsSavedPerMonth = default!;
         /// <summary>How old the data can be once materialized, in seconds.</summary>
         public int? FreshnessAfterSeconds { get => _explicitNullValueFreshnessAfterSeconds; set { _explicitNullValueFreshnessAfterSeconds = value; AdditionalData?.Remove("freshness_after_seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("freshness_after_seconds"); else _explicitNullProperties?.Remove("freshness_after_seconds"); } }
         private int? _explicitNullValueFreshnessAfterSeconds = default!;
@@ -78,6 +89,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>How far before the last refresh&apos;s highest incremental_key value each refresh reads again, in seconds. The last incremental_key value is always read again.</summary>
         public int? LookbackSeconds { get => _explicitNullValueLookbackSeconds; set { _explicitNullValueLookbackSeconds = value; AdditionalData?.Remove("lookback_seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lookback_seconds"); else _explicitNullProperties?.Remove("lookback_seconds"); } }
         private int? _explicitNullValueLookbackSeconds = default!;
+        /// <summary>The saving that earned the suggestion. waiting: people, agents and API callers wait less on reads. background: refreshes do less work. scanned: reads scan fewer bytes. Null on suggestions made before this was recorded.* `waiting` - Waiting* `background` - Background* `scanned` - Scanned</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadMainSaving? MainSaving { get => _explicitNullValueMainSaving; set { _explicitNullValueMainSaving = value; AdditionalData?.Remove("main_saving"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("main_saving"); else _explicitNullProperties?.Remove("main_saving"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadMainSaving? _explicitNullValueMainSaving = default!;
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadMainSaving MainSaving { get => _explicitNullValueMainSaving; set { _explicitNullValueMainSaving = value; AdditionalData?.Remove("main_saving"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("main_saving"); else _explicitNullProperties?.Remove("main_saving"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadMainSaving _explicitNullValueMainSaving = default!;
+#endif
+        /// <summary>How long one read of the view takes today, in seconds. Null when no read was measured on its own.</summary>
+        public double? ReadSeconds { get => _explicitNullValueReadSeconds; set { _explicitNullValueReadSeconds = value; AdditionalData?.Remove("read_seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_seconds"); else _explicitNullProperties?.Remove("read_seconds"); } }
+        private double? _explicitNullValueReadSeconds = default!;
         /// <summary>How many materialized views compute this view again on every refresh, because it is not stored. 0 when the saving comes only from people&apos;s reads.</summary>
         public int? RecomputedByViews { get => _explicitNullValueRecomputedByViews; set { _explicitNullValueRecomputedByViews = value; AdditionalData?.Remove("recomputed_by_views"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recomputed_by_views"); else _explicitNullProperties?.Remove("recomputed_by_views"); } }
         private int? _explicitNullValueRecomputedByViews = default!;
@@ -133,6 +157,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadUnknownSources UnknownSources { get => _explicitNullValueUnknownSources; set { _explicitNullValueUnknownSources = value; AdditionalData?.Remove("unknown_sources"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unknown_sources"); else _explicitNullProperties?.Remove("unknown_sources"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadUnknownSources _explicitNullValueUnknownSources = default!;
 #endif
+        /// <summary>Part of saves_seconds_per_month that people, agents and API callers spend waiting on reads of this view, in seconds. Null on suggestions made before this was recorded.</summary>
+        public double? WaitingSecondsSavedPerMonth { get => _explicitNullValueWaitingSecondsSavedPerMonth; set { _explicitNullValueWaitingSecondsSavedPerMonth = value; AdditionalData?.Remove("waiting_seconds_saved_per_month"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("waiting_seconds_saved_per_month"); else _explicitNullProperties?.Remove("waiting_seconds_saved_per_month"); } }
+        private double? _explicitNullValueWaitingSecondsSavedPerMonth = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionPayloadComposedOneOf3"/> and sets the default values.
         /// </summary>
@@ -158,11 +185,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "background_seconds_saved_per_month", n => { BackgroundSecondsSavedPerMonth = n.GetDoubleValue(); } },
                 { "freshness_after_seconds", n => { FreshnessAfterSeconds = n.GetIntValue(); } },
                 { "freshness_today_seconds", n => { FreshnessTodaySeconds = n.GetIntValue(); } },
                 { "incremental_key", n => { IncrementalKey = n.GetStringValue(); } },
                 { "live_sources", n => { LiveSources = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadLiveSources>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadLiveSources.CreateFromDiscriminatorValue); } },
                 { "lookback_seconds", n => { LookbackSeconds = n.GetIntValue(); } },
+                { "main_saving", n => { MainSaving = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadMainSaving>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadMainSaving.CreateFromDiscriminatorValue); } },
+                { "read_seconds", n => { ReadSeconds = n.GetDoubleValue(); } },
                 { "recomputed_by_views", n => { RecomputedByViews = n.GetIntValue(); } },
                 { "refresh_interval_basis", n => { RefreshIntervalBasis = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadRefreshIntervalBasis>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadRefreshIntervalBasis.CreateFromDiscriminatorValue); } },
                 { "refresh_interval_seconds", n => { RefreshIntervalSeconds = n.GetIntValue(); } },
@@ -172,6 +202,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "subject_name", n => { SubjectName = n.GetStringValue(); } },
                 { "unique_key", n => { UniqueKey = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "unknown_sources", n => { UnknownSources = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadUnknownSources>(global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadUnknownSources.CreateFromDiscriminatorValue); } },
+                { "waiting_seconds_saved_per_month", n => { WaitingSecondsSavedPerMonth = n.GetDoubleValue(); } },
             };
         }
         /// <summary>
@@ -181,11 +212,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDoubleValue("background_seconds_saved_per_month", BackgroundSecondsSavedPerMonth);
             writer.WriteIntValue("freshness_after_seconds", FreshnessAfterSeconds);
             writer.WriteIntValue("freshness_today_seconds", FreshnessTodaySeconds);
             writer.WriteStringValue("incremental_key", IncrementalKey);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadLiveSources>("live_sources", LiveSources);
             writer.WriteIntValue("lookback_seconds", LookbackSeconds);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadMainSaving>("main_saving", MainSaving);
+            writer.WriteDoubleValue("read_seconds", ReadSeconds);
             writer.WriteIntValue("recomputed_by_views", RecomputedByViews);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadRefreshIntervalBasis>("refresh_interval_basis", RefreshIntervalBasis);
             writer.WriteIntValue("refresh_interval_seconds", RefreshIntervalSeconds);
@@ -195,6 +229,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("subject_name", SubjectName);
             writer.WriteCollectionOfPrimitiveValues<string>("unique_key", UniqueKey);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WarehouseSuggestionMaterializePayloadUnknownSources>("unknown_sources", UnknownSources);
+            writer.WriteDoubleValue("waiting_seconds_saved_per_month", WaitingSecondsSavedPerMonth);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

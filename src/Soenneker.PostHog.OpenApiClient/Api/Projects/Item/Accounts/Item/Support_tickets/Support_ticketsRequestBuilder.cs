@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Suppor
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.accounts.item.support_tickets.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Support_tickets.Item.WithTicketItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Support_tickets.Item.WithTicketItemRequestBuilder this[string position]
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Support_tickets.Item.WithTicketItemRequestBuilder this[Guid position]
         {
             get
             {

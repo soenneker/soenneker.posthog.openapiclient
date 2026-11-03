@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item.Github_login;
+using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item.Offboarding_preview;
 using Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item.Scoped_api_keys;
 using System.Collections.Generic;
 using System.IO;
@@ -25,6 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item.Github_login.Github_loginRequestBuilder Github_login
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item.Github_login.Github_loginRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The offboarding_preview property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item.Offboarding_preview.Offboarding_previewRequestBuilder Offboarding_preview
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item.Offboarding_preview.Offboarding_previewRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The scoped_api_keys property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Organizations.Item.Members.Item.Scoped_api_keys.Scoped_api_keysRequestBuilder Scoped_api_keys

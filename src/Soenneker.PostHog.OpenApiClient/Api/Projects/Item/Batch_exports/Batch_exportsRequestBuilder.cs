@@ -33,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Test.TestRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.batch_exports.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The BatchExport this backfill belongs to.</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.WithBatchExportItemRequestBuilder"/></returns>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Batch_exports.Item.WithBatchExportItemRequestBuilder this[Guid position]
         {

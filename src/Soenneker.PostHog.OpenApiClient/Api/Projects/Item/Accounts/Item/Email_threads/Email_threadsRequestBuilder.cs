@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Email_
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.accounts.item.email_threads.item collection</summary>
         /// <param name="position">Unique identifier of the item</param>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Email_threads.Item.WithThreadItemRequestBuilder"/></returns>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Email_threads.Item.WithThreadItemRequestBuilder this[string position]
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Email_threads.Item.WithThreadItemRequestBuilder this[Guid position]
         {
             get
             {

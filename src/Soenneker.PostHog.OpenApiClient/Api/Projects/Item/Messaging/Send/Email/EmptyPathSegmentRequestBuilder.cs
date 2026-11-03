@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging.Send.Email
         {
         }
         /// <summary>
-        /// Send one transactional email to one recipient from the template named in `template_id`. The template must be made transactional first. `message_data` fills the template&apos;s `{{ variables.* }}` placeholders. Transactional emails skip opt-outs and frequency caps. Send an `Idempotency-Key` header to retry safely without sending the email twice.
+        /// Send one transactional email to one recipient from the template named in `template_id`. The template must be made transactional first. `message_data` fills the template&apos;s `{{ variables.* }}` placeholders. Transactional emails skip opt-outs and frequency caps. Send an `Idempotency-Key` header to retry safely without sending the email twice. Needs the `transactional_email:write` scope. A key with `hog_flow:write` also works, but that scope reaches the rest of Workflows too.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SendTransactionalEmailResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Messaging.Send.Email
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SendTransactionalEmailResponse>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SendTransactionalEmailResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Send one transactional email to one recipient from the template named in `template_id`. The template must be made transactional first. `message_data` fills the template&apos;s `{{ variables.* }}` placeholders. Transactional emails skip opt-outs and frequency caps. Send an `Idempotency-Key` header to retry safely without sending the email twice.
+        /// Send one transactional email to one recipient from the template named in `template_id`. The template must be made transactional first. `message_data` fills the template&apos;s `{{ variables.* }}` placeholders. Transactional emails skip opt-outs and frequency caps. Send an `Idempotency-Key` header to retry safely without sending the email twice. Needs the `transactional_email:write` scope. A key with `hog_flow:write` also works, but that scope reaches the rest of Workflows too.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

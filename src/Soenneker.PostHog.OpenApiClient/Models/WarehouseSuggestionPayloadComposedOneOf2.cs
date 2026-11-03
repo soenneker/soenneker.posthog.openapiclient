@@ -17,6 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("materialized") is null) { _explicitNullValueMaterialized = default!; _explicitNullProperties?.Remove("materialized"); }
+            else if (parseNode.GetChildNode("materialized") is { } nullNodeMaterialized && nullNodeMaterialized.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Materialized = null;
             if (parseNode.GetChildNode("refresh_bytes_per_month") is null) { _explicitNullValueRefreshBytesPerMonth = default!; _explicitNullProperties?.Remove("refresh_bytes_per_month"); }
             else if (parseNode.GetChildNode("refresh_bytes_per_month") is { } nullNodeRefreshBytesPerMonth && nullNodeRefreshBytesPerMonth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefreshBytesPerMonth = null;
             if (parseNode.GetChildNode("refresh_seconds_per_month") is null) { _explicitNullValueRefreshSecondsPerMonth = default!; _explicitNullProperties?.Remove("refresh_seconds_per_month"); }
@@ -27,6 +29,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Whether the view is materialized. A plain view has no refreshes, so both refresh costs are 0.</summary>
+        public bool? Materialized { get => _explicitNullValueMaterialized; set { _explicitNullValueMaterialized = value; AdditionalData?.Remove("materialized"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("materialized"); else _explicitNullProperties?.Remove("materialized"); } }
+        private bool? _explicitNullValueMaterialized = default!;
         /// <summary>Bytes its refreshes read in a month.</summary>
         public double? RefreshBytesPerMonth { get => _explicitNullValueRefreshBytesPerMonth; set { _explicitNullValueRefreshBytesPerMonth = value; AdditionalData?.Remove("refresh_bytes_per_month"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_bytes_per_month"); else _explicitNullProperties?.Remove("refresh_bytes_per_month"); } }
         private double? _explicitNullValueRefreshBytesPerMonth = default!;
@@ -68,6 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "materialized", n => { Materialized = n.GetBoolValue(); } },
                 { "refresh_bytes_per_month", n => { RefreshBytesPerMonth = n.GetDoubleValue(); } },
                 { "refresh_seconds_per_month", n => { RefreshSecondsPerMonth = n.GetDoubleValue(); } },
                 { "subject_name", n => { SubjectName = n.GetStringValue(); } },
@@ -80,6 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("materialized", Materialized);
             writer.WriteDoubleValue("refresh_bytes_per_month", RefreshBytesPerMonth);
             writer.WriteDoubleValue("refresh_seconds_per_month", RefreshSecondsPerMonth);
             writer.WriteStringValue("subject_name", SubjectName);

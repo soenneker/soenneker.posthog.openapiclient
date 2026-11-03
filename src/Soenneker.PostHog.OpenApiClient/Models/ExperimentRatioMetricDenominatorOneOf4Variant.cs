@@ -30,6 +30,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
             if (parseNode.GetChildNode("response") is null) { _explicitNullValueResponse = default!; _explicitNullProperties?.Remove("response"); }
             else if (parseNode.GetChildNode("response") is { } nullNodeResponse && nullNodeResponse.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Response = null;
+            if (parseNode.GetChildNode("unit") is null) { _explicitNullValueUnit = default!; _explicitNullProperties?.Remove("unit"); }
+            else if (parseNode.GetChildNode("unit") is { } nullNodeUnit && nullNodeUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unit = null;
             if (parseNode.GetChildNode("version") is null) { _explicitNullValueVersion = default!; _explicitNullProperties?.Remove("version"); }
             else if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
         }
@@ -87,6 +89,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWarehouseNativeNodeResponseProperty Response { get => _explicitNullValueResponse; set { _explicitNullValueResponse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("response"); else _explicitNullProperties?.Remove("response"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWarehouseNativeNodeResponseProperty _explicitNullValueResponse = default!;
 #endif
+        /// <summary>The unit property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWarehouseNativeUnitBinding? Unit { get => _explicitNullValueUnit; set { _explicitNullValueUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unit"); else _explicitNullProperties?.Remove("unit"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWarehouseNativeUnitBinding? _explicitNullValueUnit = default!;
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWarehouseNativeUnitBinding Unit { get => _explicitNullValueUnit; set { _explicitNullValueUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unit"); else _explicitNullProperties?.Remove("unit"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWarehouseNativeUnitBinding _explicitNullValueUnit = default!;
+#endif
         /// <summary>version of the node, used for schema migrations</summary>
         public double? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
         private double? _explicitNullValueVersion = default!;
@@ -114,6 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "math_property", n => { MathProperty = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetStringValue(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWarehouseNativeNodeResponseProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWarehouseNativeNodeResponseProperty.CreateFromDiscriminatorValue); } },
+                { "unit", n => { Unit = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWarehouseNativeUnitBinding>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWarehouseNativeUnitBinding.CreateFromDiscriminatorValue); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
             };
         }
@@ -131,6 +144,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("math_property", MathProperty);
             writer.WriteStringValue("query", Query);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWarehouseNativeNodeResponseProperty>("response", Response);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentWarehouseNativeUnitBinding>("unit", Unit);
             writer.WriteDoubleValue("version", Version);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }

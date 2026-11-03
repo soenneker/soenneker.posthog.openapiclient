@@ -20,6 +20,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("baseline_period_minutes") is null) { _explicitNullValueBaselinePeriodMinutes = default!; _explicitNullProperties?.Remove("baseline_period_minutes"); }
             else if (parseNode.GetChildNode("baseline_period_minutes") is { } nullNodeBaselinePeriodMinutes && nullNodeBaselinePeriodMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselinePeriodMinutes = null;
+            if (parseNode.GetChildNode("purpose") is null) { _explicitNullValuePurpose = default!; _explicitNullProperties?.Remove("purpose"); }
+            else if (parseNode.GetChildNode("purpose") is { } nullNodePurpose && nullNodePurpose.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Purpose = null;
             if (parseNode.GetChildNode("reference_period_minutes") is null) { _explicitNullValueReferencePeriodMinutes = default!; _explicitNullProperties?.Remove("reference_period_minutes"); }
             else if (parseNode.GetChildNode("reference_period_minutes") is { } nullNodeReferencePeriodMinutes && nullNodeReferencePeriodMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferencePeriodMinutes = null;
             if (parseNode.GetChildNode("threshold_scaling") is null) { _explicitNullValueThresholdScaling = default!; _explicitNullProperties?.Remove("threshold_scaling"); }
@@ -29,6 +31,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The actual period measured by baseline_value, in minutes. Required when a baseline is supplied.</summary>
         public int? BaselinePeriodMinutes { get => _explicitNullValueBaselinePeriodMinutes; set { _explicitNullValueBaselinePeriodMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_period_minutes"); else _explicitNullProperties?.Remove("baseline_period_minutes"); } }
         private int? _explicitNullValueBaselinePeriodMinutes = default!;
+        /// <summary>`expectation` evaluates whether the implementation met its target. `minimum_evidence` checks a fixed minimum sample count: meeting it passes the guard; missing it is inconclusive and requires assessment, never an implementation failure. Use a positive whole-number `gte` target on one unsampled raw count.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfigPurpose? Purpose { get => _explicitNullValuePurpose; set { _explicitNullValuePurpose = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("purpose"); else _explicitNullProperties?.Remove("purpose"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfigPurpose? _explicitNullValuePurpose = default!;
         /// <summary>The period the comparison target describes, in minutes. Independent of the soak and run schedule.</summary>
         public int? ReferencePeriodMinutes { get => _explicitNullValueReferencePeriodMinutes; set { _explicitNullValueReferencePeriodMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_period_minutes"); else _explicitNullProperties?.Remove("reference_period_minutes"); } }
         private int? _explicitNullValueReferencePeriodMinutes = default!;
@@ -56,6 +61,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "baseline_period_minutes", n => { BaselinePeriodMinutes = n.GetIntValue(); } },
+                { "purpose", n => { Purpose = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfigPurpose>(); } },
                 { "reference_period_minutes", n => { ReferencePeriodMinutes = n.GetIntValue(); } },
                 { "threshold_scaling", n => { ThresholdScaling = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfigThresholdScaling>(); } },
             };
@@ -68,6 +74,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("baseline_period_minutes", BaselinePeriodMinutes);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfigPurpose>("purpose", Purpose);
             writer.WriteIntValue("reference_period_minutes", ReferencePeriodMinutes);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MonitoringMetricConfigThresholdScaling>("threshold_scaling", ThresholdScaling);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             

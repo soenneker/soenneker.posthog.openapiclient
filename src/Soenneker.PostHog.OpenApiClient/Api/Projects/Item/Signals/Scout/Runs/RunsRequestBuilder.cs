@@ -2,13 +2,11 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Costs;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Emissions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Findings;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.RecentPerScout;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.ReportChecks;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.TokenCosts;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -21,11 +19,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RunsRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The costs property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Costs.CostsRequestBuilder Costs
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Costs.CostsRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The emissions property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.Emissions.EmissionsRequestBuilder Emissions
         {
@@ -50,11 +43,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.ReportChecks.ReportChecksRequestBuilder ReportChecks
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.ReportChecks.ReportChecksRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The tokenCosts property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.TokenCosts.TokenCostsRequestBuilder TokenCosts
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Runs.TokenCosts.TokenCostsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.PostHog.OpenApiClient.api.projects.item.signals.scout.runs.item collection</summary>
         /// <param name="position">UUID of the `SignalScoutRun` bridge row.</param>

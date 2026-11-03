@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.Item.Deliveries;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.Item.Take_ownership;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.Item.TestDelivery;
 using System.Collections.Generic;
 using System.IO;
@@ -25,6 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.Item.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.Item.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The take_ownership property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.Item.Take_ownership.Take_ownershipRequestBuilder Take_ownership
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.Item.Take_ownership.Take_ownershipRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The testDelivery property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Subscriptions.Item.TestDelivery.TestDeliveryRequestBuilder TestDelivery

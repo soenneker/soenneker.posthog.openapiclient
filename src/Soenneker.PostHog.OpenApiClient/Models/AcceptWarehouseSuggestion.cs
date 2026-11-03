@@ -17,6 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("delete_view") is null) { _explicitNullValueDeleteView = default!; _explicitNullProperties?.Remove("delete_view"); }
+            else if (parseNode.GetChildNode("delete_view") is { } nullNodeDeleteView && nullNodeDeleteView.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeleteView = null;
             if (parseNode.GetChildNode("incremental_key") is null) { _explicitNullValueIncrementalKey = default!; _explicitNullProperties?.Remove("incremental_key"); }
             else if (parseNode.GetChildNode("incremental_key") is { } nullNodeIncrementalKey && nullNodeIncrementalKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncrementalKey = null;
             if (parseNode.GetChildNode("keep_materialized") is null) { _explicitNullValueKeepMaterialized = default!; _explicitNullProperties?.Remove("keep_materialized"); }
@@ -33,6 +35,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Deprecate only: true to delete the view instead of marking it deprecated. Deleting also drops its stored table and refreshes, and cannot be undone. Refused when another view now reads it, or when it feeds person properties, account properties, a destination or a workflow. Refused with a 400 when any day in the read window has no read data, because a view read only on those days would look unread.</summary>
+        public bool? DeleteView { get => _explicitNullValueDeleteView; set { _explicitNullValueDeleteView = value; AdditionalData?.Remove("delete_view"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delete_view"); else _explicitNullProperties?.Remove("delete_view"); } }
+        private bool? _explicitNullValueDeleteView = default!;
         /// <summary>Materialize only, incremental refresh only: an output column whose value only grows as rows arrive, such as a date, a datetime or an increasing number, instead of the proposed one. view-check-incremental lists the columns that qualify. Omit to keep the proposed key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -90,6 +95,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "delete_view", n => { DeleteView = n.GetBoolValue(); } },
                 { "incremental_key", n => { IncrementalKey = n.GetStringValue(); } },
                 { "keep_materialized", n => { KeepMaterialized = n.GetBoolValue(); } },
                 { "lookback_seconds", n => { LookbackSeconds = n.GetIntValue(); } },
@@ -105,6 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("delete_view", DeleteView);
             writer.WriteStringValue("incremental_key", IncrementalKey);
             writer.WriteBoolValue("keep_materialized", KeepMaterialized);
             writer.WriteIntValue("lookback_seconds", LookbackSeconds);

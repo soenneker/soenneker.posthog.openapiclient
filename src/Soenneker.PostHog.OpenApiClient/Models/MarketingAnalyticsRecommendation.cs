@@ -35,6 +35,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
             if (parseNode.GetChildNode("rule") is null) { _explicitNullValueRule = default!; _explicitNullProperties?.Remove("rule"); }
             else if (parseNode.GetChildNode("rule") is { } nullNodeRule && nullNodeRule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rule = null;
+            if (parseNode.GetChildNode("steps") is null) { _explicitNullValueSteps = default!; _explicitNullProperties?.Remove("steps"); }
+            else if (parseNode.GetChildNode("steps") is { } nullNodeSteps && nullNodeSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Steps = null;
             if (parseNode.GetChildNode("subject") is null) { _explicitNullValueSubject = default!; _explicitNullProperties?.Remove("subject"); }
             else if (parseNode.GetChildNode("subject") is { } nullNodeSubject && nullNodeSubject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Subject = null;
         }
@@ -94,6 +96,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The rule property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRecommendationRule? Rule { get => _explicitNullValueRule; set { _explicitNullValueRule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rule"); else _explicitNullProperties?.Remove("rule"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRecommendationRule? _explicitNullValueRule = default!;
+        /// <summary>How to apply the recommendation in Google Ads, in order. Empty when the rule has no steps yet.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRecommendationStep>? Steps { get => _explicitNullValueSteps; set { _explicitNullValueSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("steps"); else _explicitNullProperties?.Remove("steps"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRecommendationStep>? _explicitNullValueSteps = default!;
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRecommendationStep> Steps { get => _explicitNullValueSteps; set { _explicitNullValueSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("steps"); else _explicitNullProperties?.Remove("steps"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRecommendationStep> _explicitNullValueSteps = default!;
+#endif
         /// <summary>The campaign name or the search term the recommendation is about.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -131,6 +143,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "level", n => { Level = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRecommendationLevel>(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "rule", n => { Rule = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRecommendationRule>(); } },
+                { "steps", n => { Steps = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRecommendationStep>(global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRecommendationStep.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
             };
         }
@@ -150,6 +163,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRecommendationLevel>("level", Level);
             writer.WriteStringValue("reason", Reason);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRecommendationRule>("rule", Rule);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MarketingAnalyticsRecommendationStep>("steps", Steps);
             writer.WriteStringValue("subject", Subject);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }

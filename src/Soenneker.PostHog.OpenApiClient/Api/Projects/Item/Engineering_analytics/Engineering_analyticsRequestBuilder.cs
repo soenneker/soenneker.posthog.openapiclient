@@ -16,6 +16,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Ci
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Current_branch_health;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Delivery_comparison;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Delivery_summary;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Depot_ci_usage;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Dora;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Flaky_tests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Job_aggregates;
@@ -125,6 +126,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Delivery_summary.Delivery_summaryRequestBuilder Delivery_summary
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Delivery_summary.Delivery_summaryRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The depot_ci_usage property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Depot_ci_usage.Depot_ci_usageRequestBuilder Depot_ci_usage
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Depot_ci_usage.Depot_ci_usageRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The dora property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Dora.DoraRequestBuilder Dora

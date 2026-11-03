@@ -27,6 +27,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("signals") is { } nullNodeSignals && nullNodeSignals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Signals = null;
             if (parseNode.GetChildNode("superseded_by") is null) { _explicitNullValueSupersededBy = default!; _explicitNullProperties?.Remove("superseded_by"); }
             else if (parseNode.GetChildNode("superseded_by") is { } nullNodeSupersededBy && nullNodeSupersededBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupersededBy = null;
+            if (parseNode.GetChildNode("warehouse_destination_type") is null) { _explicitNullValueWarehouseDestinationType = default!; _explicitNullProperties?.Remove("warehouse_destination_type"); }
+            else if (parseNode.GetChildNode("warehouse_destination_type") is { } nullNodeWarehouseDestinationType && nullNodeWarehouseDestinationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WarehouseDestinationType = null;
             if (parseNode.GetChildNode("warehouse_source_type") is null) { _explicitNullValueWarehouseSourceType = default!; _explicitNullProperties?.Remove("warehouse_source_type"); }
             else if (parseNode.GetChildNode("warehouse_source_type") is { } nullNodeWarehouseSourceType && nullNodeWarehouseSourceType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WarehouseSourceType = null;
             if (parseNode.GetChildNode("wizard_setup_mode") is null) { _explicitNullValueWizardSetupMode = default!; _explicitNullProperties?.Remove("wizard_setup_mode"); }
@@ -85,6 +87,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<string> SupersededBy { get => _explicitNullValueSupersededBy; set { _explicitNullValueSupersededBy = value; AdditionalData?.Remove("superseded_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("superseded_by"); else _explicitNullProperties?.Remove("superseded_by"); } }
         private List<string> _explicitNullValueSupersededBy = default!;
 #endif
+        /// <summary>Warehouse destination PostHog can send data to when the tool is that warehouse, or null for any other tool.* `Redshift` - Redshift* `Snowflake` - Snowflake* `BigQuery` - BigQuery* `Postgres` - Postgres* `Databricks` - Databricks* `AzureBlob` - Azure Blob* `S3` - S3</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolWarehouseDestinationType? WarehouseDestinationType { get => _explicitNullValueWarehouseDestinationType; set { _explicitNullValueWarehouseDestinationType = value; AdditionalData?.Remove("warehouse_destination_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warehouse_destination_type"); else _explicitNullProperties?.Remove("warehouse_destination_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolWarehouseDestinationType? _explicitNullValueWarehouseDestinationType = default!;
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolWarehouseDestinationType WarehouseDestinationType { get => _explicitNullValueWarehouseDestinationType; set { _explicitNullValueWarehouseDestinationType = value; AdditionalData?.Remove("warehouse_destination_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warehouse_destination_type"); else _explicitNullProperties?.Remove("warehouse_destination_type"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolWarehouseDestinationType _explicitNullValueWarehouseDestinationType = default!;
+#endif
         /// <summary>Data warehouse source type the tool imports as, or null for a tool with no warehouse source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -135,6 +147,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "signals", n => { Signals = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolSignalsComposed>(global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolSignalsComposed.CreateFromDiscriminatorValue); } },
                 { "superseded_by", n => { SupersededBy = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "warehouse_destination_type", n => { WarehouseDestinationType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolWarehouseDestinationType>(global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolWarehouseDestinationType.CreateFromDiscriminatorValue); } },
                 { "warehouse_source_type", n => { WarehouseSourceType = n.GetStringValue(); } },
                 { "wizard_setup_mode", n => { WizardSetupMode = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolWizardSetupMode>(global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolWizardSetupMode.CreateFromDiscriminatorValue); } },
             };
@@ -151,6 +164,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("label", Label);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolSignalsComposed>("signals", Signals);
             writer.WriteCollectionOfPrimitiveValues<string>("superseded_by", SupersededBy);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolWarehouseDestinationType>("warehouse_destination_type", WarehouseDestinationType);
             writer.WriteStringValue("warehouse_source_type", WarehouseSourceType);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolWizardSetupMode>("wizard_setup_mode", WizardSetupMode);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

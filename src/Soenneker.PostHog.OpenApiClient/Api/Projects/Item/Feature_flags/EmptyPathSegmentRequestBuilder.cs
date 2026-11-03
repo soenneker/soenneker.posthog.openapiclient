@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_flags/{?active*,archived*,created_by_id*,eligible_for_experiment*,evaluation_runtime*,excluded_properties*,excluded_tags*,has_evaluation_contexts*,key*,limit*,offset*,search*,tags*,type*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_flags/{?active*,archived*,created_by_id*,deleted*,eligible_for_experiment*,evaluation_runtime*,excluded_properties*,excluded_tags*,has_evaluation_contexts*,key*,limit*,offset*,search*,tags*,type*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_flags/{?active*,archived*,created_by_id*,eligible_for_experiment*,evaluation_runtime*,excluded_properties*,excluded_tags*,has_evaluation_contexts*,key*,limit*,offset*,search*,tags*,type*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/feature_flags/{?active*,archived*,created_by_id*,deleted*,eligible_for_experiment*,evaluation_runtime*,excluded_properties*,excluded_tags*,has_evaluation_contexts*,key*,limit*,offset*,search*,tags*,type*}", rawUrl)
         {
         }
         /// <summary>
@@ -143,6 +143,9 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Feature_flags
             [QueryParameter("created_by_id")]
             public string CreatedById { get; set; }
 #endif
+            /// <summary>Pass `true` to list only soft-deleted flags, which can be restored, archived or not. When omitted, deleted flags are excluded.</summary>
+            [QueryParameter("deleted")]
+            public global::Soenneker.PostHog.OpenApiClient.Models.FeatureFlagsListDeletedParameter? Deleted { get; set; }
             /// <summary>When &apos;true&apos;, only return flags that can back an experiment: multivariate with 2-20 variants. Any other value is ignored.</summary>
             [QueryParameter("eligible_for_experiment")]
             public global::Soenneker.PostHog.OpenApiClient.Models.TrueValueEligibleForExperiment? EligibleForExperiment { get; set; }

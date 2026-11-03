@@ -28,6 +28,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("pins") is { } nullNodePins && nullNodePins.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pins = null;
             if (parseNode.GetChildNode("pulse") is null) { _explicitNullValuePulse = default!; _explicitNullProperties?.Remove("pulse"); }
             else if (parseNode.GetChildNode("pulse") is { } nullNodePulse && nullNodePulse.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pulse = null;
+            if (parseNode.GetChildNode("pulse_slots") is null) { _explicitNullValuePulseSlots = default!; _explicitNullProperties?.Remove("pulse_slots"); }
+            else if (parseNode.GetChildNode("pulse_slots") is { } nullNodePulseSlots && nullNodePulseSlots.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PulseSlots = null;
             if (parseNode.GetChildNode("refresh_at") is null) { _explicitNullValueRefreshAt = default!; _explicitNullProperties?.Remove("refresh_at"); }
             else if (parseNode.GetChildNode("refresh_at") is { } nullNodeRefreshAt && nullNodeRefreshAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefreshAt = null;
             if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
@@ -72,6 +74,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetric> Pulse { get => _explicitNullValuePulse; set { _explicitNullValuePulse = value; AdditionalData?.Remove("pulse"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pulse"); else _explicitNullProperties?.Remove("pulse"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetric> _explicitNullValuePulse = default!;
 #endif
+        /// <summary>Selected numbers in stable display order, including unfinished numbers. Ready values are in pulse. Null for clients using complete results.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PulseSlot>? PulseSlots { get => _explicitNullValuePulseSlots; set { _explicitNullValuePulseSlots = value; AdditionalData?.Remove("pulse_slots"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pulse_slots"); else _explicitNullProperties?.Remove("pulse_slots"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PulseSlot>? _explicitNullValuePulseSlots = default!;
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PulseSlot> PulseSlots { get => _explicitNullValuePulseSlots; set { _explicitNullValuePulseSlots = value; AdditionalData?.Remove("pulse_slots"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pulse_slots"); else _explicitNullProperties?.Remove("pulse_slots"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PulseSlot> _explicitNullValuePulseSlots = default!;
+#endif
         /// <summary>Midnight at the end of `day` in the project&apos;s timezone, when the next day&apos;s highlights start. Load them again then.</summary>
         public DateTimeOffset? RefreshAt { get => _explicitNullValueRefreshAt; set { _explicitNullValueRefreshAt = value; AdditionalData?.Remove("refresh_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_at"); else _explicitNullProperties?.Remove("refresh_at"); } }
         private DateTimeOffset? _explicitNullValueRefreshAt = default!;
@@ -108,6 +120,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "items", n => { Items = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HighlightItem>(global::Soenneker.PostHog.OpenApiClient.Models.HighlightItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "pins", n => { Pins = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HighlightPin>(global::Soenneker.PostHog.OpenApiClient.Models.HighlightPin.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "pulse", n => { Pulse = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetric>(global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetric.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "pulse_slots", n => { PulseSlots = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PulseSlot>(global::Soenneker.PostHog.OpenApiClient.Models.PulseSlot.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "refresh_at", n => { RefreshAt = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HighlightsStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
             };
@@ -124,6 +137,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HighlightItem>("items", Items);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HighlightPin>("pins", Pins);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.HighlightMetric>("pulse", Pulse);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PulseSlot>("pulse_slots", PulseSlots);
             writer.WriteDateTimeOffsetValue("refresh_at", RefreshAt);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HighlightsStatus>("status", Status);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

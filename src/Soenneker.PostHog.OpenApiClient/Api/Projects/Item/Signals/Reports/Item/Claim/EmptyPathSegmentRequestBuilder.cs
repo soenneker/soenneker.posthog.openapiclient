@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
         {
         }
         /// <summary>
-        /// Start or update work for the current user, internal task, or external agent. Supply claim_id to resume, pull_requests to add PRs, takeover=true to explicitly take ownership, or release=true to end ownership while preserving work history and PR links.
+        /// Start or update work for the current user, internal task, or external agent. Supply claim_id to resume, pull_requests to add PRs, takeover=true to explicitly take ownership, or release=true to end ownership while preserving work history and PR links. Adding PRs needs task:write as well as inbox:write.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReport"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Reports.Item
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.SignalReport>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.SignalReport.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Start or update work for the current user, internal task, or external agent. Supply claim_id to resume, pull_requests to add PRs, takeover=true to explicitly take ownership, or release=true to end ownership while preserving work history and PR links.
+        /// Start or update work for the current user, internal task, or external agent. Supply claim_id to resume, pull_requests to add PRs, takeover=true to explicitly take ownership, or release=true to end ownership while preserving work history and PR links. Adding PRs needs task:write as well as inbox:write.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
