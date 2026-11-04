@@ -117,6 +117,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The is_materialized property</summary>
         public bool? IsMaterialized { get; private set; }
+        /// <summary>Whether this view stores raw Trino SQL. Only hosted Trino can run it, and HogQL queries cannot reference it.</summary>
+        public bool? IsRawManagedTrino { get; private set; }
         /// <summary>Whether this view is for testing only and will auto-expire.</summary>
         public bool? IsTest { get => _explicitNullValueIsTest; set { _explicitNullValueIsTest = value; AdditionalData?.Remove("is_test"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_test"); else _explicitNullProperties?.Remove("is_test"); } }
         private bool? _explicitNullValueIsTest = default!;
@@ -254,6 +256,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "incremental", n => { Incremental = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryIncremental>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryIncremental.CreateFromDiscriminatorValue); } },
                 { "incremental_state", n => { IncrementalState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryIncrementalState>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehouseSavedQueryIncrementalState.CreateFromDiscriminatorValue); } },
                 { "is_materialized", n => { IsMaterialized = n.GetBoolValue(); } },
+                { "is_raw_managed_trino", n => { IsRawManagedTrino = n.GetBoolValue(); } },
                 { "is_test", n => { IsTest = n.GetBoolValue(); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
                 { "latest_error", n => { LatestError = n.GetStringValue(); } },

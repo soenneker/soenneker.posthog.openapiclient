@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `loops` - Loops* `broadcasts` - Broadcasts* `transactional_emails` - Transactional emails</summary>
+    /// <summary>* `loops` - Loops* `broadcasts` - Broadcasts* `transactional_emails` - Transactional emails* `transactional_email_keys` - Transactional email keys</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum HogFlowOriginProductEnum
     {
@@ -18,6 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "transactional_emails")]
         #pragma warning disable CS1591
         TransactionalEmails,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "transactional_email_keys")]
+        #pragma warning disable CS1591
+        TransactionalEmailKeys,
         #pragma warning restore CS1591
     }
 }

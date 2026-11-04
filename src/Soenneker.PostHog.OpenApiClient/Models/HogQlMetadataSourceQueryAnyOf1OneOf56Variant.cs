@@ -59,12 +59,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers? Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers? _explicitNullValueModifiers = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers? Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers? _explicitNullValueModifiers = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers _explicitNullValueModifiers = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers _explicitNullValueModifiers = default!;
 #endif
         /// <summary>Properties configurable in the interface</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -89,12 +89,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryTags? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryTags? _explicitNullValueTags = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryTags? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryTags? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryTags Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryTags _explicitNullValueTags = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryTags Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryTags _explicitNullValueTags = default!;
 #endif
         /// <summary>Timestamp of the current trace to find neighbors for</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -140,10 +140,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiConfigDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.BiConfigDateRange.CreateFromDiscriminatorValue); } },
                 { "filterSupportTraces", n => { FilterSupportTraces = n.GetBoolValue(); } },
                 { "filterTestAccounts", n => { FilterTestAccounts = n.GetBoolValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeFixedPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeFixedPropertiesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "response", n => { Response = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQueryResponseComposed>(global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQueryResponseComposed.CreateFromDiscriminatorValue); } },
-                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryTags>(global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryTags.CreateFromDiscriminatorValue); } },
+                { "tags", n => { Tags = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryTags>(global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryTags.CreateFromDiscriminatorValue); } },
                 { "timestamp", n => { Timestamp = n.GetStringValue(); } },
                 { "traceId", n => { TraceId = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetDoubleValue(); } },
@@ -160,10 +160,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BiConfigDateRange>("dateRange", DateRange);
             writer.WriteBoolValue("filterSupportTraces", FilterSupportTraces);
             writer.WriteBoolValue("filterTestAccounts", FilterTestAccounts);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers>("modifiers", Modifiers);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeFixedPropertiesItem>("properties", Properties);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceNeighborsQueryResponseComposed>("response", Response);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryTags>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryTags>("tags", Tags);
             writer.WriteStringValue("timestamp", Timestamp);
             writer.WriteStringValue("traceId", TraceId);
             writer.WriteDoubleValue("version", Version);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

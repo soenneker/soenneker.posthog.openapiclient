@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `ready` - Ready* `generating` - Generating* `unavailable` - Unavailable</summary>
+    /// <summary>* `ready` - Ready* `not_generated` - Not Generated* `unavailable` - Unavailable</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ErrorTrackingIssueSummaryResponseStatus
     {
@@ -11,9 +11,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         Ready,
         #pragma warning restore CS1591
-        [EnumMember(Value = "generating")]
+        [EnumMember(Value = "not_generated")]
         #pragma warning disable CS1591
-        Generating,
+        NotGenerated,
         #pragma warning restore CS1591
         [EnumMember(Value = "unavailable")]
         #pragma warning disable CS1591

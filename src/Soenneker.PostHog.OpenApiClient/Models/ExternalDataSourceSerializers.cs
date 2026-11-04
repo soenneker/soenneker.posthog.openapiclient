@@ -230,6 +230,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string UserAccessLevel { get; private set; }
 #endif
+        /// <summary>Whether at least one table of this source uses webhook sync, but the source has no enabled webhook. Those tables get no webhook updates. Each of their syncs polls the source API instead, which is slower and can read the whole table. Set up the webhook, or change the sync method of those tables.</summary>
+        public bool? WebhookNotRegistered { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializers"/> and sets the default values.
         /// </summary>
@@ -282,6 +284,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "supports_column_selection", n => { SupportsColumnSelection = n.GetBoolValue(); } },
                 { "supports_webhooks", n => { SupportsWebhooks = n.GetBoolValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
+                { "webhook_not_registered", n => { WebhookNotRegistered = n.GetBoolValue(); } },
             };
         }
         /// <summary>

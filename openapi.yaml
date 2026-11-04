@@ -8017,6 +8017,131 @@ paths:
           description: ''
       x-product:
       - customer_analytics
+  /api/projects/{project_id}/accounts/{id}/persons/:
+    get:
+      operationId: accounts_persons_retrieve
+      parameters:
+      - in: query
+        name: filters
+        schema:
+          type: string
+          format: json
+        description: JSON array of person property filters with key, operator, value,
+          and type="person". Filters use AND.
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 500
+          minimum: 1
+          default: 100
+        description: Maximum persons per page.
+      - in: query
+        name: offset
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        description: Number of matching persons to skip.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: properties
+        schema:
+          type: string
+          format: json
+        description: 'JSON array of selected person property keys. Example: ["email",
+          "name"].'
+      - in: query
+        name: search
+        schema:
+          type: string
+          default: ''
+          maxLength: 1000
+        description: Search name, email, person ID, or distinct ID.
+      - in: query
+        name: sort_column
+        schema:
+          type: string
+          default: account_last_seen
+          maxLength: 1000
+          minLength: 1
+        description: Sort by id, display_name, account_first_seen, account_last_seen,
+          or a selected property key.
+      - in: query
+        name: sort_direction
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+          default: desc
+          minLength: 1
+        description: |-
+          Sort direction. Person ID breaks ties.
+
+          * `asc` - Ascending
+          * `desc` - Descending
+      tags:
+      - accounts
+      security:
+      - PersonalAPIKeyAuth:
+        - account:read
+        - person:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountPersonsPage'
+          description: ''
+      x-product:
+      - customer_analytics
+    post:
+      operationId: accounts_persons_query_create
+      description: Run an account-user table query. Requires query, account, and person
+        read scopes.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - accounts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountPersonsQueryRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AccountPersonsQueryRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AccountPersonsQueryRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - query:read
+        - account:read
+        - person:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActorsQueryResponse'
+          description: ''
+      x-product:
+      - customer_analytics
   /api/projects/{project_id}/accounts/{id}/:
     get:
       operationId: accounts_retrieve
@@ -8987,6 +9112,7 @@ paths:
           - PersonalAPIKey
           - ProjectSecretAPIKey
           - OAuthApplication
+          - WorkloadTrustPolicy
           - User
           - Action
           - AccountView
@@ -9094,6 +9220,7 @@ paths:
           * `PersonalAPIKey` - PersonalAPIKey
           * `ProjectSecretAPIKey` - ProjectSecretAPIKey
           * `OAuthApplication` - OAuthApplication
+          * `WorkloadTrustPolicy` - WorkloadTrustPolicy
           * `User` - User
           * `Action` - Action
           * `AccountView` - AccountView
@@ -9202,6 +9329,7 @@ paths:
             - PersonalAPIKey
             - ProjectSecretAPIKey
             - OAuthApplication
+            - WorkloadTrustPolicy
             - User
             - Action
             - AccountView
@@ -9306,6 +9434,7 @@ paths:
               * `PersonalAPIKey` - PersonalAPIKey
               * `ProjectSecretAPIKey` - ProjectSecretAPIKey
               * `OAuthApplication` - OAuthApplication
+              * `WorkloadTrustPolicy` - WorkloadTrustPolicy
               * `User` - User
               * `Action` - Action
               * `AccountView` - AccountView
@@ -11705,6 +11834,20 @@ paths:
           UTF-8 bytes.
         required: true
       - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: purpose
+        schema:
+          enum:
+          - download
+          - copy
+          type: string
+          default: download
+          minLength: 1
+        description: |-
+          What the file is read for. Only a download is recorded as one.
+
+          * `download` - Download
+          * `copy` - Copy
       tags:
       - ai_observability
       security:
@@ -11718,7 +11861,7 @@ paths:
                 $ref: '#/components/schemas/TraceExportFile'
           description: ''
         '400':
-          description: The encoded trace id is malformed.
+          description: The encoded trace id or the purpose is malformed.
         '404':
           description: You have no export with this id for this trace.
         '409':
@@ -11857,6 +12000,36 @@ paths:
             or the API key lacks a scope.
         '429':
           description: Too many queries are running for the project or organization.
+      x-product:
+      - ai_observability
+  /api/projects/{project_id}/ai_observability/traces/{id}/review/:
+    get:
+      operationId: ai_observability_traces_review_retrieve
+      description: The trace's human review with its scores ready to render, and the
+        review queue the trace waits in.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: The trace id, sent as the unpadded base64url encoding of its
+          UTF-8 bytes.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - ai_observability
+      security:
+      - PersonalAPIKeyAuth:
+        - llm_analytics:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TraceReviewStatus'
+          description: ''
+        '400':
+          description: The encoded trace id is malformed.
       x-product:
       - ai_observability
   /api/projects/{project_id}/ai_observability/traces/{id}/search/:
@@ -16069,6 +16242,31 @@ paths:
               schema:
                 $ref: '#/components/schemas/GapTopicActionResult'
           description: ''
+      x-product:
+      - business_knowledge
+  /api/projects/{project_id}/business_knowledge/learning_backfill/:
+    post:
+      operationId: business_knowledge_learning_backfill_create
+      description: Start learning from resolved support tickets of the last 90 days.
+        Tickets that were already analyzed are skipped. The work runs in the background
+        in small batches and can take a few hours.
+      summary: Learn from past support tickets
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - business_knowledge
+      security:
+      - PersonalAPIKeyAuth:
+        - business_knowledge:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BusinessKnowledgeSettings'
+          description: The updated Business knowledge learning settings.
+        '400':
+          description: Learn from support is off.
       x-product:
       - business_knowledge
   /api/projects/{project_id}/business_knowledge/libraries/:
@@ -20917,6 +21115,54 @@ paths:
                 $ref: '#/components/schemas/AiHumanOutcomeRequest'
           description: ''
         '409':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketError'
+          description: ''
+      x-product:
+      - conversations
+  /api/projects/{project_id}/conversations/tickets/{id}/attachments/:
+    post:
+      operationId: conversations_tickets_attachments_create
+      description: |-
+        Upload a file to put in a reply to this ticket.
+
+        Images are validated and shown inline. Other files are stored as they are and
+        served as a download. Widget tickets do not accept file attachments yet.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        description: The ticket's UUID or its numeric ticket number.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - conversations
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: File to attach. Must be under 20 MiB.
+              required:
+              - file
+      security:
+      - PersonalAPIKeyAuth:
+        - ticket:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TicketAttachment'
+          description: ''
+        '400':
           content:
             application/json:
               schema:
@@ -30320,6 +30566,26 @@ paths:
           description: Invalid environment, date_from, date_to, granularity, or source_id.
       x-product:
       - engineering_analytics
+  /api/projects/{project_id}/engineering_analytics/enable/:
+    post:
+      operationId: engineering_analytics_enable
+      description: 'Enable engineering analytics for this project. Creates the project''s
+        managed warehouse views and opts it into the background work (view sync after
+        each GitHub or Depot load, the daily test census, CI failure log collection).
+        Safe to call again: an enabled project stays enabled.'
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - engineering_analytics
+      - engineering_analytics
+      security:
+      - PersonalAPIKeyAuth:
+        - engineering_analytics:write
+      responses:
+        '204':
+          description: No response body
+      x-product:
+      - engineering_analytics
   /api/projects/{project_id}/engineering_analytics/flaky_tests/:
     get:
       operationId: engineering_analytics_flaky_tests
@@ -33627,30 +33893,6 @@ paths:
       security:
       - PersonalAPIKeyAuth:
         - error_tracking:read
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorTrackingIssueSummaryResponse'
-          description: ''
-      x-product:
-      - error_tracking
-  /api/projects/{project_id}/error_tracking/issues/{id}/summary/regenerate/:
-    post:
-      operationId: error_tracking_issues_summary_regenerate_create
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: string
-        required: true
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - error_tracking
-      security:
-      - PersonalAPIKeyAuth:
-        - error_tracking:write
       responses:
         '200':
           content:
@@ -38977,9 +39219,10 @@ paths:
         name: fingerprint
         schema:
           type: string
-        description: Fingerprint of the metric configuration. Available alongside
-          metric_uuid on each metric in the experiment's metrics array.
-        required: true
+        description: Ignored. The server derives the metric's calculation key from
+          the experiment's current settings. Accepted so that existing clients keep
+          working.
+        deprecated: true
       - in: path
         name: id
         schema:
@@ -39857,7 +40100,8 @@ paths:
         Return a secure browser link where the user connects the credentials for a destination.
 
         The page saves an integration and does not create the destination, so secrets never pass
-        through the agent. The agent then creates the destination with the new integration's id.
+        through the agent. The link carries a connect token. The agent reads the saved integration's id
+        with the token from the connect link status endpoint, then creates the destination with it.
       parameters:
       - in: query
         name: destination_type
@@ -39903,6 +40147,72 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DestinationConnectLink'
+          description: ''
+      x-product:
+      - warehouse_sources
+  /api/projects/{project_id}/external_data_destinations/connect_link_complete/:
+    post:
+      operationId: external_data_destinations_connect_link_complete_create
+      description: |-
+        Report the integration the user saved on the connect page, so the agent that sent them can read it.
+
+        The connect page calls this. Repeating the call with the same integration is safe.
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - external_data_destinations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DestinationConnectCompleteRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DestinationConnectCompleteRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DestinationConnectCompleteRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - external_data_source:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DestinationConnectStatus'
+          description: ''
+      x-product:
+      - warehouse_sources
+  /api/projects/{project_id}/external_data_destinations/connect_link_status/:
+    get:
+      operationId: external_data_destinations_connect_link_status_retrieve
+      description: |-
+        Return whether the user saved a connection through a connect link, and which integration it is.
+
+        Never returns credentials or integration config.
+      parameters:
+      - in: query
+        name: connect_token
+        schema:
+          type: string
+          maxLength: 128
+          minLength: 1
+        description: The connect_token that the connect link returned.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - external_data_destinations
+      security:
+      - PersonalAPIKeyAuth:
+        - external_data_source:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DestinationConnectStatus'
           description: ''
       x-product:
       - warehouse_sources
@@ -46522,9 +46832,12 @@ paths:
         schema:
           type: string
         description: 'Comma-separated broadcast statuses as the broadcasts UI shows
-          them: draft, scheduled, sending, sent, failed, archived. Scheduled, sending,
-          sent and failed come from the latest run and whether a schedule still has
-          sends to come.'
+          them: draft, scheduled, sending, sent, partially_sent, failed, archived.
+          Scheduled, sending, sent, partially_sent and failed come from the latest
+          run and whether a schedule still has sends to come. A latest run that is
+          completed reads as sent, partially_failed as partially_sent, and failed
+          or cancelled as failed. With a schedule still to come, a completed or partially_failed
+          latest run reads as scheduled.'
       - in: query
         name: created_at
         schema:
@@ -46546,7 +46859,8 @@ paths:
         schema:
           type: boolean
         description: Pass `true` to order by when each workflow's newest completed
-          run finished, newest first. Workflows that never finished a run come last.
+          or partially_failed run finished, newest first. Workflows that never finished
+          such a run come last.
       - name: limit
         required: false
         in: query
@@ -46554,6 +46868,12 @@ paths:
         schema:
           type: integer
           maximum: 500
+      - in: query
+        name: name
+        schema:
+          type: string
+        description: Only workflows whose name contains this text, ignoring case.
+          Unlike `search`, it never reads descriptions, tags or step content.
       - name: offset
         required: false
         in: query
@@ -47584,13 +47904,16 @@ paths:
         schema:
           type: string
           minLength: 1
-        description: Comma-separated metric kinds to filter by, e.g. 'success,failure'.
+        description: Comma-separated metric kinds to filter by, up to 50, e.g. 'success,failure'.
+          With breakdown_by=kind, each named kind is returned, as zeros when it has
+          no rows.
       - in: query
         name: name
         schema:
           type: string
           minLength: 1
-        description: Comma-separated metric names to filter by.
+        description: Comma-separated metric names to filter by, up to 50. With breakdown_by=name,
+          each named metric is returned, as zeros when it has no rows.
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - hog_flows
@@ -47672,13 +47995,16 @@ paths:
         schema:
           type: string
           minLength: 1
-        description: Comma-separated metric kinds to filter by, e.g. 'success,failure'.
+        description: Comma-separated metric kinds to filter by, up to 50, e.g. 'success,failure'.
+          With breakdown_by=kind, each named kind is returned, as zeros when it has
+          no rows.
       - in: query
         name: name
         schema:
           type: string
           minLength: 1
-        description: Comma-separated metric names to filter by.
+        description: Comma-separated metric names to filter by, up to 50. With breakdown_by=name,
+          each named metric is returned, as zeros when it has no rows.
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - hog_flows
@@ -47765,13 +48091,16 @@ paths:
         schema:
           type: string
           minLength: 1
-        description: Comma-separated metric kinds to filter by, e.g. 'success,failure'.
+        description: Comma-separated metric kinds to filter by, up to 50, e.g. 'success,failure'.
+          With breakdown_by=kind, each named kind is returned, as zeros when it has
+          no rows.
       - in: query
         name: name
         schema:
           type: string
           minLength: 1
-        description: Comma-separated metric names to filter by.
+        description: Comma-separated metric names to filter by, up to 50. With breakdown_by=name,
+          each named metric is returned, as zeros when it has no rows.
       - $ref: '#/components/parameters/ProjectIdPath'
       - in: query
         name: version
@@ -49368,13 +49697,16 @@ paths:
         schema:
           type: string
           minLength: 1
-        description: Comma-separated metric kinds to filter by, e.g. 'success,failure'.
+        description: Comma-separated metric kinds to filter by, up to 50, e.g. 'success,failure'.
+          With breakdown_by=kind, each named kind is returned, as zeros when it has
+          no rows.
       - in: query
         name: name
         schema:
           type: string
           minLength: 1
-        description: Comma-separated metric names to filter by.
+        description: Comma-separated metric names to filter by, up to 50. With breakdown_by=name,
+          each named metric is returned, as zeros when it has no rows.
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - hog_functions
@@ -49457,13 +49789,16 @@ paths:
         schema:
           type: string
           minLength: 1
-        description: Comma-separated metric kinds to filter by, e.g. 'success,failure'.
+        description: Comma-separated metric kinds to filter by, up to 50, e.g. 'success,failure'.
+          With breakdown_by=kind, each named kind is returned, as zeros when it has
+          no rows.
       - in: query
         name: name
         schema:
           type: string
           minLength: 1
-        description: Comma-separated metric names to filter by.
+        description: Comma-separated metric names to filter by, up to 50. With breakdown_by=name,
+          each named metric is returned, as zeros when it has no rows.
       - $ref: '#/components/parameters/ProjectIdPath'
       tags:
       - hog_functions
@@ -52242,7 +52577,9 @@ paths:
       operationId: integrations_push_tokens_create
       description: Register existing device tokens, for example exported from another
         provider, on this push channel. Each token is stored encrypted on its person,
-        as the mobile SDK stores it.
+        as the mobile SDK stores it. A row fails when no person has its distinct ID,
+        unless create_missing_persons is set, or when the token is the wrong kind
+        for the channel. Send dry_run first to see every failure without storing anything.
       summary: Import push device tokens
       parameters:
       - in: path
@@ -52269,6 +52606,7 @@ paths:
       security:
       - PersonalAPIKeyAuth:
         - integration:write
+        - person:write
       responses:
         '200':
           content:
@@ -58346,7 +58684,7 @@ paths:
         '400':
           description: An operation was malformed, unsupported, or not applicable
         '404':
-          description: Marketing Setup and new dashboard feature flags are both off
+          description: Marketing analytics setup is not enabled for this project
       x-product:
       - marketing_analytics
   /api/projects/{project_id}/marketing_analytics/conversion_goals/:
@@ -58732,8 +59070,6 @@ paths:
                 $ref: '#/components/schemas/SetupPlanResponse'
           description: Ranked, machine-applicable setup suggestions plus per-capability
             readiness
-        '404':
-          description: Marketing Setup and new dashboard feature flags are both off
       x-product:
       - marketing_analytics
   /api/projects/{project_id}/marketing_analytics/source_validation/:
@@ -61379,13 +61715,14 @@ paths:
   /api/projects/{project_id}/messaging/send/email/:
     post:
       operationId: messaging_send_email_create
-      description: Send one transactional email to one recipient from the template
-        named in `template_id`. The template must be made transactional first. `message_data`
-        fills the template's `{{ variables.* }}` placeholders. Transactional emails
-        skip opt-outs and frequency caps. Send an `Idempotency-Key` header to retry
-        safely without sending the email twice. Needs the `transactional_email:write`
-        scope. A key with `hog_flow:write` also works, but that scope reaches the
-        rest of Workflows too.
+      description: 'Send one transactional email to one recipient. Name a template
+        made transactional in `template_id`, and `message_data` fills its `{{ variables.*
+        }}` placeholders. Or send content your code rendered with a `template_key`,
+        a `subject` and `html` or `text`: PostHog sends it as is, and its metrics
+        and run history group under the key. Transactional emails skip opt-outs and
+        frequency caps. Send an `Idempotency-Key` header to retry safely without sending
+        the email twice. Needs the `transactional_email:write` scope. A key with `hog_flow:write`
+        also works, but that scope reaches the rest of Workflows too.'
       summary: Send a transactional email
       parameters:
       - in: header
@@ -61422,8 +61759,11 @@ paths:
                 $ref: '#/components/schemas/SendTransactionalEmailResponse'
           description: Email queued
         '400':
-          description: The template isn't transactional or its email is paused, the
-            recipient can't be used, or the Idempotency-Key is invalid
+          description: A field is invalid, the template isn't transactional or its
+            email is paused, the sender isn't verified, the recipient can't be used,
+            the Idempotency-Key is invalid, the email is too large to send, or the
+            project has reached its limit of template keys and the `template_key`
+            is new
         '404':
           description: Template not found
         '409':
@@ -62694,8 +63034,11 @@ paths:
                 $ref: '#/components/schemas/SendTransactionalEmailResponse'
           description: Email queued
         '400':
-          description: The template isn't transactional or its email is paused, the
-            recipient can't be used, or the Idempotency-Key is invalid
+          description: A field is invalid, the template isn't transactional or its
+            email is paused, the sender isn't verified, the recipient can't be used,
+            the Idempotency-Key is invalid, the email is too large to send, or the
+            project has reached its limit of template keys and the `template_key`
+            is new
         '404':
           description: Template not found
         '409':
@@ -73531,6 +73874,61 @@ paths:
           description: ''
       x-product:
       - signals
+    post:
+      operationId: signals_reports_create
+      description: 'File a complete inbox report yourself, with the same validation
+        and safety judge a scout report passes. The report surfaces at the status
+        `actionability` implies, or is suppressed. It never starts an implementation
+        run or opens a pull request on its own, now or after a later edit: start one
+        from the report''s actions. Safe to retry: a resend returns the first report
+        with `idempotent_replay` true. Each person can file a limited number of reports
+        per project per day.'
+      summary: File an inbox report
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - signals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmitReportRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmitReportRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmitReportRequest'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - inbox:write
+      - PersonalAPIKeyAuth:
+        - inbox:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmitReportResponse'
+          description: 'Report filed: READY, PENDING_INPUT, or suppressed by the safety
+            judge.'
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmitReportResponse'
+          description: 'Nothing new was filed: a retry returned the first report (`idempotent_replay`
+            true).'
+        '400':
+          description: Invalid report shape (empty title, summary, or evidence).
+        '403':
+          description: The caller is not a person, is a task sandbox, report filing
+            is not enabled, or the organization has not approved AI data processing.
+        '429':
+          description: The caller filed the daily maximum of reports for this project.
+      x-product:
+      - signals
   /api/projects/{project_id}/signals/reports/{id}/:
     get:
       operationId: signals_reports_retrieve
@@ -77050,7 +77448,9 @@ paths:
         owner by email/name, then put their resolved `github_login` in `suggested_reviewers`
         on `emit-report` / `edit-report`. Pass `team` to resolve a team slug to the
         people on it, maintainers first. Pass `search` to narrow a large roster; the
-        result is capped at 200. Strictly team-scoped.'
+        result is capped at 200. When `search` or `team` narrows the result to 10
+        members or fewer, each row also carries `activity`: the member''s recent work,
+        so you can check they are close to the affected area. Strictly team-scoped.'
       summary: List project members for reviewer routing
       parameters:
       - $ref: '#/components/parameters/ProjectIdPath'
@@ -78604,8 +79004,9 @@ paths:
         name: text
         schema:
           type: string
-        description: ILIKE substring match against `content`. Omit to return the most
-          recent entries.
+        description: ILIKE substring match against `content` and `key`. Must contain
+          3 letters or digits in a row, or 2 next to a symbol such as `ai_` or `pr:`.
+          Omit to return the most recent entries.
       tags:
       - signals
       security:
@@ -79495,6 +79896,34 @@ paths:
       responses:
         '204':
           description: No response body
+      x-product:
+      - stamphog
+  /api/projects/{project_id}/stamphog/repo_configs/{id}/owners_file/:
+    get:
+      operationId: stamphog_repo_configs_owners_file_retrieve
+      description: Check whether the repository's default branch has a root owners.yaml.
+        Reviewer requests (routing_mode) read the code owners from it. Makes one GitHub
+        call, so ask only when needed.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - stamphog
+      security:
+      - PersonalAPIKeyAuth:
+        - stamphog:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StamphogOwnersFile'
+          description: ''
       x-product:
       - stamphog
   /api/projects/{project_id}/stamphog/repo_configs/add_repository/:
@@ -95281,6 +95710,10 @@ paths:
         '409':
           description: engine is 'trino' and a managed warehouse run is already in
             progress.
+        '429':
+          description: Every view this run would build ran too recently and has not
+            changed since. Runs with engine 'trino' have no such limit. The Retry-After
+            header gives the wait in seconds.
       x-product:
       - data_warehouse
   /api/projects/{project_id}/warehouse_saved_queries/{id}/run_history/:
@@ -99052,6 +99485,206 @@ paths:
           description: ''
       x-product:
       - workflows
+  /api/projects/{project_id}/workload_trust_policies/:
+    get:
+      operationId: workload_trust_policies_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - workload_trust_policies
+      security:
+      - PersonalAPIKeyAuth:
+        - workload_trust_policy:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedWorkloadTrustPolicyList'
+          description: ''
+      x-product:
+      - core
+    post:
+      operationId: workload_trust_policies_create
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - workload_trust_policies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkloadTrustPolicy'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorkloadTrustPolicy'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkloadTrustPolicy'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - workload_trust_policy:write
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkloadTrustPolicy'
+          description: ''
+      x-product:
+      - core
+  /api/projects/{project_id}/workload_trust_policies/{id}/:
+    get:
+      operationId: workload_trust_policies_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this workload trust policy.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - workload_trust_policies
+      security:
+      - PersonalAPIKeyAuth:
+        - workload_trust_policy:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkloadTrustPolicy'
+          description: ''
+      x-product:
+      - core
+    put:
+      operationId: workload_trust_policies_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this workload trust policy.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - workload_trust_policies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkloadTrustPolicy'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorkloadTrustPolicy'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkloadTrustPolicy'
+        required: true
+      security:
+      - PersonalAPIKeyAuth:
+        - workload_trust_policy:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkloadTrustPolicy'
+          description: ''
+      x-product:
+      - core
+    patch:
+      operationId: workload_trust_policies_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this workload trust policy.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - workload_trust_policies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkloadTrustPolicy'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkloadTrustPolicy'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkloadTrustPolicy'
+      security:
+      - PersonalAPIKeyAuth:
+        - workload_trust_policy:write
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkloadTrustPolicy'
+          description: ''
+      x-product:
+      - core
+    delete:
+      operationId: workload_trust_policies_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this workload trust policy.
+        required: true
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - workload_trust_policies
+      security:
+      - PersonalAPIKeyAuth:
+        - workload_trust_policy:write
+      responses:
+        '204':
+          description: No response body
+      x-product:
+      - core
+  /api/projects/{project_id}/workload_trust_policies/providers/:
+    get:
+      operationId: workload_trust_policies_providers_retrieve
+      parameters:
+      - $ref: '#/components/parameters/ProjectIdPath'
+      tags:
+      - workload_trust_policies
+      security:
+      - PersonalAPIKeyAuth:
+        - workload_trust_policy:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkloadProvidersResponse'
+          description: ''
+      x-product:
+      - core
   /api/public_hog_function_templates/:
     get:
       operationId: public_hog_function_templates_list
@@ -102477,6 +103110,7 @@ components:
             * `webhook` - webhook
             * `wizard_session` - wizard_session
             * `wizard_run` - wizard_run
+            * `workload_trust_policy` - workload_trust_policy
         resource_id:
           type: string
           description: The object's primary key.
@@ -102628,6 +103262,7 @@ components:
             * `webhook` - webhook
             * `wizard_session` - wizard_session
             * `wizard_run` - wizard_run
+            * `workload_trust_policy` - workload_trust_policy
         available_access_levels:
           type: array
           items:
@@ -103316,6 +103951,253 @@ components:
       - last_modified_at
       - last_modified_by
       - short_id
+    AccountPerson:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Current person ID.
+        display_name:
+          type: string
+          description: Display name from visible person properties, or the person
+            ID.
+        distinct_ids:
+          type: array
+          items:
+            type: string
+          description: Current membership distinct IDs for person navigation, up to
+            101.
+        properties:
+          type: object
+          additionalProperties: {}
+          description: Selected visible person properties.
+        account_first_seen:
+          type: string
+          format: date-time
+          description: Earliest account activity across current distinct IDs, in UTC.
+        account_last_seen:
+          type: string
+          format: date-time
+          description: Latest account activity across current distinct IDs, in UTC.
+      required:
+      - account_first_seen
+      - account_last_seen
+      - display_name
+      - distinct_ids
+      - id
+      - properties
+    AccountPersonsActorsQuery:
+      additionalProperties: false
+      properties:
+        filterTestAccounts:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Exclude persons matching the team's "internal and test account"
+            filters. Only person-scoped filters (person properties, cohorts) are applied.
+            Event-scoped test account filters have no meaning in a persons query and
+            are ignored.
+          title: Filtertestaccounts
+        fixedProperties:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/PersonPropertyFilter'
+              - $ref: '#/components/schemas/PersonMetadataPropertyFilter'
+              - $ref: '#/components/schemas/CohortPropertyFilter'
+              - $ref: '#/components/schemas/HogQLPropertyFilter'
+              - $ref: '#/components/schemas/EmptyPropertyFilter'
+            type: array
+          - type: 'null'
+          default: null
+          description: Currently only person filters supported. No filters for querying
+            groups. See `filter_conditions()` in actor_strategies.py.
+          title: Fixedproperties
+        kind:
+          const: ActorsQuery
+          default: ActorsQuery
+          title: Kind
+          type: string
+        limit:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Limit
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        offset:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Offset
+        orderBy:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          default: null
+          title: Orderby
+        properties:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/PersonPropertyFilter'
+              - $ref: '#/components/schemas/PersonMetadataPropertyFilter'
+              - $ref: '#/components/schemas/CohortPropertyFilter'
+              - $ref: '#/components/schemas/HogQLPropertyFilter'
+              - $ref: '#/components/schemas/EmptyPropertyFilter'
+            type: array
+          - $ref: '#/components/schemas/PropertyGroupFilterValue'
+          - type: 'null'
+          default: null
+          description: Currently only person filters supported. No filters for querying
+            groups. See `filter_conditions()` in actor_strategies.py.
+          title: Properties
+        response:
+          anyOf:
+          - $ref: '#/components/schemas/ActorsQueryResponse'
+          - type: 'null'
+          default: null
+        search:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Search
+        select:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          default: null
+          title: Select
+        source:
+          $ref: '#/components/schemas/AccountUsersQuery'
+          description: Account membership source for the table.
+        tags:
+          anyOf:
+          - $ref: '#/components/schemas/QueryLogTags'
+          - type: 'null'
+          default: null
+        version:
+          anyOf:
+          - type: number
+          - type: 'null'
+          default: null
+          description: version of the node, used for schema migrations
+          title: Version
+      required:
+      - source
+      title: AccountPersonsActorsQuery
+      type: object
+    AccountPersonsPage:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountPerson'
+          description: Matching current persons for this account.
+        columns:
+          type: array
+          items:
+            type: string
+          description: Selected visible property keys, in request order.
+        limit:
+          type: integer
+          description: Maximum persons per page.
+        offset:
+          type: integer
+          description: Number of matching persons skipped.
+        has_more:
+          type: boolean
+          description: Whether another page exists.
+        next_offset:
+          type:
+          - integer
+          - 'null'
+          description: Offset of the next page, or null.
+      required:
+      - columns
+      - has_more
+      - limit
+      - next_offset
+      - offset
+      - results
+    AccountPersonsQueryRequest:
+      additionalProperties: false
+      properties:
+        async:
+          anyOf:
+          - const: false
+            type: boolean
+          - type: 'null'
+          default: null
+          title: Async
+        client_query_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Client provided query ID. Can be used to retrieve the status
+            or cancel the query.
+          title: Client Query Id
+        filters_override:
+          anyOf:
+          - $ref: '#/components/schemas/DashboardFilter'
+          - type: 'null'
+          default: null
+        limit_context:
+          anyOf:
+          - $ref: '#/components/schemas/LimitContext'
+          - type: 'null'
+          default: null
+          description: Limit context for the query. Only 'posthog_ai' is allowed as
+            a client-provided value.
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Name given to a query. It's used to identify the query in the
+            UI. Up to 128 characters for a name.
+          title: Name
+        query:
+          $ref: '#/components/schemas/AccountPersonsActorsQuery'
+          description: Account-user table query to run.
+        refresh:
+          anyOf:
+          - enum:
+            - blocking
+            - force_blocking
+            type: string
+          - type: 'null'
+          default: blocking
+          description: Read cached results or calculate synchronously.
+          title: Refresh
+        variables_override:
+          anyOf:
+          - additionalProperties:
+              additionalProperties: true
+              type: object
+            type: object
+          - type: 'null'
+          default: null
+          title: Variables Override
+      required:
+      - query
+      title: AccountPersonsQueryRequest
+      type: object
     AccountPresence:
       type: object
       properties:
@@ -106078,6 +106960,44 @@ components:
           type:
           - string
           - 'null'
+        credential_type:
+          readOnly: true
+          description: |-
+            Kind of credential that authenticated the request that made the change. 'unattributed' means the request recorded no credential. Null for changes made outside a request, such as background jobs, and for entries recorded before PostHog stored the credential.
+
+            * `session` - session
+            * `personal_api_key` - personal_api_key
+            * `oauth` - oauth
+            * `project_secret_key` - project_secret_key
+            * `team_secret_token` - team_secret_token
+            * `id_jag` - id_jag
+            * `internal_jwt` - internal_jwt
+            * `service_jwt` - service_jwt
+            * `internal_api_secret` - internal_api_secret
+            * `scim` - scim
+            * `vercel` - vercel
+            * `partner` - partner
+            * `sharing_access_token` - sharing_access_token
+            * `sharing_password` - sharing_password
+            * `widget_token` - widget_token
+            * `billing_service` - billing_service
+            * `gateway_agent` - gateway_agent
+            * `export_renderer` - export_renderer
+            * `webhook` - webhook
+            * `cross_region_signature` - cross_region_signature
+            * `unattributed` - unattributed
+          oneOf:
+          - $ref: '#/components/schemas/ActivityLogCredentialTypeEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        credential_id:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: 'Id of the credential that authenticated the change: the login
+            session id for ''session'', or the key id for ''personal_api_key'' and
+            ''project_secret_key''. Null for every other credential type and for impersonated
+            changes.'
         activity:
           type: string
           maxLength: 79
@@ -106095,10 +107015,58 @@ components:
           format: date-time
       required:
       - activity
+      - credential_id
+      - credential_type
       - id
       - scope
       - unread
       - user
+    ActivityLogCredentialTypeEnum:
+      enum:
+      - session
+      - personal_api_key
+      - oauth
+      - project_secret_key
+      - team_secret_token
+      - id_jag
+      - internal_jwt
+      - service_jwt
+      - internal_api_secret
+      - scim
+      - vercel
+      - partner
+      - sharing_access_token
+      - sharing_password
+      - widget_token
+      - billing_service
+      - gateway_agent
+      - export_renderer
+      - webhook
+      - cross_region_signature
+      - unattributed
+      type: string
+      description: |-
+        * `session` - session
+        * `personal_api_key` - personal_api_key
+        * `oauth` - oauth
+        * `project_secret_key` - project_secret_key
+        * `team_secret_token` - team_secret_token
+        * `id_jag` - id_jag
+        * `internal_jwt` - internal_jwt
+        * `service_jwt` - service_jwt
+        * `internal_api_secret` - internal_api_secret
+        * `scim` - scim
+        * `vercel` - vercel
+        * `partner` - partner
+        * `sharing_access_token` - sharing_access_token
+        * `sharing_password` - sharing_password
+        * `widget_token` - widget_token
+        * `billing_service` - billing_service
+        * `gateway_agent` - gateway_agent
+        * `export_renderer` - export_renderer
+        * `webhook` - webhook
+        * `cross_region_signature` - cross_region_signature
+        * `unattributed` - unattributed
     ActivityLogEntry:
       type: object
       properties:
@@ -108521,7 +109489,7 @@ components:
         * `trace` - trace
         * `generation` - generation
         * `evaluation` - evaluation
-    AnalyticsAnomalyInvestigationSignalExtra:
+    AnalyticsAlertFiringSignalExtra:
       additionalProperties: false
       properties:
         alert_id:
@@ -108530,8 +109498,65 @@ components:
         alert_name:
           title: Alert Name
           type: string
+        insight_id:
+          title: Insight Id
+          type: string
         alert_check_id:
           title: Alert Check Id
+          type: string
+        detector_type:
+          title: Detector Type
+          type: string
+        breaches:
+          items:
+            type: string
+          title: Breaches
+          type: array
+        episode_started_at:
+          title: Episode Started At
+          type: string
+        url:
+          title: Url
+          type: string
+        insight_name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Insight Name
+        insight_short_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Insight Short Id
+        triggered_dates:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          default: null
+          title: Triggered Dates
+      required:
+      - alert_id
+      - alert_name
+      - insight_id
+      - alert_check_id
+      - detector_type
+      - breaches
+      - episode_started_at
+      - url
+      title: AnalyticsAlertFiringSignalExtra
+      type: object
+    AnalyticsAnomalyInvestigationSignalExtra:
+      additionalProperties: false
+      properties:
+        alert_id:
+          title: Alert Id
+          type: string
+        alert_name:
+          title: Alert Name
           type: string
         insight_id:
           title: Insight Id
@@ -108572,10 +109597,27 @@ components:
           - type: 'null'
           default: null
           title: Notebook Short Id
+        alert_check_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Alert Check Id
+        investigation_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Investigation Id
+        evaluation_key:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Evaluation Key
       required:
       - alert_id
       - alert_name
-      - alert_check_id
       - insight_id
       - detector_type
       - verdict
@@ -110530,9 +111572,12 @@ components:
           description: 'For regulars: how many times the event must happen in the
             window.'
         reachable_count:
-          type: integer
-          description: People in the audience with an email address, counted when
-            the suggestion was made.
+          type:
+          - integer
+          - 'null'
+          description: Roughly how many people in the audience have an email address,
+            counted when the suggestion was made. Null while the count runs, or when
+            it failed.
         cohort_filters:
           description: The audience's cohort filters, in the cohorts endpoint's `filters`
             format. Saved as a static cohort.
@@ -110565,7 +111610,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/DataSuggestionsStatusEnum'
           description: |-
-            ready when suggestions were made (the list can still be empty), generating while a background run makes them (poll current until it ends), ai_not_approved when the organization has not approved AI data processing, unavailable when nothing was made or the run failed.
+            ready when suggestions were made (the list can still be empty), generating while a background run makes them (poll current until it ends, the list can already hold cards being counted), ai_not_approved when the organization has not approved AI data processing, unavailable when nothing was made or the run failed.
 
             * `ready` - Ready
             * `generating` - Generating
@@ -118569,8 +119614,16 @@ components:
           readOnly: true
           description: Whether Support is enabled for this environment. Learning cannot
             be turned on while this is false.
+        learning_backfill:
+          oneOf:
+          - $ref: '#/components/schemas/LearningBackfillProgress'
+          - type: 'null'
+          readOnly: true
+          description: The last run of learning from past tickets. Null when none
+            ran since learning was turned on.
       required:
       - learn_from_support_enabled
+      - learning_backfill
       - support_enabled
     BusinessModelEnum:
       enum:
@@ -123405,6 +124458,13 @@ components:
     ChartSettings:
       additionalProperties: false
       properties:
+        annotationsScope:
+          anyOf:
+          - $ref: '#/components/schemas/AnnotationScope'
+          - type: 'null'
+          default: null
+          description: Shows only the annotations saved at this level. Unset shows
+            every level.
         barGap:
           anyOf:
           - type: number
@@ -123619,6 +124679,12 @@ components:
           - type: 'null'
           default: null
           title: Color
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Description
         displayType:
           anyOf:
           - $ref: '#/components/schemas/DisplayType'
@@ -136671,6 +137737,11 @@ components:
             repeated failures. Suspended engines are skipped by scheduled runs until
             the query is resumed.
           readOnly: true
+        is_raw_managed_trino:
+          type: boolean
+          readOnly: true
+          description: Whether this view stores raw Trino SQL. Only hosted Trino can
+            run it, and HogQL queries cannot reference it.
       required:
       - columns
       - created_at
@@ -136682,6 +137753,7 @@ components:
       - id
       - incremental_state
       - is_materialized
+      - is_raw_managed_trino
       - last_run_at
       - latest_error
       - latest_history_id
@@ -136926,6 +137998,11 @@ components:
           - 'null'
           readOnly: true
           description: The effective access level the user has for this object
+        is_raw_managed_trino:
+          type: boolean
+          readOnly: true
+          description: Whether this view stores raw Trino SQL. Only hosted Trino can
+            run it, and HogQL queries cannot reference it.
       required:
       - columns
       - created_at
@@ -136938,6 +138015,7 @@ components:
       - id
       - is_incremental
       - is_materialized
+      - is_raw_managed_trino
       - is_test
       - last_run_at
       - latest_error
@@ -138428,6 +139506,17 @@ components:
         archived:
           type: boolean
           readOnly: true
+        expires_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: Earliest cleanup time if the dataset remains unused.
+        expiring_soon:
+          type: boolean
+          readOnly: true
+          description: Whether the dataset is within seven days of expiry.
         current_revision:
           type:
           - integer
@@ -138473,6 +139562,8 @@ components:
       - current_revision
       - current_revision_id
       - description
+      - expires_at
+      - expiring_soon
       - id
       - metadata
       - name
@@ -138508,10 +139599,23 @@ components:
           type: integer
           readOnly: true
           description: Project that owns the revision.
+        expires_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+          description: Earliest expiry time of this dataset snapshot if unused.
+        expiring_soon:
+          type: boolean
+          readOnly: true
+          description: Whether this snapshot is within seven days of expiry.
       required:
       - created_at
       - created_by
       - dataset_id
+      - expires_at
+      - expiring_soon
       - id
       - revision
       - team_id
@@ -138827,13 +139931,15 @@ components:
         post_all_insights_in_main_message:
           type: boolean
           default: false
-          description: 'Slack insight and dashboard subscriptions only: when true,
-            upload all insight images together in the main Slack message instead of
-            posting the first image in the main message and the rest as threaded replies.
-            Defaults to false. The request is rejected when target_type is not ''slack'',
-            when the subscription sets prompt instead of insight or dashboard, or
-            when the Slack integration does not hold the files:write permission. Omit
-            it unless the user asks for one combined message.'
+          description: 'Slack subscriptions only. Insight and dashboard subscriptions:
+            when true, upload all insight images together in the main Slack message
+            instead of posting the first image in the main message and the rest as
+            threaded replies. Prompt subscriptions: when true, post the chart images
+            in the main message with the summary; when false, post them in the first
+            thread reply. Defaults to false. The request is rejected when target_type
+            is not ''slack'', or when an insight or dashboard subscription''s Slack
+            integration does not hold the files:write permission. Omit it unless the
+            user asks for all images or charts in the main message.'
         include_images:
           type: boolean
           description: 'Prompt subscriptions only: include generated chart images.
@@ -139400,6 +140506,20 @@ components:
         * `bug` - Bug
         * `feature` - Feature
         * `general` - General
+    DestinationConnectCompleteRequest:
+      type: object
+      properties:
+        connect_token:
+          type: string
+          description: The connect token from the connect link URL.
+          maxLength: 128
+        integration_id:
+          type: integer
+          minimum: 1
+          description: Id of the integration the user saved on the connect page.
+      required:
+      - connect_token
+      - integration_id
     DestinationConnectLink:
       type: object
       properties:
@@ -139414,14 +140534,70 @@ components:
           description: Full URL to share with the user. It opens the connection form
             for this integration kind in PostHog, so credentials never pass through
             the agent or the chat.
+        connect_token:
+          type: string
+          description: Secret token in the link. Pass it to the connect link status
+            endpoint to learn which integration the user saved. Only the user who
+            asked for the link can read its status.
+        expires_at:
+          type: string
+          format: date-time
+          description: When the link stops accepting a new connection. Ask for a new
+            link after this time.
         instructions:
           type: string
           description: Next steps for the agent to relay to the user.
       required:
+      - connect_token
       - connect_url
       - destination_type
+      - expires_at
       - instructions
       - integration_kind
+    DestinationConnectStatus:
+      type: object
+      properties:
+        status:
+          allOf:
+          - $ref: '#/components/schemas/DestinationConnectStatusEnum'
+          description: |-
+            `pending`: the user has not saved a connection yet. `connected`: the user saved one, and integration_id holds it. `expired`: the link is no longer valid, or it is unknown or belongs to another user. Ask for a new link.
+
+            * `pending` - Pending
+            * `connected` - Connected
+            * `expired` - Expired
+        integration_id:
+          type:
+          - integer
+          - 'null'
+          description: Id of the saved integration when status is `connected`. Pass
+            it to destination create.
+        integration_kind:
+          type:
+          - string
+          - 'null'
+          description: The integration kind the link is for. Null when status is `expired`.
+        display_name:
+          type:
+          - string
+          - 'null'
+          description: Name of the saved connection, such as the account or host,
+            to confirm with the user.
+      required:
+      - display_name
+      - integration_id
+      - integration_kind
+      - status
+    DestinationConnectStatusEnum:
+      enum:
+      - pending
+      - connected
+      - expired
+      type: string
+      description: |-
+        * `pending` - Pending
+        * `connected` - Connected
+        * `expired` - Expired
     DestinationConnectionTestResponse:
       type: object
       properties:
@@ -142472,6 +143648,7 @@ components:
             The visual editor's save path supplies it directly; omit it otherwise.
         design:
           type: object
+          additionalProperties: true
           properties:
             counters:
               type: object
@@ -142482,6 +143659,7 @@ components:
               description: Design schema version, e.g. 16.
             body:
               type: object
+              additionalProperties: true
               properties:
                 id:
                   type: string
@@ -142852,8 +144030,9 @@ components:
       - skipped_reason
     EmitReportRequest:
       type: object
-      description: Request body for `emit-report`. Run attribution is taken from the
-        URL path.
+      description: |-
+        Request body for the scout `emit-report` action and the inbox report `create` action. A scout run is
+        taken from the URL path; a person is the authenticated caller.
       properties:
         title:
           type: string
@@ -142895,19 +144074,19 @@ components:
           default: false
           description: Whether the issue is already being handled — fixed in recent
             changes, or with a fix in flight (an open PR, a recently active branch,
-            an assigned / in-progress issue or agent task). Gates autostart, so a
-            wrong `false` opens a duplicate PR. Tracked separately.
+            an assigned / in-progress issue or agent task). Gates autostart of a scout
+            report, so a wrong `false` opens a duplicate PR. Tracked separately.
         repository:
           type:
           - string
           - 'null'
-          description: Optional repo for opening a draft PR, by autostart or by a
-            person from the inbox. Pass `owner/repo` whenever you can say where a
-            fix would land. Omit the field when you can't, which triggers free-form
-            selection across the team's repos (the slow path on a many-repo team).
-            Keep the `NO_REPO` sentinel for the rare report where nothing under version
-            control could change, since a skill body, a config file, or a doc still
-            lives in a repo.
+          description: Optional repo for opening a draft PR, by autostart of a scout
+            report or by a person from the inbox. Pass `owner/repo` whenever you can
+            say where a fix would land. Omit the field when you can't, which triggers
+            free-form selection across the team's repos (the slow path on a many-repo
+            team). Keep the `NO_REPO` sentinel for the rare report where nothing under
+            version control could change, since a skill body, a config file, or a
+            doc still lives in a repo.
         priority:
           description: |-
             Optional priority (`P0`-`P4`). Required for autostart; pair with `priority_explanation`.
@@ -142934,8 +144113,9 @@ components:
             and/or `user_uuid`). This is the primary way a report reaches a human
             — the inbox floats a reviewer''s own reports to the top of their inbox
             even when no PR is involved — so set it whenever you can name a plausible
-            owner. It also gates autostart: a PR opens only if at least one reviewer
-            clears their autonomy threshold.'
+            owner. On a scout report it also gates autostart: a PR opens only if at
+            least one reviewer clears their autonomy threshold. A report a person
+            files never autostarts.'
           maxItems: 10
         charts:
           type: array
@@ -142997,12 +144177,13 @@ components:
           type:
           - string
           - 'null'
-          description: 'Optional name for this emission, unique within the run. Reuse
-            it verbatim to retry a call whose outcome you don''t know (a timeout,
-            a dropped connection): the retry returns the report the first call authored,
-            with `idempotent_replay` true, instead of a second report. Omit it and
-            the report''s own content is the key, which covers a retry of the identical
-            call — pass one when a retry might reword the report.'
+          description: 'Optional name for this emission, unique within a scout''s
+            run or within a person''s own reports. Reuse it verbatim to retry a call
+            whose outcome you don''t know (a timeout, a dropped connection): the retry
+            returns the report the first call authored, with `idempotent_replay` true,
+            instead of a second report. Omit it and the report''s own content is the
+            key, which covers a retry of the identical call — pass one when a retry
+            might reword the report.'
           maxLength: 200
       required:
       - actionability
@@ -146808,17 +147989,26 @@ components:
         summary:
           allOf:
           - $ref: '#/components/schemas/ErrorTrackingIssueSummary'
-          description: A model-written summary of the issue. Present only when summary_status
+          description: An AI-written summary of the issue. Present only when summary_status
             is 'ready'. Treat likely_cause as a hypothesis, not a fact.
         summary_status:
           allOf:
           - $ref: '#/components/schemas/IssueSummaryStatusEnum'
           description: |-
-            'ready' means summary is present. 'generating' means a summary may still be written: call once more after a few seconds, and continue without it if the status does not change. 'unavailable' means no summary exists for this issue and none is being written.
+            'ready' means summary is present. 'not_generated' means no summary exists for this issue. A summary is written only when an issue is created. 'unavailable' means no summary can be shown, and summary_reason says why.
 
             * `ready` - Ready
-            * `generating` - Generating
+            * `not_generated` - Not Generated
             * `unavailable` - Unavailable
+        summary_reason:
+          allOf:
+          - $ref: '#/components/schemas/IssueSummaryUnavailableReasonEnum'
+          description: |-
+            Present only when summary_status is 'unavailable'. 'restricted': the user may not read a property that the summary is written from. 'disabled': summaries are off for the project. 'ai_not_approved': the organization has not approved AI data processing.
+
+            * `restricted` - Restricted
+            * `disabled` - Disabled
+            * `ai_not_approved` - Ai Not Approved
       required:
       - id
       - summary_status
@@ -147499,17 +148689,28 @@ components:
           allOf:
           - $ref: '#/components/schemas/IssueSummaryStatusEnum'
           description: |-
-            ready: `summary` holds the stored summary. generating: a summary is being written in the background, so poll again. `summary` holds the previous one, if any. unavailable: no summary exists and none will be written, for example because the feature is off.
+            ready: `summary` holds the stored summary. not_generated: no summary is stored for this issue. A summary is written only when an issue is created. unavailable: no summary can be shown. `reason` says why.
 
             * `ready` - Ready
-            * `generating` - Generating
+            * `not_generated` - Not Generated
             * `unavailable` - Unavailable
         summary:
           oneOf:
           - $ref: '#/components/schemas/ErrorTrackingStoredIssueSummary'
           - type: 'null'
-          description: The stored summary, or null when none exists yet.
+          description: The stored summary, or null when the status is not ready.
+        reason:
+          description: |-
+            Why the status is unavailable, else null. restricted: the user may not read a property that the summary is written from. disabled: summaries are off for the project. ai_not_approved: the organization has not approved AI data processing.
+
+            * `restricted` - Restricted
+            * `disabled` - Disabled
+            * `ai_not_approved` - Ai Not Approved
+          oneOf:
+          - $ref: '#/components/schemas/IssueSummaryUnavailableReasonEnum'
+          - $ref: '#/components/schemas/NullEnum'
       required:
+      - reason
       - status
       - summary
     ErrorTrackingIssueTrend:
@@ -148001,6 +149202,12 @@ components:
           description: Free-text search across exception type, message, and stack
             frames.
           title: Searchquery
+        severity:
+          anyOf:
+          - $ref: '#/components/schemas/ErrorTrackingQueryIssueSeverity'
+          - type: 'null'
+          default: null
+          description: Filter by issue severity.
         status:
           anyOf:
           - $ref: '#/components/schemas/ErrorTrackingIssueStatus'
@@ -148586,6 +149793,10 @@ components:
     ErrorTrackingSettings:
       type: object
       properties:
+        adaptive_ingestion_enabled:
+          type: boolean
+          description: Project preference for adaptive ingestion. Turning this on
+            does not currently change ingestion.
         project_rate_limit_value:
           type:
           - integer
@@ -149088,8 +150299,7 @@ components:
         checked_at:
           type: string
           format: date-time
-          description: When generation last wrote the summary or confirmed it unchanged.
-            The regenerate interval runs from it.
+          description: When generation last wrote the summary.
       required:
       - category
       - checked_at
@@ -149452,6 +150662,7 @@ components:
       - subscription_usage_limit
       - task_spend_limit
       - agent_error
+      - ActiveSessionCapError
       type: string
       description: |-
         * `agent_reported` - agent_reported
@@ -149470,6 +150681,7 @@ components:
         * `subscription_usage_limit` - subscription_usage_limit
         * `task_spend_limit` - task_spend_limit
         * `agent_error` - agent_error
+        * `ActiveSessionCapError` - ActiveSessionCapError
     EstimateExperimentScope:
       type: object
       properties:
@@ -154503,9 +155715,24 @@ components:
     ExperimentExposureHealthCheck:
       additionalProperties: false
       properties:
+        description:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: What the check looks for and why it matters. Missing on an
+            answer cached before the field existed.
+          title: Description
         key:
           $ref: '#/components/schemas/ExperimentExposureHealthCheckKey'
           description: Stable identifier of the check.
+        measurement:
+          anyOf:
+          - $ref: '#/components/schemas/ExperimentExposureHealthMeasurement'
+          - type: 'null'
+          default: null
+          description: The value that decided a passed check. Null for the other statuses
+            and for a pass without a value.
         name:
           description: The problem the check looks for, as the health panel lists
             it.
@@ -154640,6 +155867,43 @@ components:
       - warning
       - info
       title: ExperimentExposureHealthFindingSeverity
+      type: string
+    ExperimentExposureHealthMeasurement:
+      additionalProperties: false
+      properties:
+        threshold:
+          description: The value at which the check reports a finding.
+          title: Threshold
+          type: number
+        unit:
+          $ref: '#/components/schemas/ExperimentExposureHealthMeasurementUnit'
+          description: 'percentage: a share of the exposed users or groups, on the
+            0-100 scale. p_value: the p-value of a statistical test.'
+        value:
+          description: The value that the check measured on the experiment.
+          title: Value
+          type: number
+        warns:
+          $ref: '#/components/schemas/ExperimentExposureHealthMeasurementSide'
+          description: The side of the threshold that reports a finding.
+      required:
+      - threshold
+      - unit
+      - value
+      - warns
+      title: ExperimentExposureHealthMeasurement
+      type: object
+    ExperimentExposureHealthMeasurementSide:
+      enum:
+      - above
+      - below
+      title: ExperimentExposureHealthMeasurementSide
+      type: string
+    ExperimentExposureHealthMeasurementUnit:
+      enum:
+      - percentage
+      - p_value
+      title: ExperimentExposureHealthMeasurementUnit
       type: string
     ExperimentExposureNode:
       additionalProperties: false
@@ -155233,6 +156497,10 @@ components:
           type: string
           description: The problem the check looks for, for example 'Metrics not set
             up'.
+        description:
+          type: string
+          description: What the check looks for and why it matters. The same for every
+            experiment and every status.
         status:
           allOf:
           - $ref: '#/components/schemas/ExperimentHealthCheckStatusEnum'
@@ -155250,8 +156518,17 @@ components:
           description: Why the check did not look, for the statuses not_applicable
             and not_checked, for example 'Runs after launch'. Null for passed and
             finding.
+        measurement:
+          oneOf:
+          - $ref: '#/components/schemas/ExperimentHealthMeasurement'
+          - type: 'null'
+          description: The value that decided a passed check, against its threshold.
+            Null for the other statuses, and for a pass without a value. A finding
+            carries its values in `evidence`.
       required:
+      - description
       - key
+      - measurement
       - name
       - reason
       - status
@@ -156199,6 +157476,54 @@ components:
       - ratio_side
       - role
       - stopped_events
+    ExperimentHealthMeasurement:
+      type: object
+      properties:
+        value:
+          type: number
+          format: double
+          description: The value that the check measured on the experiment.
+        threshold:
+          type: number
+          format: double
+          description: The value at which the check reports a finding.
+        unit:
+          allOf:
+          - $ref: '#/components/schemas/ExperimentHealthMeasurementUnitEnum'
+          description: |-
+            percentage: a share of the exposed users or groups, on the 0-100 scale. p_value: the p-value of a statistical test.
+
+            * `percentage` - Percentage of exposed units
+            * `p_value` - P-value of a statistical test
+        warns:
+          allOf:
+          - $ref: '#/components/schemas/ExperimentHealthMeasurementSideEnum'
+          description: |-
+            The side of the threshold that reports a finding: above or below.
+
+            * `above` - Finding above the threshold
+            * `below` - Finding below the threshold
+      required:
+      - threshold
+      - unit
+      - value
+      - warns
+    ExperimentHealthMeasurementSideEnum:
+      enum:
+      - above
+      - below
+      type: string
+      description: |-
+        * `above` - Finding above the threshold
+        * `below` - Finding below the threshold
+    ExperimentHealthMeasurementUnitEnum:
+      enum:
+      - percentage
+      - p_value
+      type: string
+      description: |-
+        * `percentage` - Percentage of exposed units
+        * `p_value` - P-value of a statistical test
     ExperimentHealthMetricCompileErrorKindEnum:
       enum:
       - rejected
@@ -160997,6 +162322,13 @@ components:
           oneOf:
           - $ref: '#/components/schemas/IncrementalSyncBlockedReasonEnum'
           - $ref: '#/components/schemas/NullEnum'
+        webhook_not_registered:
+          type: boolean
+          readOnly: true
+          description: Whether this table uses webhook sync, but its source has no
+            enabled webhook. Such a table gets no webhook updates. Each sync polls
+            the source API instead, which is slower and can read the whole table.
+            Set up the webhook on the source, or change `sync_type`.
         enabled_columns:
           type:
           - array
@@ -161006,6 +162338,20 @@ components:
           description: Names of source columns to sync. `null` (default) syncs all
             columns. Primary-key columns and the active incremental field are always
             retained, even if not listed here.
+        masked_columns:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: Names of source columns whose values are replaced with a deterministic
+            one-way digest at sync time, for sensitive data such as passwords or PII.
+            `null` (default) masks nothing. Primary-key, partition and incremental
+            columns can't be masked, and direct query sources don't support masking.
+            Any change to this list starts a full resync of the table (CDC tables
+            take a new snapshot), or stages it until syncing is turned on. A synced
+            webhook table can't change its masked columns, because its data can't
+            be fetched again.
         row_filters:
           type:
           - array
@@ -161156,6 +162502,7 @@ components:
       - table
       - table_id
       - user_access_level
+      - webhook_not_registered
     ExternalDataSchemaSyncFrequencyEnum:
       enum:
       - never
@@ -161318,6 +162665,15 @@ components:
           items:
             type: string
           description: Columns to sync. Null means sync all columns.
+        masked_columns:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: Columns whose values are replaced with a one-way digest at
+            sync time. Null means mask nothing. Any change starts a full resync of
+            the table.
         row_filters:
           type:
           - array
@@ -161694,6 +163050,14 @@ components:
         supports_webhooks:
           type: boolean
           readOnly: true
+        webhook_not_registered:
+          type: boolean
+          readOnly: true
+          description: Whether at least one table of this source uses webhook sync,
+            but the source has no enabled webhook. Those tables get no webhook updates.
+            Each of their syncs polls the source API instead, which is slower and
+            can read the whole table. Set up the webhook, or change the sync method
+            of those tables.
         supports_column_selection:
           type: boolean
           readOnly: true
@@ -161749,6 +163113,7 @@ components:
       - supports_column_selection
       - supports_webhooks
       - user_access_level
+      - webhook_not_registered
     ExternalQueryError:
       additionalProperties: false
       properties:
@@ -165038,6 +166403,18 @@ components:
           title: Properties
       title: Filters
       type: object
+    FinalVerificationStateEnum:
+      enum:
+      - monitoring
+      - verifying
+      - assessment_required
+      - verification_complete
+      type: string
+      description: |-
+        * `monitoring` - Monitoring
+        * `verifying` - Verifying
+        * `assessment_required` - Assessment required
+        * `verification_complete` - Verification complete
     FinalizeResult:
       type: object
       properties:
@@ -171357,11 +172734,12 @@ components:
             * `archived` - Archived
         origin_product:
           description: |-
-            Product surface that owns this workflow (e.g. `loops` for Desktop loops). Set only when creating a workflow. Filter the list with `?origin_product=`.
+            Product surface that owns this workflow (e.g. `loops` for Desktop loops). Set only when creating a workflow, and never to `transactional_email_keys`: the email send API sets that one. Filter the list with `?origin_product=`.
 
             * `loops` - Loops
             * `broadcasts` - Broadcasts
             * `transactional_emails` - Transactional emails
+            * `transactional_email_keys` - Transactional email keys
           oneOf:
           - $ref: '#/components/schemas/HogFlowOriginProductEnum'
           - $ref: '#/components/schemas/NullEnum'
@@ -171780,12 +173158,13 @@ components:
           allOf:
           - $ref: '#/components/schemas/HogFlowBatchJobStateEnum'
           description: |-
-            Not currently tracked — stays at its initial value. Use the workflow logs/metrics endpoints for run outcome.
+            Status of the batch run. waiting: the audience's cohort is still calculating. queued and active: the run is enrolling its audience. completed: the whole audience was enrolled. When every enrolled person's run has ended, or a day after the run completed, PostHog checks for errored sends. A completed run stays completed when no send errored, becomes partially_failed when some sends errored, and becomes failed when every send errored. failed also means the run could not enroll its audience. cancelled: someone stopped the run. A send errors when its step throws, for example on a template that does not render. Provider failures such as bounces are not errored sends; read them from the run's metrics.
 
             * `waiting` - Waiting
             * `queued` - Queued
             * `active` - Active
             * `completed` - Completed
+            * `partially_failed` - Partially failed
             * `cancelled` - Cancelled
             * `failed` - Failed
         hog_flow:
@@ -171837,6 +173216,7 @@ components:
             * `queued` - Queued
             * `active` - Active
             * `completed` - Completed
+            * `partially_failed` - Partially failed
             * `cancelled` - Cancelled
             * `failed` - Failed
         marked:
@@ -171860,6 +173240,7 @@ components:
       - queued
       - active
       - completed
+      - partially_failed
       - cancelled
       - failed
       type: string
@@ -171868,6 +173249,7 @@ components:
         * `queued` - Queued
         * `active` - Active
         * `completed` - Completed
+        * `partially_failed` - Partially failed
         * `cancelled` - Cancelled
         * `failed` - Failed
     HogFlowConversion:
@@ -171931,6 +173313,7 @@ components:
             * `loops` - Loops
             * `broadcasts` - Broadcasts
             * `transactional_emails` - Transactional emails
+            * `transactional_email_keys` - Transactional email keys
       required:
       - id
       - origin_product
@@ -172327,11 +173710,13 @@ components:
       - loops
       - broadcasts
       - transactional_emails
+      - transactional_email_keys
       type: string
       description: |-
         * `loops` - Loops
         * `broadcasts` - Broadcasts
         * `transactional_emails` - Transactional emails
+        * `transactional_email_keys` - Transactional email keys
     HogFlowPublishImpact:
       type: object
       properties:
@@ -172704,6 +174089,7 @@ components:
             * `loops` - Loops
             * `broadcasts` - Broadcasts
             * `transactional_emails` - Transactional emails
+            * `transactional_email_keys` - Transactional email keys
           oneOf:
           - $ref: '#/components/schemas/HogFlowOriginProductEnum'
           - $ref: '#/components/schemas/NullEnum'
@@ -175967,6 +177353,7 @@ components:
             * `pganalyze` - pganalyze
             * `signals_scout` - Signals scout
             * `signals_check` - Report check
+            * `user_authored` - Team member
             * `logs` - Logs
             * `health_checks` - Health checks
             * `endpoints` - Endpoints
@@ -178783,6 +180170,14 @@ components:
           oneOf:
           - $ref: '#/components/schemas/InstallationStatusEnum'
           - $ref: '#/components/schemas/NullEnum'
+        needs_webhook_reconnect:
+          type:
+          - boolean
+          - 'null'
+          readOnly: true
+          description: Linear only, null otherwise. True when the workspace last authorized
+            PostHog before the Linear app had webhooks, so linked error tracking issues
+            may not follow their tickets until someone reconnects it.
       required:
       - auth_type
       - created_at
@@ -178794,6 +180189,7 @@ components:
       - installation_shared
       - installation_status
       - kind
+      - needs_webhook_reconnect
     IntegrationConfigCreate:
       type: object
       description: The request schema of a create. A create accepts only the public
@@ -178905,6 +180301,14 @@ components:
           oneOf:
           - $ref: '#/components/schemas/InstallationStatusEnum'
           - $ref: '#/components/schemas/NullEnum'
+        needs_webhook_reconnect:
+          type:
+          - boolean
+          - 'null'
+          readOnly: true
+          description: Linear only, null otherwise. True when the workspace last authorized
+            PostHog before the Linear app had webhooks, so linked error tracking issues
+            may not follow their tickets until someone reconnects it.
       required:
       - auth_type
       - created_at
@@ -178916,6 +180320,7 @@ components:
       - installation_shared
       - installation_status
       - kind
+      - needs_webhook_reconnect
     IntegrationDiagnostic:
       type: object
       properties:
@@ -179437,13 +180842,23 @@ components:
     IssueSummaryStatusEnum:
       enum:
       - ready
-      - generating
+      - not_generated
       - unavailable
       type: string
       description: |-
         * `ready` - Ready
-        * `generating` - Generating
+        * `not_generated` - Not Generated
         * `unavailable` - Unavailable
+    IssueSummaryUnavailableReasonEnum:
+      enum:
+      - restricted
+      - disabled
+      - ai_not_approved
+      type: string
+      description: |-
+        * `restricted` - Restricted
+        * `disabled` - Disabled
+        * `ai_not_approved` - Ai Not Approved
     IssueTrendDirectionEnum:
       enum:
       - new
@@ -182977,6 +184392,52 @@ components:
         * `team_secret_token` - team_secret_token
         * `oauth_access_token` - oauth_access_token
         * `oauth_refresh_token` - oauth_refresh_token
+    LearningBackfillProgress:
+      type: object
+      properties:
+        status:
+          allOf:
+          - $ref: '#/components/schemas/LearningBackfillStatusEnum'
+          description: |-
+            `running` while PostHog reads past tickets. `completed` once every ticket in the window is read.
+
+            * `running` - Reading past tickets
+            * `completed` - Read every past ticket
+        started_at:
+          type: string
+          format: date-time
+          description: When someone started learning from past tickets.
+        finished_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When every past ticket was read. Null while the run continues.
+        tickets_read:
+          type: integer
+          description: Tickets analyzed since the run started, including tickets from
+            the regular 7-day pass.
+        tickets_in_progress:
+          type: integer
+          description: Tickets that are being analyzed now.
+        knowledge_created:
+          type: integer
+          description: Analyzed tickets that added a learned source to business knowledge.
+      required:
+      - finished_at
+      - knowledge_created
+      - started_at
+      - status
+      - tickets_in_progress
+      - tickets_read
+    LearningBackfillStatusEnum:
+      enum:
+      - running
+      - completed
+      type: string
+      description: |-
+        * `running` - Reading past tickets
+        * `completed` - Read every past ticket
     LegacyDesktopAccessResponse:
       type: object
       properties:
@@ -183050,6 +184511,7 @@ components:
       - posthog-node
       - posthog-python
       - posthog-php
+      - posthog-laravel
       - posthog-ruby
       - posthog-go
       - posthog-flutter
@@ -183082,6 +184544,7 @@ components:
         * `posthog-node` - posthog-node
         * `posthog-python` - posthog-python
         * `posthog-php` - posthog-php
+        * `posthog-laravel` - posthog-laravel
         * `posthog-ruby` - posthog-ruby
         * `posthog-go` - posthog-go
         * `posthog-flutter` - posthog-flutter
@@ -188622,6 +190085,13 @@ components:
           - $ref: '#/components/schemas/DateRange'
           - type: 'null'
           default: null
+        filterTestAccounts:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          description: Exclude reports from the project's internal and test users.
+          title: Filtertestaccounts
         kind:
           const: MCPMissingCapabilitiesQuery
           default: MCPMissingCapabilitiesQuery
@@ -195738,6 +197208,14 @@ components:
           default: null
           description: Google Ads search term table for Performance Max campaigns.
           title: Performancemaxsearchtermtable
+        queryPageTable:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Google Search Console table with one row per query and page,
+            used to find the page that ranks for a search.
+          title: Querypagetable
         queryTable:
           anyOf:
           - type: string
@@ -198670,6 +200148,15 @@ components:
           default: MetricsAlertConfig
           title: Type
           type: string
+        variables:
+          anyOf:
+          - additionalProperties:
+              $ref: '#/components/schemas/MetricsDashboardVariableSelection'
+            type: object
+          - type: 'null'
+          default: null
+          description: Values for the `$name` variables in the insight's query.
+          title: Variables
       title: MetricsAlertConfig
       type: object
     MetricsAlertCreateDestination:
@@ -200915,7 +202402,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/MonitoringCheckTimingStateEnum'
           description: |-
-            Whether this check has an interim measurement due, is paused, or has finished its observation window. No state implies a final verdict.
+            Monitoring timing state. Final verification phases use paused for compatibility; read final_verification_state for their phase.
 
             * `scheduled` - Scheduled
             * `due` - Due
@@ -200926,6 +202413,18 @@ components:
             * `archived` - Archived
             * `unavailable` - Timing unavailable
             * `expiry_reached` - Expiry reached
+        final_verification_state:
+          readOnly: true
+          description: |-
+            Final verification phase when state is paused. Null for other timing states. Read the check outcome for its verdict.
+
+            * `monitoring` - Monitoring
+            * `verifying` - Verifying
+            * `assessment_required` - Assessment required
+            * `verification_complete` - Verification complete
+          oneOf:
+          - $ref: '#/components/schemas/FinalVerificationStateEnum'
+          - $ref: '#/components/schemas/NullEnum'
         started_at:
           type:
           - string
@@ -201022,6 +202521,22 @@ components:
       - expectation
       - minimum_evidence
       type: string
+    MonitoringUnresolvedSignalExtra:
+      additionalProperties: false
+      properties:
+        report_id:
+          description: Original Closed report whose implementation remains unverified.
+          title: Report Id
+          type: string
+        attempt_id:
+          description: Monitoring attempt that durably requested this investigation.
+          title: Attempt Id
+          type: string
+      required:
+      - report_id
+      - attempt_id
+      title: MonitoringUnresolvedSignalExtra
+      type: object
     MonteCarloAlertSignalExtra:
       additionalProperties: false
       properties:
@@ -205773,6 +207288,16 @@ components:
       - sentiment
       title: OverviewTotals
       type: object
+    OwnersFileStatusEnum:
+      enum:
+      - found
+      - missing
+      - unavailable
+      type: string
+      description: |-
+        * `found` - Found
+        * `missing` - Missing
+        * `unavailable` - Unavailable
     PCADetectorConfig:
       additionalProperties: false
       properties:
@@ -211961,6 +213486,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WorkflowProposal'
+    PaginatedWorkloadTrustPolicyList:
+      type: object
+      required:
+      - count
+      - results
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type:
+          - string
+          - 'null'
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkloadTrustPolicy'
     PanelBuilderAggregationEnum:
       enum:
       - sum
@@ -215522,6 +217072,11 @@ components:
             repeated failures. Suspended engines are skipped by scheduled runs until
             the query is resumed.
           readOnly: true
+        is_raw_managed_trino:
+          type: boolean
+          readOnly: true
+          description: Whether this view stores raw Trino SQL. Only hosted Trino can
+            run it, and HogQL queries cannot reference it.
     PatchedDataWarehouseSavedQueryColumnAnnotation:
       type: object
       description: |-
@@ -216193,6 +217748,10 @@ components:
     PatchedErrorTrackingSettings:
       type: object
       properties:
+        adaptive_ingestion_enabled:
+          type: boolean
+          description: Project preference for adaptive ingestion. Turning this on
+            does not currently change ingestion.
         project_rate_limit_value:
           type:
           - integer
@@ -217581,6 +219140,13 @@ components:
           oneOf:
           - $ref: '#/components/schemas/IncrementalSyncBlockedReasonEnum'
           - $ref: '#/components/schemas/NullEnum'
+        webhook_not_registered:
+          type: boolean
+          readOnly: true
+          description: Whether this table uses webhook sync, but its source has no
+            enabled webhook. Such a table gets no webhook updates. Each sync polls
+            the source API instead, which is slower and can read the whole table.
+            Set up the webhook on the source, or change `sync_type`.
         enabled_columns:
           type:
           - array
@@ -217590,6 +219156,20 @@ components:
           description: Names of source columns to sync. `null` (default) syncs all
             columns. Primary-key columns and the active incremental field are always
             retained, even if not listed here.
+        masked_columns:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: Names of source columns whose values are replaced with a deterministic
+            one-way digest at sync time, for sensitive data such as passwords or PII.
+            `null` (default) masks nothing. Primary-key, partition and incremental
+            columns can't be masked, and direct query sources don't support masking.
+            Any change to this list starts a full resync of the table (CDC tables
+            take a new snapshot), or stages it until syncing is turned on. A synced
+            webhook table can't change its masked columns, because its data can't
+            be fetched again.
         row_filters:
           type:
           - array
@@ -217844,6 +219424,14 @@ components:
         supports_webhooks:
           type: boolean
           readOnly: true
+        webhook_not_registered:
+          type: boolean
+          readOnly: true
+          description: Whether at least one table of this source uses webhook sync,
+            but the source has no enabled webhook. Those tables get no webhook updates.
+            Each of their syncs polls the source API instead, which is slower and
+            can read the whole table. Set up the webhook, or change the sync method
+            of those tables.
         supports_column_selection:
           type: boolean
           readOnly: true
@@ -218558,6 +220146,7 @@ components:
             * `loops` - Loops
             * `broadcasts` - Broadcasts
             * `transactional_emails` - Transactional emails
+            * `transactional_email_keys` - Transactional email keys
           oneOf:
           - $ref: '#/components/schemas/HogFlowOriginProductEnum'
           - $ref: '#/components/schemas/NullEnum'
@@ -219471,6 +221060,14 @@ components:
           oneOf:
           - $ref: '#/components/schemas/InstallationStatusEnum'
           - $ref: '#/components/schemas/NullEnum'
+        needs_webhook_reconnect:
+          type:
+          - boolean
+          - 'null'
+          readOnly: true
+          description: Linear only, null otherwise. True when the workspace last authorized
+            PostHog before the Linear app had webhooks, so linked error tracking issues
+            may not follow their tickets until someone reconnects it.
     PatchedJsSnippetVersion:
       type: object
       properties:
@@ -221259,6 +222856,13 @@ components:
           type: string
           format: uuid
           readOnly: true
+        is_ai_data_processing_approved:
+          type:
+          - boolean
+          - 'null'
+          readOnly: true
+          description: Whether the project's organization approved AI data processing.
+            AI features need this approval.
         name:
           type: string
           description: Project name. Must be unique within the organization (case-insensitive).
@@ -222543,6 +224147,17 @@ components:
           oneOf:
           - $ref: '#/components/schemas/ScannerCreationMethodEnum'
           - $ref: '#/components/schemas/NullEnum'
+        entry_point:
+          type:
+          - string
+          - 'null'
+          writeOnly: true
+          description: 'The app surface the creator started from, such as `replay_filters`.
+            Reported to product analytics at creation so a scanner can be attributed
+            to its entry point, and not stored on the scanner. Only the app''s value
+            is kept: any other caller is reported as its own source, such as `mcp`.
+            Ignored on update.'
+          pattern: ^[a-z0-9_]{1,64}$
         take_over_as_creator:
           type: boolean
           writeOnly: true
@@ -223741,7 +225356,11 @@ components:
             max 100): the warehouse still syncs the whole Linear workspace, but only
             issues from those teams become signals. Omit the key or pass an empty
             list to use every team. Get the ids from the Linear integration''s teams
-            endpoint.'
+            endpoint. The product analytics source (`source_product=analytics`, `source_type=anomaly_investigation`)
+            accepts `alert_scope`: `investigated_only` (default) turns only insight
+            alerts that the investigation agent confirmed into signals, and `all_firing_alerts`
+            also includes alerts without the investigation agent. Other sources reject
+            this key.'
         config_set:
           type: object
           additionalProperties: true
@@ -223811,6 +225430,15 @@ components:
           type: string
           description: Pull request label that triggers a review when review_mode
             is 'label'. Defaults to 'stamphog'.
+        routing_mode:
+          allOf:
+          - $ref: '#/components/schemas/RoutingModeEnum'
+          description: |-
+            When stamphog requests reviews from the code owners in the repository's owners.yaml: 'off' (the default) never; 'always' when a pull request opens ready for review or is marked ready; 'fallback' only when stamphog does not approve, where an approval requests only the owners of sensitive and new paths.
+
+            * `off` - Off
+            * `always` - Always
+            * `fallback` - When stamphog does not approve
     PatchedSubscriptionWrite:
       type: object
       description: Standard Subscription serializer.
@@ -224597,6 +226225,7 @@ components:
             * `subscription_usage_limit` - subscription_usage_limit
             * `task_spend_limit` - task_spend_limit
             * `agent_error` - agent_error
+            * `ActiveSessionCapError` - ActiveSessionCapError
           oneOf:
           - $ref: '#/components/schemas/ErrorTypeEnum'
           - $ref: '#/components/schemas/NullEnum'
@@ -226047,6 +227676,76 @@ components:
           description: Capture email sends, opens, clicks and bounces as PostHog events,
             so they can be used in insights and funnels. These events count toward
             the project's event usage.
+    PatchedWorkloadTrustPolicy:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          description: A name that says what the policy is for.
+          maxLength: 200
+        issuer:
+          type: string
+          description: The OIDC issuer of the workload provider, from the list of
+            supported providers.
+          maxLength: 255
+        provider:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: The key of the workload provider the issuer belongs to.
+        subject_name:
+          type: string
+          description: The workload's human-readable name, from the provider's subject
+            name claim, for example a repository's full name. Matched exactly.
+          maxLength: 255
+        subject:
+          type: string
+          description: The workload's immutable ID, from the provider's subject claim,
+            for example a repository ID. Matched exactly together with the name, so
+            a deleted and re-created workload with the same name does not match.
+          maxLength: 255
+        conditions:
+          type: object
+          additionalProperties:
+            type: string
+          description: Claims the token must carry, as claim name to exact value,
+            for example a branch or an environment. Only the provider's condition
+            claims are allowed. An empty value removes the condition.
+        claim_labels:
+          allOf:
+          - $ref: '#/components/schemas/WorkloadClaimLabels'
+          readOnly: true
+          description: How the provider names the subject, the subject name and each
+            condition claim, for display.
+        scopes:
+          type: array
+          items:
+            type: string
+            maxLength: 100
+          description: The scopes every token minted under this policy carries. Scopes
+            that manage credentials or access are refused.
+        enabled:
+          type: boolean
+          description: Whether the policy can mint tokens. Disabling it cuts off its
+            tokens.
+        created_by:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasic'
+          - type: 'null'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
     PathCleaningFilter:
       additionalProperties: false
       properties:
@@ -230896,6 +232595,7 @@ components:
             * `webhook` - webhook
             * `wizard_session` - wizard_session
             * `wizard_run` - wizard_run
+            * `workload_trust_policy` - workload_trust_policy
         source_resource_id:
           type:
           - string
@@ -230930,6 +232630,13 @@ components:
           type: string
           format: uuid
           readOnly: true
+        is_ai_data_processing_approved:
+          type:
+          - boolean
+          - 'null'
+          readOnly: true
+          description: Whether the project's organization approved AI data processing.
+            AI features need this approval.
         name:
           type: string
           description: Project name. Must be unique within the organization (case-insensitive).
@@ -231980,6 +233687,7 @@ components:
       - heatmaps_screenshot_secret
       - id
       - ingested_event
+      - is_ai_data_processing_approved
       - is_pending_deletion
       - live_events_token
       - managed_viewsets
@@ -235282,6 +236990,51 @@ components:
       - pending
       - started_at
       - wall_seconds
+    PushTokenImportFailure:
+      type: object
+      properties:
+        index:
+          type: integer
+          description: Position of the row in the request's `subscriptions`, from
+            0.
+        distinct_id:
+          type: string
+          description: The distinct ID of the row.
+        device_token_suffix:
+          type: string
+          description: The last 6 characters of the row's device token, to find the
+            row.
+        reason:
+          allOf:
+          - $ref: '#/components/schemas/PushTokenImportFailureReasonEnum'
+          description: |-
+            Why the device was not stored. `unknown_person`: no person has this distinct ID, so check the ID or set `create_missing_persons`. `token_mismatch`: the token is the wrong kind for this channel, for example an Expo token, or an APNs token on a Firebase channel. `not_stored` and `person_processing_disabled`: ingestion did not store the device.
+
+            * `unknown_person` - No person has this distinct ID
+            * `token_mismatch` - The token does not fit this channel
+            * `not_stored` - The device was not stored
+            * `person_processing_disabled` - Person processing is off for this person
+        detail:
+          type: string
+          description: A sentence a person can act on.
+      required:
+      - detail
+      - device_token_suffix
+      - distinct_id
+      - index
+      - reason
+    PushTokenImportFailureReasonEnum:
+      enum:
+      - unknown_person
+      - token_mismatch
+      - not_stored
+      - person_processing_disabled
+      type: string
+      description: |-
+        * `unknown_person` - No person has this distinct ID
+        * `token_mismatch` - The token does not fit this channel
+        * `not_stored` - The device was not stored
+        * `person_processing_disabled` - Person processing is off for this person
     PushTokenImportRequest:
       type: object
       properties:
@@ -235291,6 +237044,24 @@ components:
             $ref: '#/components/schemas/PushTokenSubscription'
           description: Up to 1000 devices to register on this push channel. List a
             person once per device.
+        dry_run:
+          type: boolean
+          default: false
+          description: Check every row and report what would fail, without storing
+            anything. Run this first and fix the failed rows before importing.
+        import_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+          description: A new UUID for each batch. Send the same value when you retry
+            that batch, so a retried batch can be recognized as a repeat.
+        create_missing_persons:
+          type: boolean
+          default: false
+          description: Create a person for a distinct ID that has none. Off by default,
+            because a distinct ID that does not match your app's identify call creates
+            a person that never gets a push.
       required:
       - subscriptions
     PushTokenImportResponse:
@@ -235298,14 +237069,25 @@ components:
       properties:
         imported:
           type: integer
-          description: Number of devices stored on their person.
+          description: Number of devices stored on their person. On a dry run, the
+            number that would be stored.
+        dry_run:
+          type: boolean
+          description: True when nothing was stored.
+        failed:
+          type: array
+          items:
+            $ref: '#/components/schemas/PushTokenImportFailure'
+          description: One entry per device that was not stored.
         failed_distinct_ids:
           type: array
           items:
             type: string
           description: Distinct IDs with at least one device that was not stored.
-            Send those rows again.
+            Prefer `failed`, which says why.
       required:
+      - dry_run
+      - failed
       - failed_distinct_ids
       - imported
     PushTokenSubscription:
@@ -235313,11 +237095,14 @@ components:
       properties:
         distinct_id:
           type: string
-          description: The person's distinct ID in this project.
+          description: 'The person''s distinct ID in this project: the ID your app
+            passes to `identify`.'
           maxLength: 200
         device_token:
           type: string
-          description: The APNs device token or FCM registration token of one device.
+          description: The token of one device. An APNs channel takes the hex APNs
+            device token. A Firebase channel takes the FCM registration token. Expo
+            push tokens are not accepted.
           maxLength: 4096
       required:
       - device_token
@@ -251068,6 +252853,17 @@ components:
           oneOf:
           - $ref: '#/components/schemas/ScannerCreationMethodEnum'
           - $ref: '#/components/schemas/NullEnum'
+        entry_point:
+          type:
+          - string
+          - 'null'
+          writeOnly: true
+          description: 'The app surface the creator started from, such as `replay_filters`.
+            Reported to product analytics at creation so a scanner can be attributed
+            to its entry point, and not stored on the scanner. Only the app''s value
+            is kept: any other caller is reported as its own source, such as `mcp`.
+            Ignored on update.'
+          pattern: ^[a-z0-9_]{1,64}$
         take_over_as_creator:
           type: boolean
           writeOnly: true
@@ -253655,6 +255451,7 @@ components:
             * `webhook` - webhook
             * `wizard_session` - wizard_session
             * `wizard_run` - wizard_run
+            * `workload_trust_policy` - workload_trust_policy
         source_resource_id:
           type:
           - string
@@ -260855,6 +262652,16 @@ components:
         * `fully_rolled_out` - fully_rolled_out
         * `not_rolled_out` - not_rolled_out
         * `partial` - partial
+    RoutingModeEnum:
+      enum:
+      - 'off'
+      - always
+      - fallback
+      type: string
+      description: |-
+        * `off` - Off
+        * `always` - Always
+        * `fallback` - When stamphog does not approve
     RowFilterColumn:
       type: object
       properties:
@@ -263686,6 +265493,7 @@ components:
       - webhook
       - wizard_session
       - wizard_run
+      - workload_trust_policy
       type: string
       description: |-
         * `action` - action
@@ -263808,6 +265616,7 @@ components:
         * `webhook` - webhook
         * `wizard_session` - wizard_session
         * `wizard_run` - wizard_run
+        * `workload_trust_policy` - workload_trust_policy
     ScopeRepoDistribution:
       type: object
       properties:
@@ -264611,6 +266420,15 @@ components:
             roster. Empty when no roster is synced, or when the member has no linked
             GitHub account, since the roster is keyed on that login. The roster is
             a periodic snapshot, so it can lag the live team.
+        activity:
+          oneOf:
+          - $ref: '#/components/schemas/ScoutMemberActivity'
+          - type: 'null'
+          description: 'What the member worked on recently. Use it as context to check
+            against the report, not as proof: general activity is not evidence that
+            the member owns the affected work. Filled only when the call passes `search`
+            or `team` and returns at most 10 members. Null when the member has no
+            ready summary, or when activity summaries are not available for this project.'
       required:
       - email
       - first_name
@@ -264618,6 +266436,63 @@ components:
       - last_name
       - teams
       - user_uuid
+    ScoutMemberActivity:
+      type: object
+      description: What one member worked on recently, from their activity summary.
+      properties:
+        headline:
+          type:
+          - string
+          - 'null'
+          description: One line about the member's recent work.
+        themes:
+          type: array
+          items:
+            type: string
+          description: The labels of the main threads of the member's recent work.
+        owned:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScoutMemberActivityObject'
+          description: Up to 5 objects the member created or changed, the most edited
+            first.
+        watched:
+          type: array
+          items:
+            $ref: '#/components/schemas/ScoutMemberActivityObject'
+          description: Up to 5 objects the member opened on several days, the most
+            opened first. A member who only reads the work shows up here. A specific
+            object here can support a reviewer pick when the pick's `reason` names
+            it.
+        generated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the summary was written.
+        stale:
+          type: boolean
+          description: True when the summary waits for a rebuild in a newer format.
+            Give a stale summary less weight.
+      required:
+      - generated_at
+      - headline
+      - owned
+      - stale
+      - themes
+      - watched
+    ScoutMemberActivityObject:
+      type: object
+      properties:
+        type:
+          type: string
+          description: The object type in snake case, such as `dashboard` or `feature_flag`.
+        name:
+          type: string
+          description: The latest name of the object.
+      required:
+      - name
+      - type
     ScoutMemberTeam:
       type: object
       description: One team a member belongs to, from the project's synced team roster.
@@ -264712,8 +266587,9 @@ components:
             for the note someone left when rating a report useful or not: one reader''s
             rating of the named report, context to weigh rather than a directive.
             `report_reviewer_correction` for a suggested reviewer someone added or
-            removed on a report: evidence about who owns that surface, and a prompt
-            to revisit the routing memory it corrects, rather than a directive.'
+            removed on a report, or for a report a person or their agent claimed:
+            evidence about who owns that surface, and a prompt to revisit the routing
+            memory it corrects or supports, rather than a directive.'
       required:
       - content
       - created_at
@@ -266352,6 +268228,7 @@ components:
             * `posthog-node` - posthog-node
             * `posthog-python` - posthog-python
             * `posthog-php` - posthog-php
+            * `posthog-laravel` - posthog-laravel
             * `posthog-ruby` - posthog-ruby
             * `posthog-go` - posthog-go
             * `posthog-flutter` - posthog-flutter
@@ -266720,12 +268597,13 @@ components:
           - $ref: '#/components/schemas/HogFlowBatchJobStateEnum'
           readOnly: true
           description: |-
-            Status of the batch run.
+            Status of the batch run. waiting: the audience's cohort is still calculating. queued and active: the run is enrolling its audience. completed: the whole audience was enrolled. When every enrolled person's run has ended, or a day after the run completed, PostHog checks for errored sends. A completed run stays completed when no send errored, becomes partially_failed when some sends errored, and becomes failed when every send errored. failed also means the run could not enroll its audience. cancelled: someone stopped the run. A send errors when its step throws, for example on a template that does not render. Provider failures such as bounces are not errored sends; read them from the run's metrics.
 
             * `waiting` - Waiting
             * `queued` - Queued
             * `active` - Active
             * `completed` - Completed
+            * `partially_failed` - Partially failed
             * `cancelled` - Cancelled
             * `failed` - Failed
         created_at:
@@ -266759,6 +268637,7 @@ components:
             * `loops` - Loops
             * `broadcasts` - Broadcasts
             * `transactional_emails` - Transactional emails
+            * `transactional_email_keys` - Transactional email keys
           oneOf:
           - $ref: '#/components/schemas/HogFlowOriginProductEnum'
           - $ref: '#/components/schemas/NullEnum'
@@ -266864,7 +268743,15 @@ components:
           type: string
           format: uuid
           description: ID of the email template to send. The template must be made
-            transactional first.
+            transactional first. Send either `template_id` or `template_key`.
+        template_key:
+          type: string
+          description: Names an email whose content your code rendered, such as `order-shipped`,
+            so its metrics, logs and status group under it. Letters, numbers, hyphens
+            (-) and underscores (_) only. Send it with `subject` and `html` or `text`.
+            PostHog sends the content as is and never stores it as a template.
+          maxLength: 400
+          pattern: ^[a-zA-Z0-9_-]+$
         distinct_id:
           type:
           - string
@@ -266875,8 +268762,38 @@ components:
             The template can't read the person's properties, so pass everything it
             needs in `message_data`.
           maxLength: 400
+        subject:
+          type: string
+          description: Subject of the email your code rendered.
+        html:
+          type: string
+          description: HTML body of the email your code rendered, at most 5 MiB as
+            UTF-8.
+        text:
+          type: string
+          description: Plain text body of the email your code rendered, at most 5
+            MiB as UTF-8. Without it, PostHog derives the text from `html`.
+        reply_to:
+          type: array
+          items:
+            type: string
+            format: email
+          description: Addresses replies to the email your code rendered go to.
+          maxItems: 10
+        capture_engagement:
+          type: boolean
+          description: Whether the engagement events (sent, delivered, opened, clicked,
+            bounced) of the email your code rendered are captured as analytics events
+            of the recipient. Defaults to true. A project whose admin turned engagement
+            capture off captures nothing, whatever the send says.
+        from:
+          type: string
+          description: Sender of the email your code rendered, as `security@example.com`
+            or `Example <security@example.com>`, on a verified domain of the project.
+            Without it, the email goes out from the project's default sender, or from
+            its only verified sender when it has no default.
+          maxLength: 1024
       required:
-      - template_id
       - to
     SendTransactionalEmail:
       type: object
@@ -267005,8 +268922,7 @@ components:
         matched_recordings:
           type: array
           items:
-            type: object
-            additionalProperties: true
+            $ref: '#/components/schemas/SerializedMatchedRecording'
           description: Recordings that matched the query. Empty unless the endpoint
             asks for them.
         value_at_data_point:
@@ -267035,6 +268951,38 @@ components:
       - properties
       - type
       - value_at_data_point
+    SerializedMatchedRecording:
+      type: object
+      properties:
+        session_id:
+          type: string
+          description: ID of the session recording.
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/SerializedMatchedRecordingEvent'
+          description: Events of the recording that matched the query.
+      required:
+      - events
+      - session_id
+    SerializedMatchedRecordingEvent:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+          description: UUID of the matched event.
+        timestamp:
+          type: string
+          format: date-time
+          description: When the matched event happened.
+        window_id:
+          type: string
+          description: ID of the browser window the event was captured in.
+      required:
+      - timestamp
+      - uuid
+      - window_id
     SerializedPersonActor:
       type: object
       properties:
@@ -267054,8 +269002,7 @@ components:
         matched_recordings:
           type: array
           items:
-            type: object
-            additionalProperties: true
+            $ref: '#/components/schemas/SerializedMatchedRecording'
           description: Recordings that matched the query. Empty unless the endpoint
             asks for them.
         value_at_data_point:
@@ -267089,9 +269036,7 @@ components:
           format: date-time
           description: When the person was last seen.
         is_identified:
-          type:
-          - boolean
-          - 'null'
+          type: boolean
           description: Whether the person has been identified.
       required:
       - created_at
@@ -269573,9 +271518,11 @@ components:
       - $ref: '#/components/schemas/EndpointBreakdownLimitExceededSignalExtra'
       - $ref: '#/components/schemas/SignalsScoutSignalExtra'
       - $ref: '#/components/schemas/CheckFailedSignalExtra'
+      - $ref: '#/components/schemas/MonitoringUnresolvedSignalExtra'
       - $ref: '#/components/schemas/LogsAlertStateChangeSignalExtra'
       - $ref: '#/components/schemas/ReplayVisionScannerFindingSignalExtra'
       - $ref: '#/components/schemas/AnalyticsAnomalyInvestigationSignalExtra'
+      - $ref: '#/components/schemas/AnalyticsAlertFiringSignalExtra'
       - $ref: '#/components/schemas/HealthCheckSignalExtra'
       - $ref: '#/components/schemas/EngineeringAnalyticsCIFlakyCheckSignalExtra'
       - $ref: '#/components/schemas/EngineeringAnalyticsCIBrokenDefaultBranchSignalExtra'
@@ -269719,6 +271666,7 @@ components:
             * `pganalyze` - pganalyze
             * `signals_scout` - signals_scout
             * `signals_check` - signals_check
+            * `user_authored` - user_authored
             * `logs` - logs
             * `health_checks` - health_checks
             * `replay_vision` - replay_vision
@@ -269841,6 +271789,7 @@ components:
             * `health_issue` - health_issue
             * `scanner_finding` - scanner_finding
             * `anomaly_investigation` - anomaly_investigation
+            * `alert_firing` - alert_firing
             * `feedback` - feedback
             * `review` - review
             * `ci_flaky_check` - ci_flaky_check
@@ -269848,6 +271797,7 @@ components:
             * `ci_duration_regression` - ci_duration_regression
             * `search_opportunity` - search_opportunity
             * `check_failed` - check_failed
+            * `monitoring_unresolved` - monitoring_unresolved
             * `incident` - incident
         source_id:
           type: string
@@ -274352,7 +276302,11 @@ components:
             max 100): the warehouse still syncs the whole Linear workspace, but only
             issues from those teams become signals. Omit the key or pass an empty
             list to use every team. Get the ids from the Linear integration''s teams
-            endpoint.'
+            endpoint. The product analytics source (`source_product=analytics`, `source_type=anomaly_investigation`)
+            accepts `alert_scope`: `investigated_only` (default) turns only insight
+            alerts that the investigation agent confirmed into signals, and `all_firing_alerts`
+            also includes alerts without the investigation agent. Other sources reject
+            this key.'
         config_set:
           type: object
           additionalProperties: true
@@ -274482,6 +276436,7 @@ components:
       - pganalyze
       - signals_scout
       - signals_check
+      - user_authored
       - logs
       - health_checks
       - replay_vision
@@ -274596,6 +276551,7 @@ components:
         * `pganalyze` - pganalyze
         * `signals_scout` - signals_scout
         * `signals_check` - signals_check
+        * `user_authored` - user_authored
         * `logs` - logs
         * `health_checks` - health_checks
         * `replay_vision` - replay_vision
@@ -274709,6 +276665,7 @@ components:
       - pganalyze
       - signals_scout
       - signals_check
+      - user_authored
       - logs
       - health_checks
       - endpoints
@@ -274823,6 +276780,7 @@ components:
         * `pganalyze` - pganalyze
         * `signals_scout` - Signals scout
         * `signals_check` - Report check
+        * `user_authored` - Team member
         * `logs` - Logs
         * `health_checks` - Health checks
         * `endpoints` - Endpoints
@@ -274948,6 +276906,7 @@ components:
       - health_issue
       - scanner_finding
       - anomaly_investigation
+      - alert_firing
       - feedback
       - review
       - ci_flaky_check
@@ -274955,6 +276914,7 @@ components:
       - ci_duration_regression
       - search_opportunity
       - check_failed
+      - monitoring_unresolved
       - incident
       type: string
       description: |-
@@ -274974,6 +276934,7 @@ components:
         * `health_issue` - health_issue
         * `scanner_finding` - scanner_finding
         * `anomaly_investigation` - anomaly_investigation
+        * `alert_firing` - alert_firing
         * `feedback` - feedback
         * `review` - review
         * `ci_flaky_check` - ci_flaky_check
@@ -274981,6 +276942,7 @@ components:
         * `ci_duration_regression` - ci_duration_regression
         * `search_opportunity` - search_opportunity
         * `check_failed` - check_failed
+        * `monitoring_unresolved` - monitoring_unresolved
         * `incident` - incident
     SignalTeamConfig:
       type: object
@@ -278289,6 +280251,22 @@ components:
       - app_slug
       - authorize_url
       - install_url
+    StamphogOwnersFile:
+      type: object
+      description: Whether a repository can use reviewer requests, which read ownership
+        from its owners.yaml.
+      properties:
+        owners_file:
+          allOf:
+          - $ref: '#/components/schemas/OwnersFileStatusEnum'
+          description: |-
+            Whether the default branch has a root owners.yaml: 'found', 'missing', or 'unavailable' when the check could not ask GitHub (no installation, or GitHub answered with an error).
+
+            * `found` - Found
+            * `missing` - Missing
+            * `unavailable` - Unavailable
+      required:
+      - owners_file
     StamphogPullRequest:
       type: object
       properties:
@@ -278413,6 +280391,16 @@ components:
           type: string
           description: Pull request label that triggers a review when review_mode
             is 'label'. Defaults to 'stamphog'.
+        routing_mode:
+          allOf:
+          - $ref: '#/components/schemas/RoutingModeEnum'
+          readOnly: true
+          description: |-
+            When stamphog requests reviews from the code owners in the repository's owners.yaml: 'off' (the default) never; 'always' when a pull request opens ready for review or is marked ready; 'fallback' only when stamphog does not approve, where an approval requests only the owners of sensitive and new paths.
+
+            * `off` - Off
+            * `always` - Always
+            * `fallback` - When stamphog does not approve
         user_access_level:
           type:
           - string
@@ -278420,7 +280408,8 @@ components:
           readOnly: true
           description: The caller's access level on the stamphog resource, resolved
             for the team that owns this row. 'editor' can turn reviews on. 'manager'
-            is required to turn them off or to change review_mode or trigger_label.
+            is required to turn them off or to change review_mode, trigger_label or
+            routing_mode.
         created_at:
           type: string
           format: date-time
@@ -278436,6 +280425,7 @@ components:
       - installation_id
       - repository
       - review_mode
+      - routing_mode
       - updated_at
       - user_access_level
     StamphogRepoConfigWrite:
@@ -278477,6 +280467,15 @@ components:
           type: string
           description: Pull request label that triggers a review when review_mode
             is 'label'. Defaults to 'stamphog'.
+        routing_mode:
+          allOf:
+          - $ref: '#/components/schemas/RoutingModeEnum'
+          description: |-
+            When stamphog requests reviews from the code owners in the repository's owners.yaml: 'off' (the default) never; 'always' when a pull request opens ready for review or is marked ready; 'fallback' only when stamphog does not approve, where an approval requests only the owners of sensitive and new paths.
+
+            * `off` - Off
+            * `always` - Always
+            * `fallback` - When stamphog does not approve
       required:
       - repository
     StamphogSyncInstallationRequest:
@@ -290097,6 +292096,28 @@ components:
       - role
       - type
       - user
+    TicketAttachment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: ID of the stored file.
+        url:
+          type: string
+          description: Public download URL of the stored file.
+        name:
+          type: string
+          description: Sanitized file name.
+        content_type:
+          type: string
+          description: Stored content type. Inline-safe images come back as their
+            decoded image type.
+      required:
+      - content_type
+      - id
+      - name
+      - url
     TicketChannelFilterEnum:
       enum:
       - widget
@@ -292903,6 +294924,62 @@ components:
       - repo
       title: TraceGit
       type: object
+    TraceHumanReview:
+      properties:
+        reviewedBy:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: The display name of whoever last saved the review, or null
+            when that user was removed.
+          title: Reviewedby
+        reviewedAt:
+          description: When the review was last saved.
+          format: date-time
+          title: Reviewedat
+          type: string
+        comment:
+          anyOf:
+          - type: string
+          - type: 'null'
+          description: The reviewer's reasoning, if any.
+          title: Comment
+        scores:
+          description: Ordered by scorer name. Empty when the review only marks the
+            trace as reviewed.
+          items:
+            $ref: '#/components/schemas/TraceHumanReviewScore'
+          title: Scores
+          type: array
+      required:
+      - reviewedBy
+      - reviewedAt
+      - comment
+      - scores
+      title: TraceHumanReview
+      type: object
+    TraceHumanReviewScore:
+      properties:
+        name:
+          description: The scorer's name.
+          title: Name
+          type: string
+        value:
+          description: 'The saved score as a reviewer reads it: option labels joined
+            by commas, a number, or the scorer''s yes or no label.'
+          title: Value
+          type: string
+        label:
+          description: 'The scorer''s name and the score together, such as `Tone:
+            4.5`.'
+          title: Label
+          type: string
+      required:
+      - name
+      - value
+      - label
+      title: TraceHumanReviewScore
+      type: object
     TraceNeighborsQuery:
       additionalProperties: false
       properties:
@@ -293659,6 +295736,27 @@ components:
             If omitted, any pending queue item for the same trace is cleared.
       required:
       - trace_id
+    TraceReviewQueueAssignment:
+      properties:
+        id:
+          description: The review queue's id.
+          title: Id
+          type: string
+        name:
+          description: The review queue's name.
+          title: Name
+          type: string
+        itemId:
+          description: The queue item that holds the trace, for moving or removing
+            it.
+          title: Itemid
+          type: string
+      required:
+      - id
+      - name
+      - itemId
+      title: TraceReviewQueueAssignment
+      type: object
     TraceReviewScore:
       type: object
       properties:
@@ -293779,6 +295877,26 @@ components:
           description: Boolean value selected for this score.
       required:
       - definition_id
+    TraceReviewStatus:
+      properties:
+        review:
+          anyOf:
+          - $ref: '#/components/schemas/TraceHumanReview'
+          - type: 'null'
+          description: The trace's human review, or null when it has none or the user
+            may not see it.
+        queue:
+          anyOf:
+          - $ref: '#/components/schemas/TraceReviewQueueAssignment'
+          - type: 'null'
+          description: The review queue the trace waits in, or null when it waits
+            in none the user may see. Saving a review normally takes the trace out
+            of its queue.
+      required:
+      - review
+      - queue
+      title: TraceReviewStatus
+      type: object
     TraceSearchMatch:
       properties:
         nodeId:
@@ -309885,6 +312003,184 @@ components:
       - field
       - from_suggestion
       - step_name
+    WorkloadClaim:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The claim's name in the provider's OIDC token.
+        label:
+          type: string
+          description: What to call the claim in the UI.
+        help_text:
+          type: string
+          description: A hint that says where to find the claim's value.
+      required:
+      - help_text
+      - label
+      - name
+    WorkloadClaimLabels:
+      type: object
+      properties:
+        subject:
+          type: string
+          description: What the provider calls the subject, for example Repository
+            ID.
+        subject_name:
+          type: string
+          description: What the provider calls the subject name, for example Repository.
+        conditions:
+          type: object
+          additionalProperties:
+            type: string
+          description: The label of each condition claim the provider allows, keyed
+            by claim name.
+      required:
+      - conditions
+      - subject
+      - subject_name
+    WorkloadProvider:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Stable identifier of the provider.
+        name:
+          type: string
+          description: Display name of the provider.
+        issuer:
+          type: string
+          description: OIDC issuer a policy for this provider uses.
+        docs_url:
+          type: string
+          description: Where to read how to set the provider up.
+        subject_claim:
+          allOf:
+          - $ref: '#/components/schemas/WorkloadClaim'
+          description: The claim that carries the workload's immutable ID.
+        subject_name_claim:
+          allOf:
+          - $ref: '#/components/schemas/WorkloadClaim'
+          description: The claim that carries the workload's readable name.
+        condition_claims:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkloadClaim'
+          description: The claims a policy can require an exact value for, in display
+            order.
+      required:
+      - condition_claims
+      - docs_url
+      - issuer
+      - key
+      - name
+      - subject_claim
+      - subject_name_claim
+    WorkloadProvidersResponse:
+      type: object
+      properties:
+        supported:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkloadProvider'
+          description: Providers a policy can trust.
+        grantable_scopes:
+          type: array
+          items:
+            type: string
+          description: Every scope a policy's ceiling may hold.
+        risky_scopes:
+          type: object
+          additionalProperties:
+            type: string
+          description: What each grantable risky scope lets a token do, keyed by scope.
+            Show it so people add the scope with care.
+      required:
+      - grantable_scopes
+      - risky_scopes
+      - supported
+    WorkloadTrustPolicy:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          description: A name that says what the policy is for.
+          maxLength: 200
+        issuer:
+          type: string
+          description: The OIDC issuer of the workload provider, from the list of
+            supported providers.
+          maxLength: 255
+        provider:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          description: The key of the workload provider the issuer belongs to.
+        subject_name:
+          type: string
+          description: The workload's human-readable name, from the provider's subject
+            name claim, for example a repository's full name. Matched exactly.
+          maxLength: 255
+        subject:
+          type: string
+          description: The workload's immutable ID, from the provider's subject claim,
+            for example a repository ID. Matched exactly together with the name, so
+            a deleted and re-created workload with the same name does not match.
+          maxLength: 255
+        conditions:
+          type: object
+          additionalProperties:
+            type: string
+          description: Claims the token must carry, as claim name to exact value,
+            for example a branch or an environment. Only the provider's condition
+            claims are allowed. An empty value removes the condition.
+        claim_labels:
+          allOf:
+          - $ref: '#/components/schemas/WorkloadClaimLabels'
+          readOnly: true
+          description: How the provider names the subject, the subject name and each
+            condition claim, for display.
+        scopes:
+          type: array
+          items:
+            type: string
+            maxLength: 100
+          description: The scopes every token minted under this policy carries. Scopes
+            that manage credentials or access are refused.
+        enabled:
+          type: boolean
+          description: Whether the policy can mint tokens. Disabling it cuts off its
+            tokens.
+        created_by:
+          oneOf:
+          - $ref: '#/components/schemas/UserBasic'
+          - type: 'null'
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - claim_labels
+      - created_at
+      - created_by
+      - id
+      - issuer
+      - name
+      - provider
+      - scopes
+      - subject
+      - subject_name
+      - updated_at
     WrikeTaskSignalExtra:
       additionalProperties: false
       properties:
@@ -313163,9 +315459,8 @@ components:
         aggregation:
           allOf:
           - $ref: '#/components/schemas/MetricQueryAggregationEnum'
-          default: sum
           description: |-
-            Aggregation applied per time bucket, always across series rather than across raw samples. 'sum', 'avg', 'min', 'max' and 'p95' reduce each series to its last sample in the bucket and then combine those, so the result does not scale with the scrape rate; 'count' is the number of series that reported. 'rate' (per-second) and 'increase' are counter-aware: per-series deltas with Prometheus counter-reset handling, temporality-aware (delta-temporality samples count as-is). 'histogram_quantile' interpolates from OTel histogram buckets and requires 'quantile'. 'none' skips the aggregation and returns one series per label set, at most 100, using each series' last sample per bucket; it cannot be combined with 'groupBy'.
+            Defaults to 'sum'. Aggregation applied per time bucket, always across series rather than across raw samples. 'sum', 'avg', 'min', 'max' and 'p95' reduce each series to its last sample in the bucket and then combine those, so the result does not scale with the scrape rate; 'count' is the number of series that reported. 'rate' (per-second) and 'increase' are counter-aware: per-series deltas with Prometheus counter-reset handling, temporality-aware (delta-temporality samples count as-is). 'histogram_quantile' interpolates from OTel histogram buckets and requires 'quantile'. 'none' skips the aggregation and returns one series per label set, at most 100, using each series' last sample per bucket; it cannot be combined with 'groupBy'.
 
             * `none` - none
             * `sum` - sum
@@ -313238,6 +315533,18 @@ components:
             point, e.g. '(a - b) / a'. Supports + - * / and parentheses; division
             by zero yields 0. When set, only the formula result series are returned.
           maxLength: 512
+        promql:
+          type:
+          - string
+          - 'null'
+          description: PromQL expression, run as a range query over the request's
+            time grid, e.g. 'sum by (job) (rate(http_requests_total[5m]))'. Use it
+            to run an alert or runbook expression as written. Mutually exclusive with
+            'metricName' and 'clauses'; put label selectors and grouping in the expression
+            instead of 'filters' and 'groupBy'. In PromQL, service.name is service_name
+            and other label names with dots need quotes. A bucket that a series did
+            not report is null, not zero.
+          maxLength: 8192
         dateFrom:
           type: string
           description: Lower bound (inclusive) for the query range. ISO 8601, or a
@@ -316883,6 +319190,7 @@ tags:
 - name: workflow_people_imports
 - name: workflow_sending_rules
 - name: workflow_setup
+- name: workload_trust_policies
 x-tagGroups:
 - name: All endpoints
   tags:
@@ -317112,3 +319420,4 @@ x-tagGroups:
   - workflow_people_imports
   - workflow_sending_rules
   - workflow_setup
+  - workload_trust_policies

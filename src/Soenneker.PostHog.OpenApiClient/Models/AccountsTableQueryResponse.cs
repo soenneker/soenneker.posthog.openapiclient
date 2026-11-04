@@ -117,12 +117,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers? Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers? _explicitNullValueModifiers = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers? Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers? _explicitNullValueModifiers = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers _explicitNullValueModifiers = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers _explicitNullValueModifiers = default!;
 #endif
         /// <summary>The offset property</summary>
         public int? Offset { get => _explicitNullValueOffset; set { _explicitNullValueOffset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("offset"); else _explicitNullProperties?.Remove("offset"); } }
@@ -233,7 +233,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryResponseKind>(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
                 { "metricsResults", n => { MetricsResults = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
                 { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseQueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseQueryStatus.CreateFromDiscriminatorValue); } },
                 { "relationshipDefinitions", n => { RelationshipDefinitions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipDefinition>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipDefinition.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -260,7 +260,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryResponseKind>("kind", Kind);
             writer.WriteIntValue("limit", Limit);
             writer.WriteCollectionOfPrimitiveValues<double?>("metricsResults", MetricsResults);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers>("modifiers", Modifiers);
             writer.WriteIntValue("offset", Offset);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseQueryStatus>("query_status", QueryStatus);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableRelationshipDefinition>("relationshipDefinitions", RelationshipDefinitions);

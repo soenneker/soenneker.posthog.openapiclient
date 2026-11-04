@@ -76,12 +76,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Modifiers used when performing the query</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers? Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers? _explicitNullValueModifiers = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers? Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers? _explicitNullValueModifiers = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers _explicitNullValueModifiers = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers Modifiers { get => _explicitNullValueModifiers; set { _explicitNullValueModifiers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modifiers"); else _explicitNullProperties?.Remove("modifiers"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers _explicitNullValueModifiers = default!;
 #endif
         /// <summary>Cursor for fetching the next page of results</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -190,7 +190,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "hasMore", n => { HasMore = n.GetBoolValue(); } },
                 { "hogql", n => { Hogql = n.GetStringValue(); } },
                 { "limit", n => { Limit = n.GetIntValue(); } },
-                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers.CreateFromDiscriminatorValue); } },
+                { "modifiers", n => { Modifiers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers>(global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers.CreateFromDiscriminatorValue); } },
                 { "nextCursor", n => { NextCursor = n.GetStringValue(); } },
                 { "offset", n => { Offset = n.GetIntValue(); } },
                 { "query_status", n => { QueryStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseQueryStatus>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseQueryStatus.CreateFromDiscriminatorValue); } },
@@ -213,7 +213,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("hasMore", HasMore);
             writer.WriteStringValue("hogql", Hogql);
             writer.WriteIntValue("limit", Limit);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountUsersQueryModifiers>("modifiers", Modifiers);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryModifiers>("modifiers", Modifiers);
             writer.WriteStringValue("nextCursor", NextCursor);
             writer.WriteIntValue("offset", Offset);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsQueryResponseQueryStatus>("query_status", QueryStatus);

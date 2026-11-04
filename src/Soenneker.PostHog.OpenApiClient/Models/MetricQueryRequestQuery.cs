@@ -38,6 +38,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("metricName") is { } nullNodeMetricName && nullNodeMetricName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricName = null;
             if (parseNode.GetChildNode("metricType") is null) { _explicitNullValueMetricType = default!; _explicitNullProperties?.Remove("metricType"); }
             else if (parseNode.GetChildNode("metricType") is { } nullNodeMetricType && nullNodeMetricType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricType = null;
+            if (parseNode.GetChildNode("promql") is null) { _explicitNullValuePromql = default!; _explicitNullProperties?.Remove("promql"); }
+            else if (parseNode.GetChildNode("promql") is { } nullNodePromql && nullNodePromql.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Promql = null;
             if (parseNode.GetChildNode("quantile") is null) { _explicitNullValueQuantile = default!; _explicitNullProperties?.Remove("quantile"); }
             else if (parseNode.GetChildNode("quantile") is { } nullNodeQuantile && nullNodeQuantile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quantile = null;
             if (parseNode.GetChildNode("rangeFunction") is null) { _explicitNullValueRangeFunction = default!; _explicitNullProperties?.Remove("rangeFunction"); }
@@ -139,6 +141,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseMetricType MetricType { get => _explicitNullValueMetricType; set { _explicitNullValueMetricType = value; AdditionalData?.Remove("metricType"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricType"); else _explicitNullProperties?.Remove("metricType"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseMetricType _explicitNullValueMetricType = default!;
 #endif
+        /// <summary>PromQL expression, run as a range query over the request&apos;s time grid, e.g. &apos;sum by (job) (rate(http_requests_total[5m]))&apos;. Use it to run an alert or runbook expression as written. Mutually exclusive with &apos;metricName&apos; and &apos;clauses&apos;; put label selectors and grouping in the expression instead of &apos;filters&apos; and &apos;groupBy&apos;. In PromQL, service.name is service_name and other label names with dots need quotes. A bucket that a series did not report is null, not zero.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Promql { get => _explicitNullValuePromql; set { _explicitNullValuePromql = value; AdditionalData?.Remove("promql"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("promql"); else _explicitNullProperties?.Remove("promql"); } }
+        private string? _explicitNullValuePromql = default!;
+#nullable restore
+#else
+        public string Promql { get => _explicitNullValuePromql; set { _explicitNullValuePromql = value; AdditionalData?.Remove("promql"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("promql"); else _explicitNullProperties?.Remove("promql"); } }
+        private string _explicitNullValuePromql = default!;
+#endif
         /// <summary>Quantile in (0, 1) for &apos;histogram_quantile&apos; (e.g. 0.95). Ignored for other aggregations.</summary>
         public double? Quantile { get => _explicitNullValueQuantile; set { _explicitNullValueQuantile = value; AdditionalData?.Remove("quantile"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantile"); else _explicitNullProperties?.Remove("quantile"); } }
         private double? _explicitNullValueQuantile = default!;
@@ -187,6 +199,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "interval", n => { Interval = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyInterval>(global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyInterval.CreateFromDiscriminatorValue); } },
                 { "metricName", n => { MetricName = n.GetStringValue(); } },
                 { "metricType", n => { MetricType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseMetricType>(global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseMetricType.CreateFromDiscriminatorValue); } },
+                { "promql", n => { Promql = n.GetStringValue(); } },
                 { "quantile", n => { Quantile = n.GetDoubleValue(); } },
                 { "rangeFunction", n => { RangeFunction = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseRangeFunction>(global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseRangeFunction.CreateFromDiscriminatorValue); } },
             };
@@ -208,6 +221,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricQueryBodyInterval>("interval", Interval);
             writer.WriteStringValue("metricName", MetricName);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseMetricType>("metricType", MetricType);
+            writer.WriteStringValue("promql", Promql);
             writer.WriteDoubleValue("quantile", Quantile);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricClauseRangeFunction>("rangeFunction", RangeFunction);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

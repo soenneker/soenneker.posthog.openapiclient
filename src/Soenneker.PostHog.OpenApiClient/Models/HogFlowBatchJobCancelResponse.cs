@@ -39,7 +39,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>In-flight runs of this batch not yet flagged. Non-zero on very large runs; call again.</summary>
         public int? Remaining { get => _explicitNullValueRemaining; set { _explicitNullValueRemaining = value; AdditionalData?.Remove("remaining"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remaining"); else _explicitNullProperties?.Remove("remaining"); } }
         private int? _explicitNullValueRemaining = default!;
-        /// <summary>* `waiting` - Waiting* `queued` - Queued* `active` - Active* `completed` - Completed* `cancelled` - Cancelled* `failed` - Failed</summary>
+        /// <summary>* `waiting` - Waiting* `queued` - Queued* `active` - Active* `completed` - Completed* `partially_failed` - Partially failed* `cancelled` - Cancelled* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCancelResponseStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobCancelResponseStatus? _explicitNullValueStatus = default!;
         /// <summary>

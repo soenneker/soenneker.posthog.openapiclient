@@ -114,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.M
             /// <summary>Time bucket size for the series. One of: hour, day, week. Defaults to &apos;day&apos;.* `hour` - hour* `day` - day* `week` - week</summary>
             [QueryParameter("interval")]
             public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionsMetricsRetrieveIntervalParameter? Interval { get; set; }
-            /// <summary>Comma-separated metric kinds to filter by, e.g. &apos;success,failure&apos;.</summary>
+            /// <summary>Comma-separated metric kinds to filter by, up to 50, e.g. &apos;success,failure&apos;. With breakdown_by=kind, each named kind is returned, as zeros when it has no rows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("kind")]
@@ -124,7 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_functions.Item.M
             [QueryParameter("kind")]
             public string Kind { get; set; }
 #endif
-            /// <summary>Comma-separated metric names to filter by.</summary>
+            /// <summary>Comma-separated metric names to filter by, up to 50. With breakdown_by=name, each named metric is returned, as zeros when it has no rows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("name")]

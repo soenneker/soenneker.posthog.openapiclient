@@ -33,6 +33,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Dataset this revision belongs to.</summary>
         public Guid? DatasetId { get; private set; }
+        /// <summary>Earliest expiry time of this dataset snapshot if unused.</summary>
+        public DateTimeOffset? ExpiresAt { get; private set; }
+        /// <summary>Whether this snapshot is within seven days of expiry.</summary>
+        public bool? ExpiringSoon { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The revision property</summary>
@@ -67,6 +71,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasVersionCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.CanvasVersionCreatedBy.CreateFromDiscriminatorValue); } },
                 { "dataset_id", n => { DatasetId = n.GetGuidValue(); } },
+                { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
+                { "expiring_soon", n => { ExpiringSoon = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "revision", n => { Revision = n.GetIntValue(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },

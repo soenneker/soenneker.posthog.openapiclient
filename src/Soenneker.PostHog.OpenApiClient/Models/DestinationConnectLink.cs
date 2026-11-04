@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("connect_token") is null) { _explicitNullValueConnectToken = default!; _explicitNullProperties?.Remove("connect_token"); }
+            else if (parseNode.GetChildNode("connect_token") is { } nullNodeConnectToken && nullNodeConnectToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectToken = null;
             if (parseNode.GetChildNode("connect_url") is null) { _explicitNullValueConnectUrl = default!; _explicitNullProperties?.Remove("connect_url"); }
             else if (parseNode.GetChildNode("connect_url") is { } nullNodeConnectUrl && nullNodeConnectUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectUrl = null;
             if (parseNode.GetChildNode("destination_type") is null) { _explicitNullValueDestinationType = default!; _explicitNullProperties?.Remove("destination_type"); }
             else if (parseNode.GetChildNode("destination_type") is { } nullNodeDestinationType && nullNodeDestinationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DestinationType = null;
+            if (parseNode.GetChildNode("expires_at") is null) { _explicitNullValueExpiresAt = default!; _explicitNullProperties?.Remove("expires_at"); }
+            else if (parseNode.GetChildNode("expires_at") is { } nullNodeExpiresAt && nullNodeExpiresAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpiresAt = null;
             if (parseNode.GetChildNode("instructions") is null) { _explicitNullValueInstructions = default!; _explicitNullProperties?.Remove("instructions"); }
             else if (parseNode.GetChildNode("instructions") is { } nullNodeInstructions && nullNodeInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Instructions = null;
             if (parseNode.GetChildNode("integration_kind") is null) { _explicitNullValueIntegrationKind = default!; _explicitNullProperties?.Remove("integration_kind"); }
@@ -29,6 +33,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Secret token in the link. Pass it to the connect link status endpoint to learn which integration the user saved. Only the user who asked for the link can read its status.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ConnectToken { get => _explicitNullValueConnectToken; set { _explicitNullValueConnectToken = value; AdditionalData?.Remove("connect_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connect_token"); else _explicitNullProperties?.Remove("connect_token"); } }
+        private string? _explicitNullValueConnectToken = default!;
+#nullable restore
+#else
+        public string ConnectToken { get => _explicitNullValueConnectToken; set { _explicitNullValueConnectToken = value; AdditionalData?.Remove("connect_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connect_token"); else _explicitNullProperties?.Remove("connect_token"); } }
+        private string _explicitNullValueConnectToken = default!;
+#endif
         /// <summary>Full URL to share with the user. It opens the connection form for this integration kind in PostHog, so credentials never pass through the agent or the chat.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -49,6 +63,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string DestinationType { get => _explicitNullValueDestinationType; set { _explicitNullValueDestinationType = value; AdditionalData?.Remove("destination_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destination_type"); else _explicitNullProperties?.Remove("destination_type"); } }
         private string _explicitNullValueDestinationType = default!;
 #endif
+        /// <summary>When the link stops accepting a new connection. Ask for a new link after this time.</summary>
+        public DateTimeOffset? ExpiresAt { get => _explicitNullValueExpiresAt; set { _explicitNullValueExpiresAt = value; AdditionalData?.Remove("expires_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_at"); else _explicitNullProperties?.Remove("expires_at"); } }
+        private DateTimeOffset? _explicitNullValueExpiresAt = default!;
         /// <summary>Next steps for the agent to relay to the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -94,8 +111,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "connect_token", n => { ConnectToken = n.GetStringValue(); } },
                 { "connect_url", n => { ConnectUrl = n.GetStringValue(); } },
                 { "destination_type", n => { DestinationType = n.GetStringValue(); } },
+                { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "integration_kind", n => { IntegrationKind = n.GetStringValue(); } },
             };
@@ -107,8 +126,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("connect_token", ConnectToken);
             writer.WriteStringValue("connect_url", ConnectUrl);
             writer.WriteStringValue("destination_type", DestinationType);
+            writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
             writer.WriteStringValue("instructions", Instructions);
             writer.WriteStringValue("integration_kind", IntegrationKind);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

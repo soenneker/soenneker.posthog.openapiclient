@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Ai_feedback;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Ai_human_outcome;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Attachments;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Messages;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Notes;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Reply;
@@ -28,6 +29,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Ticket
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Ai_human_outcome.Ai_human_outcomeRequestBuilder Ai_human_outcome
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Ai_human_outcome.Ai_human_outcomeRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The attachments property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Attachments.AttachmentsRequestBuilder Attachments
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.Attachments.AttachmentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The EmptyPathSegment property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Conversations.Tickets.Item.EmptyPathSegmentRequestBuilder EmptyPathSegment

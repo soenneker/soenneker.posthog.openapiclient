@@ -17,6 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("annotationsScope") is null) { _explicitNullValueAnnotationsScope = default!; _explicitNullProperties?.Remove("annotationsScope"); }
+            else if (parseNode.GetChildNode("annotationsScope") is { } nullNodeAnnotationsScope && nullNodeAnnotationsScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnnotationsScope = null;
             if (parseNode.GetChildNode("barGap") is null) { _explicitNullValueBarGap = default!; _explicitNullProperties?.Remove("barGap"); }
             else if (parseNode.GetChildNode("barGap") is { } nullNodeBarGap && nullNodeBarGap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BarGap = null;
             if (parseNode.GetChildNode("boxPlot") is null) { _explicitNullValueBoxPlot = default!; _explicitNullProperties?.Remove("boxPlot"); }
@@ -85,6 +87,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("yAxisAtZero") is { } nullNodeYAxisAtZero && nullNodeYAxisAtZero.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YAxisAtZero = null;
         }
 
+        /// <summary>Shows only the annotations saved at this level. Unset shows every level.</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope? AnnotationsScope { get => _explicitNullValueAnnotationsScope; set { _explicitNullValueAnnotationsScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("annotationsScope"); else _explicitNullProperties?.Remove("annotationsScope"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope? _explicitNullValueAnnotationsScope = default!;
         /// <summary>The barGap property</summary>
         public double? BarGap { get => _explicitNullValueBarGap; set { _explicitNullValueBarGap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("barGap"); else _explicitNullProperties?.Remove("barGap"); } }
         private double? _explicitNullValueBarGap = default!;
@@ -309,6 +314,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "annotationsScope", n => { AnnotationsScope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope>(); } },
                 { "barGap", n => { BarGap = n.GetDoubleValue(); } },
                 { "boxPlot", n => { BoxPlot = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsBoxPlot>(global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsBoxPlot.CreateFromDiscriminatorValue); } },
                 { "chartStyle", n => { ChartStyle = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsChartStyle>(global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsChartStyle.CreateFromDiscriminatorValue); } },
@@ -351,6 +357,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScope>("annotationsScope", AnnotationsScope);
             writer.WriteDoubleValue("barGap", BarGap);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsBoxPlot>("boxPlot", BoxPlot);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ChartSettingsChartStyle>("chartStyle", ChartStyle);

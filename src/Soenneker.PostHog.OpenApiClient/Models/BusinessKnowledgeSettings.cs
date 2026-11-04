@@ -26,6 +26,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>When true, PostHog learns reusable knowledge from public human replies on resolved support tickets. Requires Support to be enabled for this environment.</summary>
         public bool? LearnFromSupportEnabled { get => _explicitNullValueLearnFromSupportEnabled; set { _explicitNullValueLearnFromSupportEnabled = value; AdditionalData?.Remove("learn_from_support_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("learn_from_support_enabled"); else _explicitNullProperties?.Remove("learn_from_support_enabled"); } }
         private bool? _explicitNullValueLearnFromSupportEnabled = default!;
+        /// <summary>The last run of learning from past tickets. Null when none ran since learning was turned on.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.BusinessKnowledgeSettingsLearningBackfill? LearningBackfill { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.BusinessKnowledgeSettingsLearningBackfill LearningBackfill { get; private set; }
+#endif
         /// <summary>Whether Support is enabled for this environment. Learning cannot be turned on while this is false.</summary>
         public bool? SupportEnabled { get; private set; }
         /// <summary>
@@ -54,6 +62,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "learn_from_support_enabled", n => { LearnFromSupportEnabled = n.GetBoolValue(); } },
+                { "learning_backfill", n => { LearningBackfill = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BusinessKnowledgeSettingsLearningBackfill>(global::Soenneker.PostHog.OpenApiClient.Models.BusinessKnowledgeSettingsLearningBackfill.CreateFromDiscriminatorValue); } },
                 { "support_enabled", n => { SupportEnabled = n.GetBoolValue(); } },
             };
         }

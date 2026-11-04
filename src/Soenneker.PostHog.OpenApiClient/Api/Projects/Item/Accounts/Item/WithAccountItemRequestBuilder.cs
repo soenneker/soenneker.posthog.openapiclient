@@ -6,6 +6,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Custom_pro
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Email_threads;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Meetings;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Notebooks;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Persons;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Presence;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Relationships;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Summaries;
@@ -46,6 +47,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Notebooks.NotebooksRequestBuilder Notebooks
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Notebooks.NotebooksRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The persons property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Persons.PersonsRequestBuilder Persons
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Persons.PersonsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The presence property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Accounts.Item.Presence.PresenceRequestBuilder Presence

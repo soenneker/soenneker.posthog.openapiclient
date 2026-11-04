@@ -17,12 +17,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("create_missing_persons") is null) { _explicitNullValueCreateMissingPersons = default!; _explicitNullProperties?.Remove("create_missing_persons"); }
+            else if (parseNode.GetChildNode("create_missing_persons") is { } nullNodeCreateMissingPersons && nullNodeCreateMissingPersons.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreateMissingPersons = null;
+            if (parseNode.GetChildNode("dry_run") is null) { _explicitNullValueDryRun = default!; _explicitNullProperties?.Remove("dry_run"); }
+            else if (parseNode.GetChildNode("dry_run") is { } nullNodeDryRun && nullNodeDryRun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DryRun = null;
+            if (parseNode.GetChildNode("import_id") is null) { _explicitNullValueImportId = default!; _explicitNullProperties?.Remove("import_id"); }
+            else if (parseNode.GetChildNode("import_id") is { } nullNodeImportId && nullNodeImportId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImportId = null;
             if (parseNode.GetChildNode("subscriptions") is null) { _explicitNullValueSubscriptions = default!; _explicitNullProperties?.Remove("subscriptions"); }
             else if (parseNode.GetChildNode("subscriptions") is { } nullNodeSubscriptions && nullNodeSubscriptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Subscriptions = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Create a person for a distinct ID that has none. Off by default, because a distinct ID that does not match your app&apos;s identify call creates a person that never gets a push.</summary>
+        public bool? CreateMissingPersons { get => _explicitNullValueCreateMissingPersons; set { _explicitNullValueCreateMissingPersons = value; AdditionalData?.Remove("create_missing_persons"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("create_missing_persons"); else _explicitNullProperties?.Remove("create_missing_persons"); } }
+        private bool? _explicitNullValueCreateMissingPersons = default!;
+        /// <summary>Check every row and report what would fail, without storing anything. Run this first and fix the failed rows before importing.</summary>
+        public bool? DryRun { get => _explicitNullValueDryRun; set { _explicitNullValueDryRun = value; AdditionalData?.Remove("dry_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dry_run"); else _explicitNullProperties?.Remove("dry_run"); } }
+        private bool? _explicitNullValueDryRun = default!;
+        /// <summary>A new UUID for each batch. Send the same value when you retry that batch, so a retried batch can be recognized as a repeat.</summary>
+        public Guid? ImportId { get => _explicitNullValueImportId; set { _explicitNullValueImportId = value; AdditionalData?.Remove("import_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("import_id"); else _explicitNullProperties?.Remove("import_id"); } }
+        private Guid? _explicitNullValueImportId = default!;
         /// <summary>Up to 1000 devices to register on this push channel. List a person once per device.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -39,6 +54,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public PushTokenImportRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            CreateMissingPersons = false;
+            DryRun = false;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -58,6 +75,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "create_missing_persons", n => { CreateMissingPersons = n.GetBoolValue(); } },
+                { "dry_run", n => { DryRun = n.GetBoolValue(); } },
+                { "import_id", n => { ImportId = n.GetGuidValue(); } },
                 { "subscriptions", n => { Subscriptions = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PushTokenSubscription>(global::Soenneker.PostHog.OpenApiClient.Models.PushTokenSubscription.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -68,6 +88,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("create_missing_persons", CreateMissingPersons);
+            writer.WriteBoolValue("dry_run", DryRun);
+            writer.WriteGuidValue("import_id", ImportId);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PushTokenSubscription>("subscriptions", Subscriptions);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

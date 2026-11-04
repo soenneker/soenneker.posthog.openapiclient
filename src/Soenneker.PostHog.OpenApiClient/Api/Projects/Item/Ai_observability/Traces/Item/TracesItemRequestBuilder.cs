@@ -8,6 +8,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Feedback;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Nodes;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Pull_request;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Review;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Search;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Summary;
 using System.Collections.Generic;
@@ -56,6 +57,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Tra
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Pull_request.Pull_requestRequestBuilder Pull_request
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Pull_request.Pull_requestRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The review property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Review.ReviewRequestBuilder Review
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Review.ReviewRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The search property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Ai_observability.Traces.Item.Search.SearchRequestBuilder Search

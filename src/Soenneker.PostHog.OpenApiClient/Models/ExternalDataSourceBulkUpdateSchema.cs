@@ -34,6 +34,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("incremental_field") is { } nullNodeIncrementalField && nullNodeIncrementalField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncrementalField = null;
             if (parseNode.GetChildNode("incremental_field_type") is null) { _explicitNullValueIncrementalFieldType = default!; _explicitNullProperties?.Remove("incremental_field_type"); }
             else if (parseNode.GetChildNode("incremental_field_type") is { } nullNodeIncrementalFieldType && nullNodeIncrementalFieldType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncrementalFieldType = null;
+            if (parseNode.GetChildNode("masked_columns") is null) { _explicitNullValueMaskedColumns = default!; _explicitNullProperties?.Remove("masked_columns"); }
+            else if (parseNode.GetChildNode("masked_columns") is { } nullNodeMaskedColumns && nullNodeMaskedColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaskedColumns = null;
             if (parseNode.GetChildNode("primary_key_columns") is null) { _explicitNullValuePrimaryKeyColumns = default!; _explicitNullProperties?.Remove("primary_key_columns"); }
             else if (parseNode.GetChildNode("primary_key_columns") is { } nullNodePrimaryKeyColumns && nullNodePrimaryKeyColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrimaryKeyColumns = null;
             if (parseNode.GetChildNode("row_filters") is null) { _explicitNullValueRowFilters = default!; _explicitNullProperties?.Remove("row_filters"); }
@@ -103,6 +105,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string IncrementalFieldType { get => _explicitNullValueIncrementalFieldType; set { _explicitNullValueIncrementalFieldType = value; AdditionalData?.Remove("incremental_field_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental_field_type"); else _explicitNullProperties?.Remove("incremental_field_type"); } }
         private string _explicitNullValueIncrementalFieldType = default!;
+#endif
+        /// <summary>Columns whose values are replaced with a one-way digest at sync time. Null means mask nothing. Any change starts a full resync of the table.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? MaskedColumns { get => _explicitNullValueMaskedColumns; set { _explicitNullValueMaskedColumns = value; AdditionalData?.Remove("masked_columns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masked_columns"); else _explicitNullProperties?.Remove("masked_columns"); } }
+        private List<string>? _explicitNullValueMaskedColumns = default!;
+#nullable restore
+#else
+        public List<string> MaskedColumns { get => _explicitNullValueMaskedColumns; set { _explicitNullValueMaskedColumns = value; AdditionalData?.Remove("masked_columns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masked_columns"); else _explicitNullProperties?.Remove("masked_columns"); } }
+        private List<string> _explicitNullValueMaskedColumns = default!;
 #endif
         /// <summary>Column names for primary key deduplication.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -185,6 +197,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "incremental_field", n => { IncrementalField = n.GetStringValue(); } },
                 { "incremental_field_type", n => { IncrementalFieldType = n.GetStringValue(); } },
+                { "masked_columns", n => { MaskedColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "primary_key_columns", n => { PrimaryKeyColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "row_filters", n => { RowFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "should_sync", n => { ShouldSync = n.GetBoolValue(); } },
@@ -208,6 +221,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("incremental_field", IncrementalField);
             writer.WriteStringValue("incremental_field_type", IncrementalFieldType);
+            writer.WriteCollectionOfPrimitiveValues<string>("masked_columns", MaskedColumns);
             writer.WriteCollectionOfPrimitiveValues<string>("primary_key_columns", PrimaryKeyColumns);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceBulkUpdateSchemaRowFiltersItem>("row_filters", RowFilters);
             writer.WriteBoolValue("should_sync", ShouldSync);

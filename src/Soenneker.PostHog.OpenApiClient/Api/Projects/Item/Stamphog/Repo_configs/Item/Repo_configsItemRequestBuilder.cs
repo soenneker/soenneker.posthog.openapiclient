@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Item.Owners_file;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -18,6 +19,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_config
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Item.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Item.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The owners_file property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Item.Owners_file.Owners_fileRequestBuilder Owners_file
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Item.Owners_file.Owners_fileRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Stamphog.Repo_configs.Item.Repo_configsItemRequestBuilder"/> and sets the default values.

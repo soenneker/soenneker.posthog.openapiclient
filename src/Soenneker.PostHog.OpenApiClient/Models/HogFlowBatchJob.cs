@@ -50,7 +50,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         private Guid? _explicitNullValueHogFlow = default!;
         /// <summary>ID of the batch run.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>* `waiting` - Waiting* `queued` - Queued* `active` - Active* `completed` - Completed* `cancelled` - Cancelled* `failed` - Failed</summary>
+        /// <summary>* `waiting` - Waiting* `queued` - Queued* `active` - Active* `completed` - Completed* `partially_failed` - Partially failed* `cancelled` - Cancelled* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.HogFlowBatchJobStatus? _explicitNullValueStatus = default!;
         /// <summary>When the batch run was last updated.</summary>

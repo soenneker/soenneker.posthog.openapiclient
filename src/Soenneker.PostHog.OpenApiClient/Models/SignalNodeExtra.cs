@@ -46,6 +46,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("asset_uuid") is { } nullNodeAssetUuid && nullNodeAssetUuid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssetUuid = null;
             if (parseNode.GetChildNode("assignee") is null) { _explicitNullValueAssignee = default!; _explicitNullProperties?.Remove("assignee"); }
             else if (parseNode.GetChildNode("assignee") is { } nullNodeAssignee && nullNodeAssignee.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Assignee = null;
+            if (parseNode.GetChildNode("attempt_id") is null) { _explicitNullValueAttemptId = default!; _explicitNullProperties?.Remove("attempt_id"); }
+            else if (parseNode.GetChildNode("attempt_id") is { } nullNodeAttemptId && nullNodeAttemptId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttemptId = null;
             if (parseNode.GetChildNode("author_association") is null) { _explicitNullValueAuthorAssociation = default!; _explicitNullProperties?.Remove("author_association"); }
             else if (parseNode.GetChildNode("author_association") is { } nullNodeAuthorAssociation && nullNodeAuthorAssociation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthorAssociation = null;
             if (parseNode.GetChildNode("author_login") is null) { _explicitNullValueAuthorLogin = default!; _explicitNullProperties?.Remove("author_login"); }
@@ -60,6 +62,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("board_id") is { } nullNodeBoardId && nullNodeBoardId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BoardId = null;
             if (parseNode.GetChildNode("branch") is null) { _explicitNullValueBranch = default!; _explicitNullProperties?.Remove("branch"); }
             else if (parseNode.GetChildNode("branch") is { } nullNodeBranch && nullNodeBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Branch = null;
+            if (parseNode.GetChildNode("breaches") is null) { _explicitNullValueBreaches = default!; _explicitNullProperties?.Remove("breaches"); }
+            else if (parseNode.GetChildNode("breaches") is { } nullNodeBreaches && nullNodeBreaches.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Breaches = null;
             if (parseNode.GetChildNode("breakdown_limit") is null) { _explicitNullValueBreakdownLimit = default!; _explicitNullProperties?.Remove("breakdown_limit"); }
             else if (parseNode.GetChildNode("breakdown_limit") is { } nullNodeBreakdownLimit && nullNodeBreakdownLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownLimit = null;
             if (parseNode.GetChildNode("bugs_found") is null) { _explicitNullValueBugsFound = default!; _explicitNullProperties?.Remove("bugs_found"); }
@@ -182,6 +186,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("engagement_id") is { } nullNodeEngagementId && nullNodeEngagementId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EngagementId = null;
             if (parseNode.GetChildNode("environment") is null) { _explicitNullValueEnvironment = default!; _explicitNullProperties?.Remove("environment"); }
             else if (parseNode.GetChildNode("environment") is { } nullNodeEnvironment && nullNodeEnvironment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Environment = null;
+            if (parseNode.GetChildNode("episode_started_at") is null) { _explicitNullValueEpisodeStartedAt = default!; _explicitNullProperties?.Remove("episode_started_at"); }
+            else if (parseNode.GetChildNode("episode_started_at") is { } nullNodeEpisodeStartedAt && nullNodeEpisodeStartedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EpisodeStartedAt = null;
             if (parseNode.GetChildNode("error_class") is null) { _explicitNullValueErrorClass = default!; _explicitNullProperties?.Remove("error_class"); }
             else if (parseNode.GetChildNode("error_class") is { } nullNodeErrorClass && nullNodeErrorClass.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorClass = null;
             if (parseNode.GetChildNode("error_hash") is null) { _explicitNullValueErrorHash = default!; _explicitNullProperties?.Remove("error_hash"); }
@@ -194,6 +200,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("evaluation_description") is { } nullNodeEvaluationDescription && nullNodeEvaluationDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationDescription = null;
             if (parseNode.GetChildNode("evaluation_id") is null) { _explicitNullValueEvaluationId = default!; _explicitNullProperties?.Remove("evaluation_id"); }
             else if (parseNode.GetChildNode("evaluation_id") is { } nullNodeEvaluationId && nullNodeEvaluationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationId = null;
+            if (parseNode.GetChildNode("evaluation_key") is null) { _explicitNullValueEvaluationKey = default!; _explicitNullProperties?.Remove("evaluation_key"); }
+            else if (parseNode.GetChildNode("evaluation_key") is { } nullNodeEvaluationKey && nullNodeEvaluationKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationKey = null;
             if (parseNode.GetChildNode("evaluation_name") is null) { _explicitNullValueEvaluationName = default!; _explicitNullProperties?.Remove("evaluation_name"); }
             else if (parseNode.GetChildNode("evaluation_name") is { } nullNodeEvaluationName && nullNodeEvaluationName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationName = null;
             if (parseNode.GetChildNode("event_count") is null) { _explicitNullValueEventCount = default!; _explicitNullProperties?.Remove("event_count"); }
@@ -294,6 +302,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("insight_short_id") is { } nullNodeInsightShortId && nullNodeInsightShortId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsightShortId = null;
             if (parseNode.GetChildNode("internet_exposure") is null) { _explicitNullValueInternetExposure = default!; _explicitNullProperties?.Remove("internet_exposure"); }
             else if (parseNode.GetChildNode("internet_exposure") is { } nullNodeInternetExposure && nullNodeInternetExposure.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InternetExposure = null;
+            if (parseNode.GetChildNode("investigation_id") is null) { _explicitNullValueInvestigationId = default!; _explicitNullProperties?.Remove("investigation_id"); }
+            else if (parseNode.GetChildNode("investigation_id") is { } nullNodeInvestigationId && nullNodeInvestigationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InvestigationId = null;
             if (parseNode.GetChildNode("is_crash") is null) { _explicitNullValueIsCrash = default!; _explicitNullProperties?.Remove("is_crash"); }
             else if (parseNode.GetChildNode("is_crash") is { } nullNodeIsCrash && nullNodeIsCrash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsCrash = null;
             if (parseNode.GetChildNode("is_recommended") is null) { _explicitNullValueIsRecommended = default!; _explicitNullProperties?.Remove("is_recommended"); }
@@ -793,6 +803,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Assignee { get => _explicitNullValueAssignee; set { _explicitNullValueAssignee = value; AdditionalData?.Remove("assignee"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee"); else _explicitNullProperties?.Remove("assignee"); } }
         private string _explicitNullValueAssignee = default!;
 #endif
+        /// <summary>Monitoring attempt that durably requested this investigation.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? AttemptId { get => _explicitNullValueAttemptId; set { _explicitNullValueAttemptId = value; AdditionalData?.Remove("attempt_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempt_id"); else _explicitNullProperties?.Remove("attempt_id"); } }
+        private string? _explicitNullValueAttemptId = default!;
+#nullable restore
+#else
+        public string AttemptId { get => _explicitNullValueAttemptId; set { _explicitNullValueAttemptId = value; AdditionalData?.Remove("attempt_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempt_id"); else _explicitNullProperties?.Remove("attempt_id"); } }
+        private string _explicitNullValueAttemptId = default!;
+#endif
         /// <summary>The author_association property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -841,6 +861,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Branch { get => _explicitNullValueBranch; set { _explicitNullValueBranch = value; AdditionalData?.Remove("branch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("branch"); else _explicitNullProperties?.Remove("branch"); } }
         private string _explicitNullValueBranch = default!;
+#endif
+        /// <summary>The breaches property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Breaches { get => _explicitNullValueBreaches; set { _explicitNullValueBreaches = value; AdditionalData?.Remove("breaches"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breaches"); else _explicitNullProperties?.Remove("breaches"); } }
+        private List<string>? _explicitNullValueBreaches = default!;
+#nullable restore
+#else
+        public List<string> Breaches { get => _explicitNullValueBreaches; set { _explicitNullValueBreaches = value; AdditionalData?.Remove("breaches"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breaches"); else _explicitNullProperties?.Remove("breaches"); } }
+        private List<string> _explicitNullValueBreaches = default!;
 #endif
         /// <summary>The breakdown_limit property</summary>
         public int? BreakdownLimit { get => _explicitNullValueBreakdownLimit; set { _explicitNullValueBreakdownLimit = value; AdditionalData?.Remove("breakdown_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_limit"); else _explicitNullProperties?.Remove("breakdown_limit"); } }
@@ -1382,6 +1412,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Environment { get => _explicitNullValueEnvironment; set { _explicitNullValueEnvironment = value; AdditionalData?.Remove("environment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("environment"); else _explicitNullProperties?.Remove("environment"); } }
         private string _explicitNullValueEnvironment = default!;
 #endif
+        /// <summary>The episode_started_at property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EpisodeStartedAt { get => _explicitNullValueEpisodeStartedAt; set { _explicitNullValueEpisodeStartedAt = value; AdditionalData?.Remove("episode_started_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("episode_started_at"); else _explicitNullProperties?.Remove("episode_started_at"); } }
+        private string? _explicitNullValueEpisodeStartedAt = default!;
+#nullable restore
+#else
+        public string EpisodeStartedAt { get => _explicitNullValueEpisodeStartedAt; set { _explicitNullValueEpisodeStartedAt = value; AdditionalData?.Remove("episode_started_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("episode_started_at"); else _explicitNullProperties?.Remove("episode_started_at"); } }
+        private string _explicitNullValueEpisodeStartedAt = default!;
+#endif
         /// <summary>The error_class property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -1441,6 +1481,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string EvaluationId { get => _explicitNullValueEvaluationId; set { _explicitNullValueEvaluationId = value; AdditionalData?.Remove("evaluation_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_id"); else _explicitNullProperties?.Remove("evaluation_id"); } }
         private string _explicitNullValueEvaluationId = default!;
+#endif
+        /// <summary>The evaluation_key property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EvaluationKey { get => _explicitNullValueEvaluationKey; set { _explicitNullValueEvaluationKey = value; AdditionalData?.Remove("evaluation_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_key"); else _explicitNullProperties?.Remove("evaluation_key"); } }
+        private string? _explicitNullValueEvaluationKey = default!;
+#nullable restore
+#else
+        public string EvaluationKey { get => _explicitNullValueEvaluationKey; set { _explicitNullValueEvaluationKey = value; AdditionalData?.Remove("evaluation_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation_key"); else _explicitNullProperties?.Remove("evaluation_key"); } }
+        private string _explicitNullValueEvaluationKey = default!;
 #endif
         /// <summary>The evaluation_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -1913,6 +1963,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string InternetExposure { get => _explicitNullValueInternetExposure; set { _explicitNullValueInternetExposure = value; AdditionalData?.Remove("internet_exposure"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("internet_exposure"); else _explicitNullProperties?.Remove("internet_exposure"); } }
         private string _explicitNullValueInternetExposure = default!;
+#endif
+        /// <summary>The investigation_id property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? InvestigationId { get => _explicitNullValueInvestigationId; set { _explicitNullValueInvestigationId = value; AdditionalData?.Remove("investigation_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("investigation_id"); else _explicitNullProperties?.Remove("investigation_id"); } }
+        private string? _explicitNullValueInvestigationId = default!;
+#nullable restore
+#else
+        public string InvestigationId { get => _explicitNullValueInvestigationId; set { _explicitNullValueInvestigationId = value; AdditionalData?.Remove("investigation_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("investigation_id"); else _explicitNullProperties?.Remove("investigation_id"); } }
+        private string _explicitNullValueInvestigationId = default!;
 #endif
         /// <summary>The is_crash property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -3609,6 +3669,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "application_url", n => { ApplicationUrl = n.GetStringValue(); } },
                 { "asset_uuid", n => { AssetUuid = n.GetStringValue(); } },
                 { "assignee", n => { Assignee = n.GetStringValue(); } },
+                { "attempt_id", n => { AttemptId = n.GetStringValue(); } },
                 { "author_association", n => { AuthorAssociation = n.GetStringValue(); } },
                 { "author_login", n => { AuthorLogin = n.GetStringValue(); } },
                 { "baseline_p50_seconds", n => { BaselineP50Seconds = n.GetDoubleValue(); } },
@@ -3616,6 +3677,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "baseline_value", n => { BaselineValue = n.GetDoubleValue(); } },
                 { "board_id", n => { BoardId = n.GetStringValue(); } },
                 { "branch", n => { Branch = n.GetStringValue(); } },
+                { "breaches", n => { Breaches = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "breakdown_limit", n => { BreakdownLimit = n.GetIntValue(); } },
                 { "bugs_found", n => { BugsFound = n.GetStringValue(); } },
                 { "case_number", n => { CaseNumber = n.GetStringValue(); } },
@@ -3677,12 +3739,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "endpoint_version", n => { EndpointVersion = n.GetIntValue(); } },
                 { "engagement_id", n => { EngagementId = n.GetStringValue(); } },
                 { "environment", n => { Environment = n.GetStringValue(); } },
+                { "episode_started_at", n => { EpisodeStartedAt = n.GetStringValue(); } },
                 { "error_class", n => { ErrorClass = n.GetStringValue(); } },
                 { "error_hash", n => { ErrorHash = n.GetStringValue(); } },
                 { "error_message", n => { ErrorMessage = n.GetStringValue(); } },
                 { "error_type", n => { ErrorType = n.GetStringValue(); } },
                 { "evaluation_description", n => { EvaluationDescription = n.GetStringValue(); } },
                 { "evaluation_id", n => { EvaluationId = n.GetStringValue(); } },
+                { "evaluation_key", n => { EvaluationKey = n.GetStringValue(); } },
                 { "evaluation_name", n => { EvaluationName = n.GetStringValue(); } },
                 { "event_count", n => { EventCount = n.GetStringValue(); } },
                 { "event_history", n => { EventHistory = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemEventEntry>(global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemEventEntry.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -3733,6 +3797,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "insight_name", n => { InsightName = n.GetStringValue(); } },
                 { "insight_short_id", n => { InsightShortId = n.GetStringValue(); } },
                 { "internet_exposure", n => { InternetExposure = n.GetStringValue(); } },
+                { "investigation_id", n => { InvestigationId = n.GetStringValue(); } },
                 { "is_crash", n => { IsCrash = n.GetStringValue(); } },
                 { "is_recommended", n => { IsRecommended = n.GetStringValue(); } },
                 { "issue_id", n => { IssueId = n.GetStringValue(); } },
@@ -3937,6 +4002,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("app_version", AppVersion);
             writer.WriteStringValue("asset_uuid", AssetUuid);
             writer.WriteStringValue("assignee", Assignee);
+            writer.WriteStringValue("attempt_id", AttemptId);
             writer.WriteStringValue("author_association", AuthorAssociation);
             writer.WriteStringValue("author_login", AuthorLogin);
             writer.WriteDoubleValue("baseline_p50_seconds", BaselineP50Seconds);
@@ -3944,6 +4010,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteDoubleValue("baseline_value", BaselineValue);
             writer.WriteStringValue("board_id", BoardId);
             writer.WriteStringValue("branch", Branch);
+            writer.WriteCollectionOfPrimitiveValues<string>("breaches", Breaches);
             writer.WriteIntValue("breakdown_limit", BreakdownLimit);
             writer.WriteStringValue("bugs_found", BugsFound);
             writer.WriteStringValue("case_number", CaseNumber);
@@ -4005,12 +4072,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("end_time", EndTime);
             writer.WriteStringValue("engagement_id", EngagementId);
             writer.WriteStringValue("environment", Environment);
+            writer.WriteStringValue("episode_started_at", EpisodeStartedAt);
             writer.WriteStringValue("error_class", ErrorClass);
             writer.WriteStringValue("error_hash", ErrorHash);
             writer.WriteStringValue("error_message", ErrorMessage);
             writer.WriteStringValue("error_type", ErrorType);
             writer.WriteStringValue("evaluation_description", EvaluationDescription);
             writer.WriteStringValue("evaluation_id", EvaluationId);
+            writer.WriteStringValue("evaluation_key", EvaluationKey);
             writer.WriteStringValue("evaluation_name", EvaluationName);
             writer.WriteStringValue("event_count", EventCount);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SessionProblemEventEntry>("event_history", EventHistory);
@@ -4061,6 +4130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("insight_name", InsightName);
             writer.WriteStringValue("insight_short_id", InsightShortId);
             writer.WriteStringValue("internet_exposure", InternetExposure);
+            writer.WriteStringValue("investigation_id", InvestigationId);
             writer.WriteStringValue("is_crash", IsCrash);
             writer.WriteStringValue("is_recommended", IsRecommended);
             writer.WriteStringValue("issue_id", IssueId);

@@ -28,6 +28,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("emits_signals") is { } nullNodeEmitsSignals && nullNodeEmitsSignals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmitsSignals = null;
             if (parseNode.GetChildNode("enabled") is null) { _explicitNullValueEnabled = default!; _explicitNullProperties?.Remove("enabled"); }
             else if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("entry_point") is null) { _explicitNullValueEntryPoint = default!; _explicitNullProperties?.Remove("entry_point"); }
+            else if (parseNode.GetChildNode("entry_point") is { } nullNodeEntryPoint && nullNodeEntryPoint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EntryPoint = null;
             if (parseNode.GetChildNode("experiment_targeting") is null) { _explicitNullValueExperimentTargeting = default!; _explicitNullProperties?.Remove("experiment_targeting"); }
             else if (parseNode.GetChildNode("experiment_targeting") is { } nullNodeExperimentTargeting && nullNodeExperimentTargeting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExperimentTargeting = null;
             if (parseNode.GetChildNode("free_only") is null) { _explicitNullValueFreeOnly = default!; _explicitNullProperties?.Remove("free_only"); }
@@ -107,6 +109,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>When false, the reconciler removes the scanner&apos;s Temporal schedule. On-demand triggers still work.</summary>
         public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; AdditionalData?.Remove("enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
         private bool? _explicitNullValueEnabled = default!;
+        /// <summary>The app surface the creator started from, such as `replay_filters`. Reported to product analytics at creation so a scanner can be attributed to its entry point, and not stored on the scanner. Only the app&apos;s value is kept: any other caller is reported as its own source, such as `mcp`. Ignored on update.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? EntryPoint { get => _explicitNullValueEntryPoint; set { _explicitNullValueEntryPoint = value; AdditionalData?.Remove("entry_point"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_point"); else _explicitNullProperties?.Remove("entry_point"); } }
+        private string? _explicitNullValueEntryPoint = default!;
+#nullable restore
+#else
+        public string EntryPoint { get => _explicitNullValueEntryPoint; set { _explicitNullValueEntryPoint = value; AdditionalData?.Remove("entry_point"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entry_point"); else _explicitNullProperties?.Remove("entry_point"); } }
+        private string _explicitNullValueEntryPoint = default!;
+#endif
         /// <summary>When `estimated_monthly_observations` was last computed. Null means the estimate is being recomputed after a config change or has never run, so the stored number may be stale.</summary>
         public DateTimeOffset? EstimatedAt { get; private set; }
         /// <summary>`estimated_monthly_observations` priced at `credits_per_observation`, capped at `credit_limit` when one is set. Null until the estimate is first computed.</summary>
@@ -279,6 +291,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "emits_signals", n => { EmitsSignals = n.GetBoolValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
+                { "entry_point", n => { EntryPoint = n.GetStringValue(); } },
                 { "estimated_at", n => { EstimatedAt = n.GetDateTimeOffsetValue(); } },
                 { "estimated_monthly_credits", n => { EstimatedMonthlyCredits = n.GetIntValue(); } },
                 { "estimated_monthly_observations", n => { EstimatedMonthlyObservations = n.GetIntValue(); } },
@@ -321,6 +334,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("emits_signals", EmitsSignals);
             writer.WriteBoolValue("enabled", Enabled);
+            writer.WriteStringValue("entry_point", EntryPoint);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedReplayScannerExperimentTargeting>("experiment_targeting", ExperimentTargeting);
             writer.WriteBoolValue("free_only", FreeOnly);
             writer.WriteStringValue("goal", Goal);

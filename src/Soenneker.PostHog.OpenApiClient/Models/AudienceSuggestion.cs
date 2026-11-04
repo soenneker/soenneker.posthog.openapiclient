@@ -109,7 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
-        /// <summary>People in the audience with an email address, counted when the suggestion was made.</summary>
+        /// <summary>Roughly how many people in the audience have an email address, counted when the suggestion was made. Null while the count runs, or when it failed.</summary>
         public int? ReachableCount { get => _explicitNullValueReachableCount; set { _explicitNullValueReachableCount = value; AdditionalData?.Remove("reachable_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reachable_count"); else _explicitNullProperties?.Remove("reachable_count"); } }
         private int? _explicitNullValueReachableCount = default!;
         /// <summary>One sentence on why the audience is worth a broadcast.</summary>

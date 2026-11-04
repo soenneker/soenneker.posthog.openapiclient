@@ -18,6 +18,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.De
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Delivery_summary;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Depot_ci_usage;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Dora;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Enable;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Flaky_tests;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Job_aggregates;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Job_log_insights;
@@ -136,6 +137,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytic
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Dora.DoraRequestBuilder Dora
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Dora.DoraRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The enable property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Enable.EnableRequestBuilder Enable
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Enable.EnableRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The flaky_tests property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Engineering_analytics.Flaky_tests.Flaky_testsRequestBuilder Flaky_tests

@@ -53,12 +53,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The filters_override property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryRequestFiltersOverride? FiltersOverride { get => _explicitNullValueFiltersOverride; set { _explicitNullValueFiltersOverride = value; AdditionalData?.Remove("filters_override"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters_override"); else _explicitNullProperties?.Remove("filters_override"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryRequestFiltersOverride? _explicitNullValueFiltersOverride = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsQueryRequestFiltersOverride? FiltersOverride { get => _explicitNullValueFiltersOverride; set { _explicitNullValueFiltersOverride = value; AdditionalData?.Remove("filters_override"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters_override"); else _explicitNullProperties?.Remove("filters_override"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsQueryRequestFiltersOverride? _explicitNullValueFiltersOverride = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryRequestFiltersOverride FiltersOverride { get => _explicitNullValueFiltersOverride; set { _explicitNullValueFiltersOverride = value; AdditionalData?.Remove("filters_override"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters_override"); else _explicitNullProperties?.Remove("filters_override"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryRequestFiltersOverride _explicitNullValueFiltersOverride = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsQueryRequestFiltersOverride FiltersOverride { get => _explicitNullValueFiltersOverride; set { _explicitNullValueFiltersOverride = value; AdditionalData?.Remove("filters_override"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters_override"); else _explicitNullProperties?.Remove("filters_override"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsQueryRequestFiltersOverride _explicitNullValueFiltersOverride = default!;
 #endif
         /// <summary>Limit context for the query. Only &apos;posthog_ai&apos; is allowed as a client-provided value.</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.LimitContext? LimitContext { get => _explicitNullValueLimitContext; set { _explicitNullValueLimitContext = value; AdditionalData?.Remove("limit_context"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit_context"); else _explicitNullProperties?.Remove("limit_context"); } }
@@ -124,7 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "async", n => { Async = n.GetBoolValue(); } },
                 { "client_query_id", n => { ClientQueryId = n.GetStringValue(); } },
-                { "filters_override", n => { FiltersOverride = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryRequestFiltersOverride>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryRequestFiltersOverride.CreateFromDiscriminatorValue); } },
+                { "filters_override", n => { FiltersOverride = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsQueryRequestFiltersOverride>(global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsQueryRequestFiltersOverride.CreateFromDiscriminatorValue); } },
                 { "limit_context", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContext>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLimitContext = default; _explicitNullProperties?.Remove("limit_context"); AdditionalData["limit_context"] = unknown; } else { LimitContext = parsed; AdditionalData.Remove("limit_context"); } } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery.CreateFromDiscriminatorValue); } },
@@ -141,7 +141,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteBoolValue("async", Async);
             writer.WriteStringValue("client_query_id", ClientQueryId);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryRequestFiltersOverride>("filters_override", FiltersOverride);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsQueryRequestFiltersOverride>("filters_override", FiltersOverride);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContext>("limit_context", LimitContext);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery>("query", Query);

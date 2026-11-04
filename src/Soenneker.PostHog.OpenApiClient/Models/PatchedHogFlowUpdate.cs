@@ -183,7 +183,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
-        /// <summary>Product surface that owns this workflow. This value cannot change after creation.* `loops` - Loops* `broadcasts` - Broadcasts* `transactional_emails` - Transactional emails</summary>
+        /// <summary>Product surface that owns this workflow. This value cannot change after creation.* `loops` - Loops* `broadcasts` - Broadcasts* `transactional_emails` - Transactional emails* `transactional_email_keys` - Transactional email keys</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowUpdateOriginProduct? OriginProduct { get; private set; }

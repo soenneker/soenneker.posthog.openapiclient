@@ -17,6 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("dry_run") is null) { _explicitNullValueDryRun = default!; _explicitNullProperties?.Remove("dry_run"); }
+            else if (parseNode.GetChildNode("dry_run") is { } nullNodeDryRun && nullNodeDryRun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DryRun = null;
+            if (parseNode.GetChildNode("failed") is null) { _explicitNullValueFailed = default!; _explicitNullProperties?.Remove("failed"); }
+            else if (parseNode.GetChildNode("failed") is { } nullNodeFailed && nullNodeFailed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Failed = null;
             if (parseNode.GetChildNode("failed_distinct_ids") is null) { _explicitNullValueFailedDistinctIds = default!; _explicitNullProperties?.Remove("failed_distinct_ids"); }
             else if (parseNode.GetChildNode("failed_distinct_ids") is { } nullNodeFailedDistinctIds && nullNodeFailedDistinctIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedDistinctIds = null;
             if (parseNode.GetChildNode("imported") is null) { _explicitNullValueImported = default!; _explicitNullProperties?.Remove("imported"); }
@@ -25,7 +29,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Distinct IDs with at least one device that was not stored. Send those rows again.</summary>
+        /// <summary>True when nothing was stored.</summary>
+        public bool? DryRun { get => _explicitNullValueDryRun; set { _explicitNullValueDryRun = value; AdditionalData?.Remove("dry_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dry_run"); else _explicitNullProperties?.Remove("dry_run"); } }
+        private bool? _explicitNullValueDryRun = default!;
+        /// <summary>One entry per device that was not stored.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PushTokenImportFailure>? Failed { get => _explicitNullValueFailed; set { _explicitNullValueFailed = value; AdditionalData?.Remove("failed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed"); else _explicitNullProperties?.Remove("failed"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PushTokenImportFailure>? _explicitNullValueFailed = default!;
+#nullable restore
+#else
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PushTokenImportFailure> Failed { get => _explicitNullValueFailed; set { _explicitNullValueFailed = value; AdditionalData?.Remove("failed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed"); else _explicitNullProperties?.Remove("failed"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.PushTokenImportFailure> _explicitNullValueFailed = default!;
+#endif
+        /// <summary>Distinct IDs with at least one device that was not stored. Prefer `failed`, which says why.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<string>? FailedDistinctIds { get => _explicitNullValueFailedDistinctIds; set { _explicitNullValueFailedDistinctIds = value; AdditionalData?.Remove("failed_distinct_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_distinct_ids"); else _explicitNullProperties?.Remove("failed_distinct_ids"); } }
@@ -35,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<string> FailedDistinctIds { get => _explicitNullValueFailedDistinctIds; set { _explicitNullValueFailedDistinctIds = value; AdditionalData?.Remove("failed_distinct_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_distinct_ids"); else _explicitNullProperties?.Remove("failed_distinct_ids"); } }
         private List<string> _explicitNullValueFailedDistinctIds = default!;
 #endif
-        /// <summary>Number of devices stored on their person.</summary>
+        /// <summary>Number of devices stored on their person. On a dry run, the number that would be stored.</summary>
         public int? Imported { get => _explicitNullValueImported; set { _explicitNullValueImported = value; AdditionalData?.Remove("imported"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imported"); else _explicitNullProperties?.Remove("imported"); } }
         private int? _explicitNullValueImported = default!;
         /// <summary>
@@ -63,6 +80,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "dry_run", n => { DryRun = n.GetBoolValue(); } },
+                { "failed", n => { Failed = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PushTokenImportFailure>(global::Soenneker.PostHog.OpenApiClient.Models.PushTokenImportFailure.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "failed_distinct_ids", n => { FailedDistinctIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "imported", n => { Imported = n.GetIntValue(); } },
             };
@@ -74,6 +93,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("dry_run", DryRun);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PushTokenImportFailure>("failed", Failed);
             writer.WriteCollectionOfPrimitiveValues<string>("failed_distinct_ids", FailedDistinctIds);
             writer.WriteIntValue("imported", Imported);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

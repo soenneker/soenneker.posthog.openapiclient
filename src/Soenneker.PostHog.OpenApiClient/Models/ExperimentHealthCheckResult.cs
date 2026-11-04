@@ -17,8 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("description") is null) { _explicitNullValueDescription = default!; _explicitNullProperties?.Remove("description"); }
+            else if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
             if (parseNode.GetChildNode("key") is null) { _explicitNullValueKey = default!; _explicitNullProperties?.Remove("key"); }
             else if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
+            if (parseNode.GetChildNode("measurement") is null) { _explicitNullValueMeasurement = default!; _explicitNullProperties?.Remove("measurement"); }
+            else if (parseNode.GetChildNode("measurement") is { } nullNodeMeasurement && nullNodeMeasurement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Measurement = null;
             if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
             else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
             if (parseNode.GetChildNode("reason") is null) { _explicitNullValueReason = default!; _explicitNullProperties?.Remove("reason"); }
@@ -29,9 +33,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>What the check looks for and why it matters. The same for every experiment and every status.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
+#nullable restore
+#else
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
+#endif
         /// <summary>* `flag_state` - Flag State* `flag_shared` - Flag Shared* `flag_history` - Flag History* `split_changed_mid_run` - Split Changed Mid Run* `bucketing_changed_mid_run` - Bucketing Changed Mid Run* `release_conditions_changed_mid_run` - Release Conditions Changed Mid Run* `flag_variants_mismatch` - Flag Variants Mismatch* `forced_variant_release_condition` - Forced Variant Release Condition* `new_flag_no_traffic` - New Flag No Traffic* `no_metric` - No Metric* `metric_event_not_ingested` - Metric Event Not Ingested* `metric_cannot_compile` - Metric Cannot Compile* `metric_calculation_failed` - Metric Calculation Failed* `metric_all_zero` - Metric All Zero* `exposure_criteria_cannot_match` - Exposure Criteria Cannot Match* `exposure_filters` - Exposure Filters* `early_significance` - Early Significance* `metrics_not_matured` - Metrics Not Matured* `zero_exposures` - Zero Exposures* `test_account_filter_removes_exposures` - Test Account Filter Removes Exposures* `srm` - Srm* `bias_risk_multiple_excluded` - Bias Risk Multiple Excluded* `multiple_variants_share` - Multiple Variants Share</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthCheckResultKey? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; AdditionalData?.Remove("key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthCheckResultKey? _explicitNullValueKey = default!;
+        /// <summary>The value that decided a passed check, against its threshold. Null for the other statuses, and for a pass without a value. A finding carries its values in `evidence`.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthCheckResultMeasurement? Measurement { get => _explicitNullValueMeasurement; set { _explicitNullValueMeasurement = value; AdditionalData?.Remove("measurement"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("measurement"); else _explicitNullProperties?.Remove("measurement"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthCheckResultMeasurement? _explicitNullValueMeasurement = default!;
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthCheckResultMeasurement Measurement { get => _explicitNullValueMeasurement; set { _explicitNullValueMeasurement = value; AdditionalData?.Remove("measurement"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("measurement"); else _explicitNullProperties?.Remove("measurement"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthCheckResultMeasurement _explicitNullValueMeasurement = default!;
+#endif
         /// <summary>The problem the check looks for, for example &apos;Metrics not set up&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -80,7 +104,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "description", n => { Description = n.GetStringValue(); } },
                 { "key", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthCheckResultKey>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueKey = default; _explicitNullProperties?.Remove("key"); AdditionalData["key"] = unknown; } else { Key = parsed; AdditionalData.Remove("key"); } } },
+                { "measurement", n => { Measurement = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthCheckResultMeasurement>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthCheckResultMeasurement.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "reason", n => { Reason = n.GetStringValue(); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthCheckResultStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
@@ -93,7 +119,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("description", Description);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthCheckResultKey>("key", Key);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthCheckResultMeasurement>("measurement", Measurement);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("reason", Reason);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthCheckResultStatus>("status", Status);

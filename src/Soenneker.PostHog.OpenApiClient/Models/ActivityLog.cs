@@ -68,6 +68,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get => _explicitNullValueCreatedAt; set { _explicitNullValueCreatedAt = value; AdditionalData?.Remove("created_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_at"); else _explicitNullProperties?.Remove("created_at"); } }
         private DateTimeOffset? _explicitNullValueCreatedAt = default!;
+        /// <summary>Id of the credential that authenticated the change: the login session id for &apos;session&apos;, or the key id for &apos;personal_api_key&apos; and &apos;project_secret_key&apos;. Null for every other credential type and for impersonated changes.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CredentialId { get; private set; }
+#nullable restore
+#else
+        public string CredentialId { get; private set; }
+#endif
+        /// <summary>Kind of credential that authenticated the request that made the change. &apos;unattributed&apos; means the request recorded no credential. Null for changes made outside a request, such as background jobs, and for entries recorded before PostHog stored the credential.* `session` - session* `personal_api_key` - personal_api_key* `oauth` - oauth* `project_secret_key` - project_secret_key* `team_secret_token` - team_secret_token* `id_jag` - id_jag* `internal_jwt` - internal_jwt* `service_jwt` - service_jwt* `internal_api_secret` - internal_api_secret* `scim` - scim* `vercel` - vercel* `partner` - partner* `sharing_access_token` - sharing_access_token* `sharing_password` - sharing_password* `widget_token` - widget_token* `billing_service` - billing_service* `gateway_agent` - gateway_agent* `export_renderer` - export_renderer* `webhook` - webhook* `cross_region_signature` - cross_region_signature* `unattributed` - unattributed</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogCredentialType? CredentialType { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogCredentialType CredentialType { get; private set; }
+#endif
         /// <summary>The detail property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -162,6 +178,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "activity", n => { Activity = n.GetStringValue(); } },
                 { "client", n => { Client = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "credential_id", n => { CredentialId = n.GetStringValue(); } },
+                { "credential_type", n => { CredentialType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogCredentialType>(global::Soenneker.PostHog.OpenApiClient.Models.ActivityLogCredentialType.CreateFromDiscriminatorValue); } },
                 { "detail", n => { Detail = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "ip_address", n => { IpAddress = n.GetStringValue(); } },

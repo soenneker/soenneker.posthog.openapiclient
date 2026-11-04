@@ -166,7 +166,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Signals.Scout.Scratc
             [QueryParameter("skill_name")]
             public string SkillName { get; set; }
 #endif
-            /// <summary>ILIKE substring match against `content`. Omit to return the most recent entries.</summary>
+            /// <summary>ILIKE substring match against `content` and `key`. Must contain 3 letters or digits in a row, or 2 next to a symbol such as `ai_` or `pr:`. Omit to return the most recent entries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("text")]

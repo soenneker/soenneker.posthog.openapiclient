@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Documents;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Gap_suggestions;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Learning_backfill;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Libraries;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Playground;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Repositories;
@@ -31,6 +32,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Gap_suggestions.Gap_suggestionsRequestBuilder Gap_suggestions
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Gap_suggestions.Gap_suggestionsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The learning_backfill property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Learning_backfill.Learning_backfillRequestBuilder Learning_backfill
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Learning_backfill.Learning_backfillRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The libraries property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Business_knowledge.Libraries.LibrariesRequestBuilder Libraries

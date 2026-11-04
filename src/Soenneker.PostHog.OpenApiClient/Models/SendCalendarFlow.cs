@@ -79,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Name { get; private set; }
 #endif
-        /// <summary>The product surface that owns the workflow, such as broadcasts. Null for a plain workflow.* `loops` - Loops* `broadcasts` - Broadcasts* `transactional_emails` - Transactional emails</summary>
+        /// <summary>The product surface that owns the workflow, such as broadcasts. Null for a plain workflow.* `loops` - Loops* `broadcasts` - Broadcasts* `transactional_emails` - Transactional emails* `transactional_email_keys` - Transactional email keys</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.SendCalendarFlowOriginProduct? OriginProduct { get; private set; }

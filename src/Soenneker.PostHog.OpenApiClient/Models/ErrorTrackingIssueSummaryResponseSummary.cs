@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// The stored summary, or null when none exists yet.
+    /// The stored summary, or null when the status is not ready.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ErrorTrackingIssueSummaryResponseSummary : IAdditionalDataHolder, IParsable
@@ -48,7 +48,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummaryCategory Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; AdditionalData?.Remove("category"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummaryCategory _explicitNullValueCategory = default!;
 #endif
-        /// <summary>When generation last wrote the summary or confirmed it unchanged. The regenerate interval runs from it.</summary>
+        /// <summary>When generation last wrote the summary.</summary>
         public DateTimeOffset? CheckedAt { get => _explicitNullValueCheckedAt; set { _explicitNullValueCheckedAt = value; AdditionalData?.Remove("checked_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checked_at"); else _explicitNullProperties?.Remove("checked_at"); } }
         private DateTimeOffset? _explicitNullValueCheckedAt = default!;
         /// <summary>When the summary was written.</summary>

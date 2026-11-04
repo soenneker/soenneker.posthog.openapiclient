@@ -72,12 +72,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Recordings that matched the query. Empty unless the endpoint asks for them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SerializedPersonActorMatchedRecordingsItemProperty>? MatchedRecordings { get => _explicitNullValueMatchedRecordings; set { _explicitNullValueMatchedRecordings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_recordings"); else _explicitNullProperties?.Remove("matched_recordings"); } }
-        private List<global::Soenneker.PostHog.OpenApiClient.Models.SerializedPersonActorMatchedRecordingsItemProperty>? _explicitNullValueMatchedRecordings = default!;
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SerializedMatchedRecording>? MatchedRecordings { get => _explicitNullValueMatchedRecordings; set { _explicitNullValueMatchedRecordings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_recordings"); else _explicitNullProperties?.Remove("matched_recordings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SerializedMatchedRecording>? _explicitNullValueMatchedRecordings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SerializedPersonActorMatchedRecordingsItemProperty> MatchedRecordings { get => _explicitNullValueMatchedRecordings; set { _explicitNullValueMatchedRecordings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_recordings"); else _explicitNullProperties?.Remove("matched_recordings"); } }
-        private List<global::Soenneker.PostHog.OpenApiClient.Models.SerializedPersonActorMatchedRecordingsItemProperty> _explicitNullValueMatchedRecordings = default!;
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SerializedMatchedRecording> MatchedRecordings { get => _explicitNullValueMatchedRecordings; set { _explicitNullValueMatchedRecordings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_recordings"); else _explicitNullProperties?.Remove("matched_recordings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SerializedMatchedRecording> _explicitNullValueMatchedRecordings = default!;
 #endif
         /// <summary>Display name, resolved from the person&apos;s properties or distinct IDs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -128,7 +128,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "is_identified", n => { IsIdentified = n.GetBoolValue(); } },
                 { "last_seen_at", n => { LastSeenAt = n.GetDateTimeOffsetValue(); } },
-                { "matched_recordings", n => { MatchedRecordings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SerializedPersonActorMatchedRecordingsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SerializedPersonActorMatchedRecordingsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "matched_recordings", n => { MatchedRecordings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SerializedMatchedRecording>(global::Soenneker.PostHog.OpenApiClient.Models.SerializedMatchedRecording.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SerializedPersonActorPropertiesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SerializedPersonActorPropertiesProperty.CreateFromDiscriminatorValue); } },
                 { "uuid", n => { Uuid = n.GetGuidValue(); } },
@@ -148,7 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteBoolValue("is_identified", IsIdentified);
             writer.WriteDateTimeOffsetValue("last_seen_at", LastSeenAt);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SerializedPersonActorMatchedRecordingsItemProperty>("matched_recordings", MatchedRecordings);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SerializedMatchedRecording>("matched_recordings", MatchedRecordings);
             writer.WriteStringValue("name", Name);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SerializedPersonActorPropertiesProperty>("properties", Properties);
             writer.WriteGuidValue("uuid", Uuid);

@@ -401,6 +401,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The inject_web_apps property</summary>
         public bool? InjectWebApps { get => _explicitNullValueInjectWebApps; set { _explicitNullValueInjectWebApps = value; AdditionalData?.Remove("inject_web_apps"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inject_web_apps"); else _explicitNullProperties?.Remove("inject_web_apps"); } }
         private bool? _explicitNullValueInjectWebApps = default!;
+        /// <summary>Whether the project&apos;s organization approved AI data processing. AI features need this approval.</summary>
+        public bool? IsAiDataProcessingApproved { get; private set; }
         /// <summary>The is_demo property</summary>
         public bool? IsDemo { get => _explicitNullValueIsDemo; set { _explicitNullValueIsDemo = value; AdditionalData?.Remove("is_demo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_demo"); else _explicitNullProperties?.Remove("is_demo"); } }
         private bool? _explicitNullValueIsDemo = default!;
@@ -831,6 +833,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "ingested_event", n => { IngestedEvent = n.GetBoolValue(); } },
                 { "inject_web_apps", n => { InjectWebApps = n.GetBoolValue(); } },
+                { "is_ai_data_processing_approved", n => { IsAiDataProcessingApproved = n.GetBoolValue(); } },
                 { "is_demo", n => { IsDemo = n.GetBoolValue(); } },
                 { "is_pending_deletion", n => { IsPendingDeletion = n.GetBoolValue(); } },
                 { "live_events_columns", n => { LiveEventsColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },

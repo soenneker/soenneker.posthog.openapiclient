@@ -23,7 +23,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Id of the workflow that is now a broadcast.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>* `loops` - Loops* `broadcasts` - Broadcasts* `transactional_emails` - Transactional emails</summary>
+        /// <summary>* `loops` - Loops* `broadcasts` - Broadcasts* `transactional_emails` - Transactional emails* `transactional_email_keys` - Transactional email keys</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConvertedToBroadcastOriginProduct? OriginProduct { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogFlowConvertedToBroadcast"/> and sets the default values.

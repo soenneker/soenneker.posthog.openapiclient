@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryPropertiesMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryFixedPropertiesItem&gt;
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryPropertiesMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryFixedPropertiesItem&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ActorsQueryProperties : IComposedTypeWrapper, IParsable
@@ -18,13 +18,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>Composed type representation for type List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryFixedPropertiesItem&gt;</summary>
+        /// <summary>Composed type representation for type List&lt;global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryFixedPropertiesItem&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryFixedPropertiesItem>? ActorsQueryFixedPropertiesItem { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryFixedPropertiesItem>? AccountPersonsActorsQueryFixedPropertiesItem { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryFixedPropertiesItem> ActorsQueryFixedPropertiesItem { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryFixedPropertiesItem> AccountPersonsActorsQueryFixedPropertiesItem { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryPropertiesMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -486,9 +486,9 @@ return result;
 }
 var matches = new bool?[1];
 remaining = 10000; matches[0] = MatchSchema0(item, 0);
-return matches; }))()[0]) == true) && parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryFixedPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryFixedPropertiesItem.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryFixedPropertiesItem> actorsQueryFixedPropertiesItemValue)
+return matches; }))()[0]) == true) && parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryFixedPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryFixedPropertiesItem.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryFixedPropertiesItem> accountPersonsActorsQueryFixedPropertiesItemValue)
             {
-                result.ActorsQueryFixedPropertiesItem = actorsQueryFixedPropertiesItemValue;
+                result.AccountPersonsActorsQueryFixedPropertiesItem = accountPersonsActorsQueryFixedPropertiesItemValue;
             }
             else {
                 
@@ -2587,10 +2587,10 @@ return matches; }))() : null;
             int matchingUnionBranches = 0;
             if (matchesUnionBranch0 != false) matchingUnionBranches++;
             if (matchesUnionBranch1 != false) matchingUnionBranches++;
-            bool noSelectedUnionBranch = result.ActorsQueryFixedPropertiesItem == null && result.ActorsQueryPropertiesMember1 == null && result.PropertyGroupFilterValue == null;
+            bool noSelectedUnionBranch = result.AccountPersonsActorsQueryFixedPropertiesItem == null && result.ActorsQueryPropertiesMember1 == null && result.PropertyGroupFilterValue == null;
             if (noSelectedUnionBranch && matchesUnionBranch0 == true && matchingUnionBranches == 1) result.PropertyGroupFilterValue = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilterValue(), parseNode);
             if (noSelectedUnionBranch && matchesUnionBranch1 == true && matchingUnionBranches == 1) result.ActorsQueryPropertiesMember1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryPropertiesMember1(), parseNode);
-            if (result.ActorsQueryFixedPropertiesItem == null && result.ActorsQueryPropertiesMember1 == null && result.PropertyGroupFilterValue == null) result.UnrecognizedValue = unionPayload;
+            if (result.AccountPersonsActorsQueryFixedPropertiesItem == null && result.ActorsQueryPropertiesMember1 == null && result.PropertyGroupFilterValue == null) result.UnrecognizedValue = unionPayload;
 return result;
         }
         /// <summary>
@@ -2614,18 +2614,18 @@ return result;
         public virtual void Serialize(ISerializationWriter writer)
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (ActorsQueryFixedPropertiesItem == null && ActorsQueryPropertiesMember1 == null && PropertyGroupFilterValue == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            if (AccountPersonsActorsQueryFixedPropertiesItem == null && ActorsQueryPropertiesMember1 == null && PropertyGroupFilterValue == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
             int selectedUnionBranches = 0;
-            if (ActorsQueryFixedPropertiesItem != null) selectedUnionBranches++;
+            if (AccountPersonsActorsQueryFixedPropertiesItem != null) selectedUnionBranches++;
             if (ActorsQueryPropertiesMember1 != null) selectedUnionBranches++;
             if (PropertyGroupFilterValue != null) selectedUnionBranches++;
             if (ActorsQueryPropertiesMember1 != null && selectedUnionBranches == 1) { if (ActorsQueryPropertiesMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ActorsQueryPropertiesMember1); return; }
             if (PropertyGroupFilterValue != null && selectedUnionBranches == 1) { if (PropertyGroupFilterValue is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PropertyGroupFilterValue); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(ActorsQueryFixedPropertiesItem != null)
+            if(AccountPersonsActorsQueryFixedPropertiesItem != null)
             {
-                writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryFixedPropertiesItem>(null, ActorsQueryFixedPropertiesItem);
+                writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountPersonsActorsQueryFixedPropertiesItem>(null, AccountPersonsActorsQueryFixedPropertiesItem);
             }
             else {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ActorsQueryPropertiesMember1>(null, ActorsQueryPropertiesMember1, PropertyGroupFilterValue);

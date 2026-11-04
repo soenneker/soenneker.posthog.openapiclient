@@ -20,11 +20,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             base.CaptureExplicitNulls(parseNode);
             if (parseNode.GetChildNode("check_ongoing_interval") is null) { _explicitNullValueCheckOngoingInterval = default!; _explicitNullProperties?.Remove("check_ongoing_interval"); }
             else if (parseNode.GetChildNode("check_ongoing_interval") is { } nullNodeCheckOngoingInterval && nullNodeCheckOngoingInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckOngoingInterval = null;
+            if (parseNode.GetChildNode("variables") is null) { _explicitNullValueVariables = default!; _explicitNullProperties?.Remove("variables"); }
+            else if (parseNode.GetChildNode("variables") is { } nullNodeVariables && nullNodeVariables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variables = null;
         }
 
         /// <summary>When true, anchor on the trailing (possibly still accumulating) bucket instead of the last complete one.</summary>
         public bool? CheckOngoingInterval { get => _explicitNullValueCheckOngoingInterval; set { _explicitNullValueCheckOngoingInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_ongoing_interval"); else _explicitNullProperties?.Remove("check_ongoing_interval"); } }
         private bool? _explicitNullValueCheckOngoingInterval = default!;
+        /// <summary>Values for the `$name` variables in the insight&apos;s query.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsAlertConfigVariablesProperty? Variables { get => _explicitNullValueVariables; set { _explicitNullValueVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables"); else _explicitNullProperties?.Remove("variables"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricsAlertConfigVariablesProperty? _explicitNullValueVariables = default!;
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricsAlertConfigVariablesProperty Variables { get => _explicitNullValueVariables; set { _explicitNullValueVariables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables"); else _explicitNullProperties?.Remove("variables"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.MetricsAlertConfigVariablesProperty _explicitNullValueVariables = default!;
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -44,6 +56,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
                 { "check_ongoing_interval", n => { CheckOngoingInterval = n.GetBoolValue(); } },
+                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsAlertConfigVariablesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.MetricsAlertConfigVariablesProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -54,7 +67,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteBoolValue("check_ongoing_interval", CheckOngoingInterval);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
+            writer.WriteBoolValue("check_ongoing_interval", CheckOngoingInterval);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MetricsAlertConfigVariablesProperty>("variables", Variables);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             
         }
     }

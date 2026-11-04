@@ -27,6 +27,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("customerTable") is { } nullNodeCustomerTable && nullNodeCustomerTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomerTable = null;
             if (parseNode.GetChildNode("performanceMaxSearchTermTable") is null) { _explicitNullValuePerformanceMaxSearchTermTable = default!; _explicitNullProperties?.Remove("performanceMaxSearchTermTable"); }
             else if (parseNode.GetChildNode("performanceMaxSearchTermTable") is { } nullNodePerformanceMaxSearchTermTable && nullNodePerformanceMaxSearchTermTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PerformanceMaxSearchTermTable = null;
+            if (parseNode.GetChildNode("queryPageTable") is null) { _explicitNullValueQueryPageTable = default!; _explicitNullProperties?.Remove("queryPageTable"); }
+            else if (parseNode.GetChildNode("queryPageTable") is { } nullNodeQueryPageTable && nullNodeQueryPageTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueryPageTable = null;
             if (parseNode.GetChildNode("queryTable") is null) { _explicitNullValueQueryTable = default!; _explicitNullProperties?.Remove("queryTable"); }
             else if (parseNode.GetChildNode("queryTable") is { } nullNodeQueryTable && nullNodeQueryTable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueryTable = null;
             if (parseNode.GetChildNode("searchTermKeywordTable") is null) { _explicitNullValueSearchTermKeywordTable = default!; _explicitNullProperties?.Remove("searchTermKeywordTable"); }
@@ -88,6 +90,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string PerformanceMaxSearchTermTable { get => _explicitNullValuePerformanceMaxSearchTermTable; set { _explicitNullValuePerformanceMaxSearchTermTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("performanceMaxSearchTermTable"); else _explicitNullProperties?.Remove("performanceMaxSearchTermTable"); } }
         private string _explicitNullValuePerformanceMaxSearchTermTable = default!;
+#endif
+        /// <summary>Google Search Console table with one row per query and page, used to find the page that ranks for a search.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? QueryPageTable { get => _explicitNullValueQueryPageTable; set { _explicitNullValueQueryPageTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queryPageTable"); else _explicitNullProperties?.Remove("queryPageTable"); } }
+        private string? _explicitNullValueQueryPageTable = default!;
+#nullable restore
+#else
+        public string QueryPageTable { get => _explicitNullValueQueryPageTable; set { _explicitNullValueQueryPageTable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queryPageTable"); else _explicitNullProperties?.Remove("queryPageTable"); } }
+        private string _explicitNullValueQueryPageTable = default!;
 #endif
         /// <summary>Google Search Console table with one row per query, or per query and page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -155,6 +167,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "campaignTable", n => { CampaignTable = n.GetStringValue(); } },
                 { "customerTable", n => { CustomerTable = n.GetStringValue(); } },
                 { "performanceMaxSearchTermTable", n => { PerformanceMaxSearchTermTable = n.GetStringValue(); } },
+                { "queryPageTable", n => { QueryPageTable = n.GetStringValue(); } },
                 { "queryTable", n => { QueryTable = n.GetStringValue(); } },
                 { "searchTermKeywordTable", n => { SearchTermKeywordTable = n.GetStringValue(); } },
                 { "searchTermTable", n => { SearchTermTable = n.GetStringValue(); } },
@@ -174,6 +187,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("campaignTable", CampaignTable);
             writer.WriteStringValue("customerTable", CustomerTable);
             writer.WriteStringValue("performanceMaxSearchTermTable", PerformanceMaxSearchTermTable);
+            writer.WriteStringValue("queryPageTable", QueryPageTable);
             writer.WriteStringValue("queryTable", QueryTable);
             writer.WriteStringValue("searchTermKeywordTable", SearchTermKeywordTable);
             writer.WriteStringValue("searchTermTable", SearchTermTable);

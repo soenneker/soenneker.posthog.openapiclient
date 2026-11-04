@@ -34,7 +34,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destin
         {
         }
         /// <summary>
-        /// Return a secure browser link where the user connects the credentials for a destination.The page saves an integration and does not create the destination, so secrets never passthrough the agent. The agent then creates the destination with the new integration&apos;s id.
+        /// Return a secure browser link where the user connects the credentials for a destination.The page saves an integration and does not create the destination, so secrets never passthrough the agent. The link carries a connect token. The agent reads the saved integration&apos;s idwith the token from the connect link status endpoint, then creates the destination with it.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DestinationConnectLink"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destin
             return await RequestAdapter.SendAsync<global::Soenneker.PostHog.OpenApiClient.Models.DestinationConnectLink>(requestInfo, global::Soenneker.PostHog.OpenApiClient.Models.DestinationConnectLink.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Return a secure browser link where the user connects the credentials for a destination.The page saves an integration and does not create the destination, so secrets never passthrough the agent. The agent then creates the destination with the new integration&apos;s id.
+        /// Return a secure browser link where the user connects the credentials for a destination.The page saves an integration and does not create the destination, so secrets never passthrough the agent. The link carries a connect token. The agent reads the saved integration&apos;s idwith the token from the connect link status endpoint, then creates the destination with it.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destin
             return new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.Connect_link.EmptyPathSegmentRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Return a secure browser link where the user connects the credentials for a destination.The page saves an integration and does not create the destination, so secrets never passthrough the agent. The agent then creates the destination with the new integration&apos;s id.
+        /// Return a secure browser link where the user connects the credentials for a destination.The page saves an integration and does not create the destination, so secrets never passthrough the agent. The link carries a connect token. The agent reads the saved integration&apos;s idwith the token from the connect link status endpoint, then creates the destination with it.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class EmptyPathSegmentRequestBuilderGetQueryParameters 

@@ -88,6 +88,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
         private string _explicitNullValueKind = default!;
 #endif
+        /// <summary>Linear only, null otherwise. True when the workspace last authorized PostHog before the Linear app had webhooks, so linked error tracking issues may not follow their tickets until someone reconnects it.</summary>
+        public bool? NeedsWebhookReconnect { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfig"/> and sets the default values.
         /// </summary>
@@ -124,6 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "installation_shared", n => { InstallationShared = n.GetBoolValue(); } },
                 { "installation_status", n => { InstallationStatus = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfigCreateInstallationStatus>(global::Soenneker.PostHog.OpenApiClient.Models.IntegrationConfigCreateInstallationStatus.CreateFromDiscriminatorValue); } },
                 { "kind", n => { Kind = n.GetStringValue(); } },
+                { "needs_webhook_reconnect", n => { NeedsWebhookReconnect = n.GetBoolValue(); } },
             };
         }
         /// <summary>

@@ -19,6 +19,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if (parseNode.GetChildNode("color") is null) { _explicitNullValueColor = default!; _explicitNullProperties?.Remove("color"); }
             else if (parseNode.GetChildNode("color") is { } nullNodeColor && nullNodeColor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Color = null;
+            if (parseNode.GetChildNode("description") is null) { _explicitNullValueDescription = default!; _explicitNullProperties?.Remove("description"); }
+            else if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
             if (parseNode.GetChildNode("displayType") is null) { _explicitNullValueDisplayType = default!; _explicitNullProperties?.Remove("displayType"); }
             else if (parseNode.GetChildNode("displayType") is { } nullNodeDisplayType && nullNodeDisplayType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisplayType = null;
             if (parseNode.GetChildNode("excludeFromTotal") is null) { _explicitNullValueExcludeFromTotal = default!; _explicitNullProperties?.Remove("excludeFromTotal"); }
@@ -42,6 +44,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Color { get => _explicitNullValueColor; set { _explicitNullValueColor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("color"); else _explicitNullProperties?.Remove("color"); } }
         private string _explicitNullValueColor = default!;
+#endif
+        /// <summary>The description property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string? _explicitNullValueDescription = default!;
+#nullable restore
+#else
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>The displayType property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.DisplayType? DisplayType { get => _explicitNullValueDisplayType; set { _explicitNullValueDisplayType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("displayType"); else _explicitNullProperties?.Remove("displayType"); } }
@@ -89,6 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "color", n => { Color = n.GetStringValue(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
                 { "displayType", n => { DisplayType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DisplayType>(); } },
                 { "excludeFromTotal", n => { ExcludeFromTotal = n.GetBoolValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
@@ -105,6 +118,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("color", Color);
+            writer.WriteStringValue("description", Description);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DisplayType>("displayType", DisplayType);
             writer.WriteBoolValue("excludeFromTotal", ExcludeFromTotal);
             writer.WriteStringValue("label", Label);

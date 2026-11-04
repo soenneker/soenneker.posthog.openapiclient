@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Issues.Item.Summary.Regenerate;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -19,11 +18,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Issue
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Issues.Item.Summary.EmptyPathSegmentRequestBuilder EmptyPathSegment
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Issues.Item.Summary.EmptyPathSegmentRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The regenerate property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Issues.Item.Summary.Regenerate.RegenerateRequestBuilder Regenerate
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Issues.Item.Summary.Regenerate.RegenerateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Error_tracking.Issues.Item.Summary.SummaryRequestBuilder"/> and sets the default values.

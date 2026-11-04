@@ -17,6 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("adaptive_ingestion_enabled") is null) { _explicitNullValueAdaptiveIngestionEnabled = default!; _explicitNullProperties?.Remove("adaptive_ingestion_enabled"); }
+            else if (parseNode.GetChildNode("adaptive_ingestion_enabled") is { } nullNodeAdaptiveIngestionEnabled && nullNodeAdaptiveIngestionEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AdaptiveIngestionEnabled = null;
             if (parseNode.GetChildNode("ingestion_enabled") is null) { _explicitNullValueIngestionEnabled = default!; _explicitNullProperties?.Remove("ingestion_enabled"); }
             else if (parseNode.GetChildNode("ingestion_enabled") is { } nullNodeIngestionEnabled && nullNodeIngestionEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IngestionEnabled = null;
             if (parseNode.GetChildNode("per_issue_rate_limit_bucket_size_minutes") is null) { _explicitNullValuePerIssueRateLimitBucketSizeMinutes = default!; _explicitNullProperties?.Remove("per_issue_rate_limit_bucket_size_minutes"); }
@@ -29,6 +31,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("project_rate_limit_value") is { } nullNodeProjectRateLimitValue && nullNodeProjectRateLimitValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectRateLimitValue = null;
         }
 
+        /// <summary>Project preference for adaptive ingestion. Turning this on does not currently change ingestion.</summary>
+        public bool? AdaptiveIngestionEnabled { get => _explicitNullValueAdaptiveIngestionEnabled; set { _explicitNullValueAdaptiveIngestionEnabled = value; AdditionalData?.Remove("adaptive_ingestion_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("adaptive_ingestion_enabled"); else _explicitNullProperties?.Remove("adaptive_ingestion_enabled"); } }
+        private bool? _explicitNullValueAdaptiveIngestionEnabled = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the project ingests exception events. When false, ingestion drops every $exception event for this project before it is stored or billed, and the events cannot be recovered.</summary>
@@ -71,6 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "adaptive_ingestion_enabled", n => { AdaptiveIngestionEnabled = n.GetBoolValue(); } },
                 { "ingestion_enabled", n => { IngestionEnabled = n.GetBoolValue(); } },
                 { "per_issue_rate_limit_bucket_size_minutes", n => { PerIssueRateLimitBucketSizeMinutes = n.GetIntValue(); } },
                 { "per_issue_rate_limit_value", n => { PerIssueRateLimitValue = n.GetIntValue(); } },
@@ -85,6 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("adaptive_ingestion_enabled", AdaptiveIngestionEnabled);
             writer.WriteBoolValue("ingestion_enabled", IngestionEnabled);
             writer.WriteIntValue("per_issue_rate_limit_bucket_size_minutes", PerIssueRateLimitBucketSizeMinutes);
             writer.WriteIntValue("per_issue_rate_limit_value", PerIssueRateLimitValue);

@@ -35,6 +35,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("incremental_field_lookback_seconds") is { } nullNodeIncrementalFieldLookbackSeconds && nullNodeIncrementalFieldLookbackSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncrementalFieldLookbackSeconds = null;
             if (parseNode.GetChildNode("incremental_field_type") is null) { _explicitNullValueIncrementalFieldType = default!; _explicitNullProperties?.Remove("incremental_field_type"); }
             else if (parseNode.GetChildNode("incremental_field_type") is { } nullNodeIncrementalFieldType && nullNodeIncrementalFieldType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncrementalFieldType = null;
+            if (parseNode.GetChildNode("masked_columns") is null) { _explicitNullValueMaskedColumns = default!; _explicitNullProperties?.Remove("masked_columns"); }
+            else if (parseNode.GetChildNode("masked_columns") is { } nullNodeMaskedColumns && nullNodeMaskedColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaskedColumns = null;
             if (parseNode.GetChildNode("primary_key_columns") is null) { _explicitNullValuePrimaryKeyColumns = default!; _explicitNullProperties?.Remove("primary_key_columns"); }
             else if (parseNode.GetChildNode("primary_key_columns") is { } nullNodePrimaryKeyColumns && nullNodePrimaryKeyColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrimaryKeyColumns = null;
             if (parseNode.GetChildNode("row_filters") is null) { _explicitNullValueRowFilters = default!; _explicitNullProperties?.Remove("row_filters"); }
@@ -174,6 +176,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string LatestError { get; private set; }
 #endif
+        /// <summary>Names of source columns whose values are replaced with a deterministic one-way digest at sync time, for sensitive data such as passwords or PII. `null` (default) masks nothing. Primary-key, partition and incremental columns can&apos;t be masked, and direct query sources don&apos;t support masking. Any change to this list starts a full resync of the table (CDC tables take a new snapshot), or stages it until syncing is turned on. A synced webhook table can&apos;t change its masked columns, because its data can&apos;t be fetched again.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? MaskedColumns { get => _explicitNullValueMaskedColumns; set { _explicitNullValueMaskedColumns = value; AdditionalData?.Remove("masked_columns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masked_columns"); else _explicitNullProperties?.Remove("masked_columns"); } }
+        private List<string>? _explicitNullValueMaskedColumns = default!;
+#nullable restore
+#else
+        public List<string> MaskedColumns { get => _explicitNullValueMaskedColumns; set { _explicitNullValueMaskedColumns = value; AdditionalData?.Remove("masked_columns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("masked_columns"); else _explicitNullProperties?.Remove("masked_columns"); } }
+        private List<string> _explicitNullValueMaskedColumns = default!;
+#endif
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -278,6 +290,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string UserAccessLevel { get; private set; }
 #endif
+        /// <summary>Whether this table uses webhook sync, but its source has no enabled webhook. Such a table gets no webhook updates. Each sync polls the source API instead, which is slower and can read the whole table. Set up the webhook on the source, or change `sync_type`.</summary>
+        public bool? WebhookNotRegistered { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchema"/> and sets the default values.
         /// </summary>
@@ -321,6 +335,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "last_synced_at", n => { LastSyncedAt = n.GetDateTimeOffsetValue(); } },
                 { "latest_error", n => { LatestError = n.GetStringValue(); } },
+                { "masked_columns", n => { MaskedColumns = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "next_full_refresh_at", n => { NextFullRefreshAt = n.GetDateTimeOffsetValue(); } },
                 { "pending_self_managed_table", n => { PendingSelfManagedTable = n.GetBoolValue(); } },
@@ -337,6 +352,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "table", n => { Table = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaTableProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaTableProperty.CreateFromDiscriminatorValue); } },
                 { "table_id", n => { TableId = n.GetGuidValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },
+                { "webhook_not_registered", n => { WebhookNotRegistered = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -354,6 +370,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("incremental_field", IncrementalField);
             writer.WriteIntValue("incremental_field_lookback_seconds", IncrementalFieldLookbackSeconds);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaIncrementalFieldType>("incremental_field_type", IncrementalFieldType);
+            writer.WriteCollectionOfPrimitiveValues<string>("masked_columns", MaskedColumns);
             writer.WriteCollectionOfPrimitiveValues<string>("primary_key_columns", PrimaryKeyColumns);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSchemaRowFiltersItem>("row_filters", RowFilters);
             writer.WriteBoolValue("should_sync", ShouldSync);

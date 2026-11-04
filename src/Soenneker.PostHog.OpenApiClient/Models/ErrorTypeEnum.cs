@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `agent_reported` - agent_reported* `agent_server_crash` - agent_server_crash* `agent_declined` - agent_declined* `output_parse_failed` - output_parse_failed* `poll_timeout` - poll_timeout* `pi_runtime_error` - pi_runtime_error* `upstream_stream_terminated` - upstream_stream_terminated* `upstream_connection_error` - upstream_connection_error* `upstream_timeout` - upstream_timeout* `upstream_provider_failure` - upstream_provider_failure* `upstream_request_rejected` - upstream_request_rejected* `content_block_rejection` - content_block_rejection* `turn_ended_without_response` - turn_ended_without_response* `subscription_usage_limit` - subscription_usage_limit* `task_spend_limit` - task_spend_limit* `agent_error` - agent_error</summary>
+    /// <summary>* `agent_reported` - agent_reported* `agent_server_crash` - agent_server_crash* `agent_declined` - agent_declined* `output_parse_failed` - output_parse_failed* `poll_timeout` - poll_timeout* `pi_runtime_error` - pi_runtime_error* `upstream_stream_terminated` - upstream_stream_terminated* `upstream_connection_error` - upstream_connection_error* `upstream_timeout` - upstream_timeout* `upstream_provider_failure` - upstream_provider_failure* `upstream_request_rejected` - upstream_request_rejected* `content_block_rejection` - content_block_rejection* `turn_ended_without_response` - turn_ended_without_response* `subscription_usage_limit` - subscription_usage_limit* `task_spend_limit` - task_spend_limit* `agent_error` - agent_error* `ActiveSessionCapError` - ActiveSessionCapError</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum ErrorTypeEnum
     {
@@ -70,6 +70,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "agent_error")]
         #pragma warning disable CS1591
         AgentError,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "ActiveSessionCapError")]
+        #pragma warning disable CS1591
+        ActiveSessionCapError,
         #pragma warning restore CS1591
     }
 }

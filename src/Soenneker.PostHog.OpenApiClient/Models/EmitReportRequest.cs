@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Request body for `emit-report`. Run attribution is taken from the URL path.
+    /// Request body for the scout `emit-report` action and the inbox report `create` action. A scout run istaken from the URL path; a person is the authenticated caller.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EmitReportRequest : IAdditionalDataHolder, IParsable
@@ -67,7 +67,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Whether the issue is already being handled — fixed in recent changes, or with a fix in flight (an open PR, a recently active branch, an assigned / in-progress issue or agent task). Gates autostart, so a wrong `false` opens a duplicate PR. Tracked separately.</summary>
+        /// <summary>Whether the issue is already being handled — fixed in recent changes, or with a fix in flight (an open PR, a recently active branch, an assigned / in-progress issue or agent task). Gates autostart of a scout report, so a wrong `false` opens a duplicate PR. Tracked separately.</summary>
         public bool? AlreadyAddressed { get => _explicitNullValueAlreadyAddressed; set { _explicitNullValueAlreadyAddressed = value; AdditionalData?.Remove("already_addressed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("already_addressed"); else _explicitNullProperties?.Remove("already_addressed"); } }
         private bool? _explicitNullValueAlreadyAddressed = default!;
         /// <summary>Optional charts to attach to the report — the inbox renders them inline, so a metric move is something the reader sees rather than a number they take on trust. Attach one whenever the finding rests on a trend, a spike, or a comparison you already queried.</summary>
@@ -90,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence> Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; AdditionalData?.Remove("evidence"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ReportEvidence> _explicitNullValueEvidence = default!;
 #endif
-        /// <summary>Optional name for this emission, unique within the run. Reuse it verbatim to retry a call whose outcome you don&apos;t know (a timeout, a dropped connection): the retry returns the report the first call authored, with `idempotent_replay` true, instead of a second report. Omit it and the report&apos;s own content is the key, which covers a retry of the identical call — pass one when a retry might reword the report.</summary>
+        /// <summary>Optional name for this emission, unique within a scout&apos;s run or within a person&apos;s own reports. Reuse it verbatim to retry a call whose outcome you don&apos;t know (a timeout, a dropped connection): the retry returns the report the first call authored, with `idempotent_replay` true, instead of a second report. Omit it and the report&apos;s own content is the key, which covers a retry of the identical call — pass one when a retry might reword the report.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? IdempotencyKey { get => _explicitNullValueIdempotencyKey; set { _explicitNullValueIdempotencyKey = value; AdditionalData?.Remove("idempotency_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("idempotency_key"); else _explicitNullProperties?.Remove("idempotency_key"); } }
@@ -140,7 +140,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string PriorityExplanation { get => _explicitNullValuePriorityExplanation; set { _explicitNullValuePriorityExplanation = value; AdditionalData?.Remove("priority_explanation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority_explanation"); else _explicitNullProperties?.Remove("priority_explanation"); } }
         private string _explicitNullValuePriorityExplanation = default!;
 #endif
-        /// <summary>Optional repo for opening a draft PR, by autostart or by a person from the inbox. Pass `owner/repo` whenever you can say where a fix would land. Omit the field when you can&apos;t, which triggers free-form selection across the team&apos;s repos (the slow path on a many-repo team). Keep the `NO_REPO` sentinel for the rare report where nothing under version control could change, since a skill body, a config file, or a doc still lives in a repo.</summary>
+        /// <summary>Optional repo for opening a draft PR, by autostart of a scout report or by a person from the inbox. Pass `owner/repo` whenever you can say where a fix would land. Omit the field when you can&apos;t, which triggers free-form selection across the team&apos;s repos (the slow path on a many-repo team). Keep the `NO_REPO` sentinel for the rare report where nothing under version control could change, since a skill body, a config file, or a doc still lives in a repo.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; AdditionalData?.Remove("repository"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
@@ -160,7 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public List<string> SuggestedPrompts { get => _explicitNullValueSuggestedPrompts; set { _explicitNullValueSuggestedPrompts = value; AdditionalData?.Remove("suggested_prompts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_prompts"); else _explicitNullProperties?.Remove("suggested_prompts"); } }
         private List<string> _explicitNullValueSuggestedPrompts = default!;
 #endif
-        /// <summary>Optional reviewers to route the report to (each a `github_login` and/or `user_uuid`). This is the primary way a report reaches a human — the inbox floats a reviewer&apos;s own reports to the top of their inbox even when no PR is involved — so set it whenever you can name a plausible owner. It also gates autostart: a PR opens only if at least one reviewer clears their autonomy threshold.</summary>
+        /// <summary>Optional reviewers to route the report to (each a `github_login` and/or `user_uuid`). This is the primary way a report reaches a human — the inbox floats a reviewer&apos;s own reports to the top of their inbox even when no PR is involved — so set it whenever you can name a plausible owner. On a scout report it also gates autostart: a PR opens only if at least one reviewer clears their autonomy threshold. A report a person files never autostarts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewer>? SuggestedReviewers { get => _explicitNullValueSuggestedReviewers; set { _explicitNullValueSuggestedReviewers = value; AdditionalData?.Remove("suggested_reviewers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_reviewers"); else _explicitNullProperties?.Remove("suggested_reviewers"); } }

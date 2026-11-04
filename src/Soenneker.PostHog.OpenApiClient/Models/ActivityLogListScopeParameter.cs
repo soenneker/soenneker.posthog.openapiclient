@@ -224,6 +224,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         #pragma warning disable CS1591
         OAuthApplication,
         #pragma warning restore CS1591
+        [EnumMember(Value = "WorkloadTrustPolicy")]
+        #pragma warning disable CS1591
+        WorkloadTrustPolicy,
+        #pragma warning restore CS1591
         [EnumMember(Value = "User")]
         #pragma warning disable CS1591
         User,

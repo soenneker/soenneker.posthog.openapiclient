@@ -71,6 +71,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>* `all` - All pull requests* `label` - Labeled pull requests</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigReviewMode? ReviewMode { get; private set; }
+        /// <summary>* `off` - Off* `always` - Always* `fallback` - When stamphog does not approve</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigRoutingMode? RoutingMode { get; private set; }
         /// <summary>Pull request label that triggers a review when review_mode is &apos;label&apos;. Defaults to &apos;stamphog&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -83,7 +85,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
-        /// <summary>The caller&apos;s access level on the stamphog resource, resolved for the team that owns this row. &apos;editor&apos; can turn reviews on. &apos;manager&apos; is required to turn them off or to change review_mode or trigger_label.</summary>
+        /// <summary>The caller&apos;s access level on the stamphog resource, resolved for the team that owns this row. &apos;editor&apos; can turn reviews on. &apos;manager&apos; is required to turn them off or to change review_mode, trigger_label or routing_mode.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? UserAccessLevel { get; private set; }
@@ -124,6 +126,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "provider", n => { Provider = n.GetStringValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
                 { "review_mode", n => { ReviewMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigReviewMode>(); } },
+                { "routing_mode", n => { RoutingMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigRoutingMode>(); } },
                 { "trigger_label", n => { TriggerLabel = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user_access_level", n => { UserAccessLevel = n.GetStringValue(); } },

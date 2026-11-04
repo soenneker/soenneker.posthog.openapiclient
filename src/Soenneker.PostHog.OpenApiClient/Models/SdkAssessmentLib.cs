@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `web` - web* `posthog-ios` - posthog-ios* `posthog-android` - posthog-android* `posthog-java` - posthog-java* `posthog-server` - posthog-server* `posthog-node` - posthog-node* `posthog-python` - posthog-python* `posthog-php` - posthog-php* `posthog-ruby` - posthog-ruby* `posthog-go` - posthog-go* `posthog-flutter` - posthog-flutter* `posthog-react-native` - posthog-react-native* `posthog-kmp` - posthog-kmp* `posthog-dotnet` - posthog-dotnet* `posthog-elixir` - posthog-elixir* `posthog-unity` - posthog-unity* `posthog-node-mcp` - posthog-node-mcp* `posthog-python-mcp` - posthog-python-mcp* `posthog-edge` - posthog-edge* `posthog-convex` - posthog-convex* `posthog-rails` - posthog-rails* `posthog-aspnetcore` - posthog-aspnetcore* `posthog-rs` - posthog-rs* `posthog-rs-mcp` - posthog-rs-mcp* `posthog-godot` - posthog-godot* `posthog-unreal` - posthog-unreal* `posthog-go-mcp` - posthog-go-mcp* `posthog-ruby-mcp` - posthog-ruby-mcp* `posthog-roblox` - posthog-roblox* `js` - js</summary>
+    /// <summary>* `web` - web* `posthog-ios` - posthog-ios* `posthog-android` - posthog-android* `posthog-java` - posthog-java* `posthog-server` - posthog-server* `posthog-node` - posthog-node* `posthog-python` - posthog-python* `posthog-php` - posthog-php* `posthog-laravel` - posthog-laravel* `posthog-ruby` - posthog-ruby* `posthog-go` - posthog-go* `posthog-flutter` - posthog-flutter* `posthog-react-native` - posthog-react-native* `posthog-kmp` - posthog-kmp* `posthog-dotnet` - posthog-dotnet* `posthog-elixir` - posthog-elixir* `posthog-unity` - posthog-unity* `posthog-node-mcp` - posthog-node-mcp* `posthog-python-mcp` - posthog-python-mcp* `posthog-edge` - posthog-edge* `posthog-convex` - posthog-convex* `posthog-rails` - posthog-rails* `posthog-aspnetcore` - posthog-aspnetcore* `posthog-rs` - posthog-rs* `posthog-rs-mcp` - posthog-rs-mcp* `posthog-godot` - posthog-godot* `posthog-unreal` - posthog-unreal* `posthog-go-mcp` - posthog-go-mcp* `posthog-ruby-mcp` - posthog-ruby-mcp* `posthog-roblox` - posthog-roblox* `js` - js</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum SdkAssessmentLib
     {
@@ -38,6 +38,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "posthog-php")]
         #pragma warning disable CS1591
         PosthogPhp,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "posthog-laravel")]
+        #pragma warning disable CS1591
+        PosthogLaravel,
         #pragma warning restore CS1591
         [EnumMember(Value = "posthog-ruby")]
         #pragma warning disable CS1591

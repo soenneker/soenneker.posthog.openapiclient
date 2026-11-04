@@ -68,6 +68,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public bool? IsIncremental { get; private set; }
         /// <summary>The is_materialized property</summary>
         public bool? IsMaterialized { get; private set; }
+        /// <summary>Whether this view stores raw Trino SQL. Only hosted Trino can run it, and HogQL queries cannot reference it.</summary>
+        public bool? IsRawManagedTrino { get; private set; }
         /// <summary>Whether this view is for testing only and will auto-expire.</summary>
         public bool? IsTest { get; private set; }
         /// <summary>The last_run_at property</summary>
@@ -172,6 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "is_incremental", n => { IsIncremental = n.GetBoolValue(); } },
                 { "is_materialized", n => { IsMaterialized = n.GetBoolValue(); } },
+                { "is_raw_managed_trino", n => { IsRawManagedTrino = n.GetBoolValue(); } },
                 { "is_test", n => { IsTest = n.GetBoolValue(); } },
                 { "last_run_at", n => { LastRunAt = n.GetDateTimeOffsetValue(); } },
                 { "latest_error", n => { LatestError = n.GetStringValue(); } },

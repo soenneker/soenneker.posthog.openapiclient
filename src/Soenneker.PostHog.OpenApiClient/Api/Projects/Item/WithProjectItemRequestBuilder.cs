@@ -190,6 +190,7 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_imports;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_people_imports;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_sending_rules;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_setup;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workload_trust_policies;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -1141,6 +1142,11 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_setup.Workflow_setupRequestBuilder Workflow_setup
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workflow_setup.Workflow_setupRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The workload_trust_policies property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workload_trust_policies.Workload_trust_policiesRequestBuilder Workload_trust_policies
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Workload_trust_policies.Workload_trust_policiesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.WithProjectItemRequestBuilder"/> and sets the default values.

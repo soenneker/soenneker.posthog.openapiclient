@@ -187,7 +187,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
-        /// <summary>Product surface that owns this workflow (e.g. `loops` for Desktop loops). Set only when creating a workflow. Filter the list with `?origin_product=`.* `loops` - Loops* `broadcasts` - Broadcasts* `transactional_emails` - Transactional emails</summary>
+        /// <summary>Product surface that owns this workflow (e.g. `loops` for Desktop loops). Set only when creating a workflow, and never to `transactional_email_keys`: the email send API sets that one. Filter the list with `?origin_product=`.* `loops` - Loops* `broadcasts` - Broadcasts* `transactional_emails` - Transactional emails* `transactional_email_keys` - Transactional email keys</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.HogFlowOriginProduct? OriginProduct { get => _explicitNullValueOriginProduct; set { _explicitNullValueOriginProduct = value; AdditionalData?.Remove("origin_product"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("origin_product"); else _explicitNullProperties?.Remove("origin_product"); } }

@@ -46,6 +46,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 #else
         public string Description { get; private set; }
 #endif
+        /// <summary>Earliest cleanup time if the dataset remains unused.</summary>
+        public DateTimeOffset? ExpiresAt { get; private set; }
+        /// <summary>Whether the dataset is within seven days of expiry.</summary>
+        public bool? ExpiringSoon { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>JSON object with descriptive dataset metadata.</summary>
@@ -115,6 +119,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "current_revision", n => { CurrentRevision = n.GetIntValue(); } },
                 { "current_revision_id", n => { CurrentRevisionId = n.GetGuidValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
+                { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
+                { "expiring_soon", n => { ExpiringSoon = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "metadata", n => { Metadata = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DatasetReadMetadataProperty>(global::Soenneker.PostHog.OpenApiClient.Models.DatasetReadMetadataProperty.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },

@@ -53,6 +53,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
             if (parseNode.GetChildNode("summary") is null) { _explicitNullValueSummary = default!; _explicitNullProperties?.Remove("summary"); }
             else if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
+            if (parseNode.GetChildNode("summary_reason") is null) { _explicitNullValueSummaryReason = default!; _explicitNullProperties?.Remove("summary_reason"); }
+            else if (parseNode.GetChildNode("summary_reason") is { } nullNodeSummaryReason && nullNodeSummaryReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SummaryReason = null;
             if (parseNode.GetChildNode("summary_status") is null) { _explicitNullValueSummaryStatus = default!; _explicitNullProperties?.Remove("summary_status"); }
             else if (parseNode.GetChildNode("summary_status") is { } nullNodeSummaryStatus && nullNodeSummaryStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SummaryStatus = null;
             if (parseNode.GetChildNode("top_in_app_frame") is null) { _explicitNullValueTopInAppFrame = default!; _explicitNullProperties?.Remove("top_in_app_frame"); }
@@ -205,7 +207,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private string _explicitNullValueStatus = default!;
 #endif
-        /// <summary>A model-written summary of the issue. Present only when summary_status is &apos;ready&apos;. Treat likely_cause as a hypothesis, not a fact.</summary>
+        /// <summary>An AI-written summary of the issue. Present only when summary_status is &apos;ready&apos;. Treat likely_cause as a hypothesis, not a fact.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
@@ -215,7 +217,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummary Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummary _explicitNullValueSummary = default!;
 #endif
-        /// <summary>* `ready` - Ready* `generating` - Generating* `unavailable` - Unavailable</summary>
+        /// <summary>* `restricted` - Restricted* `disabled` - Disabled* `ai_not_approved` - Ai Not Approved</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummaryReason? SummaryReason { get => _explicitNullValueSummaryReason; set { _explicitNullValueSummaryReason = value; AdditionalData?.Remove("summary_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_reason"); else _explicitNullProperties?.Remove("summary_reason"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummaryReason? _explicitNullValueSummaryReason = default!;
+        /// <summary>* `ready` - Ready* `not_generated` - Not Generated* `unavailable` - Unavailable</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummaryStatus? SummaryStatus { get => _explicitNullValueSummaryStatus; set { _explicitNullValueSummaryStatus = value; AdditionalData?.Remove("summary_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_status"); else _explicitNullProperties?.Remove("summary_status"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummaryStatus? _explicitNullValueSummaryStatus = default!;
         /// <summary>Top in_app application frame.</summary>
@@ -281,6 +286,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "sparkline", n => { Sparkline = n.GetCollectionOfPrimitiveValues<double?>()?.AsList(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummary>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummary.CreateFromDiscriminatorValue); } },
+                { "summary_reason", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummaryReason>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSummaryReason = default; _explicitNullProperties?.Remove("summary_reason"); AdditionalData["summary_reason"] = unknown; } else { SummaryReason = parsed; AdditionalData.Remove("summary_reason"); } } },
                 { "summary_status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummaryStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSummaryStatus = default; _explicitNullProperties?.Remove("summary_status"); AdditionalData["summary_status"] = unknown; } else { SummaryStatus = parsed; AdditionalData.Remove("summary_status"); } } },
                 { "top_in_app_frame", n => { TopInAppFrame = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTopInAppFrame>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTopInAppFrame.CreateFromDiscriminatorValue); } },
                 { "trend", n => { Trend = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTrend>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTrend.CreateFromDiscriminatorValue); } },
@@ -311,6 +317,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<double?>("sparkline", Sparkline);
             writer.WriteStringValue("status", Status);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummary>("summary", Summary);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummaryReason>("summary_reason", SummaryReason);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailSummaryStatus>("summary_status", SummaryStatus);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTopInAppFrame>("top_in_app_frame", TopInAppFrame);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueDetailTrend>("trend", Trend);

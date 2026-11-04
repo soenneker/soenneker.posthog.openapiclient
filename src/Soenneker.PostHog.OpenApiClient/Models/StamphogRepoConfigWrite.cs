@@ -28,6 +28,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             else if (parseNode.GetChildNode("repository") is { } nullNodeRepository && nullNodeRepository.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repository = null;
             if (parseNode.GetChildNode("review_mode") is null) { _explicitNullValueReviewMode = default!; _explicitNullProperties?.Remove("review_mode"); }
             else if (parseNode.GetChildNode("review_mode") is { } nullNodeReviewMode && nullNodeReviewMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewMode = null;
+            if (parseNode.GetChildNode("routing_mode") is null) { _explicitNullValueRoutingMode = default!; _explicitNullProperties?.Remove("routing_mode"); }
+            else if (parseNode.GetChildNode("routing_mode") is { } nullNodeRoutingMode && nullNodeRoutingMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RoutingMode = null;
             if (parseNode.GetChildNode("trigger_label") is null) { _explicitNullValueTriggerLabel = default!; _explicitNullProperties?.Remove("trigger_label"); }
             else if (parseNode.GetChildNode("trigger_label") is { } nullNodeTriggerLabel && nullNodeTriggerLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TriggerLabel = null;
         }
@@ -63,6 +65,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>* `all` - All pull requests* `label` - Labeled pull requests</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWriteReviewMode? ReviewMode { get => _explicitNullValueReviewMode; set { _explicitNullValueReviewMode = value; AdditionalData?.Remove("review_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("review_mode"); else _explicitNullProperties?.Remove("review_mode"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWriteReviewMode? _explicitNullValueReviewMode = default!;
+        /// <summary>* `off` - Off* `always` - Always* `fallback` - When stamphog does not approve</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWriteRoutingMode? RoutingMode { get => _explicitNullValueRoutingMode; set { _explicitNullValueRoutingMode = value; AdditionalData?.Remove("routing_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("routing_mode"); else _explicitNullProperties?.Remove("routing_mode"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWriteRoutingMode? _explicitNullValueRoutingMode = default!;
         /// <summary>Pull request label that triggers a review when review_mode is &apos;label&apos;. Defaults to &apos;stamphog&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -103,6 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "provider", n => { Provider = n.GetStringValue(); } },
                 { "repository", n => { Repository = n.GetStringValue(); } },
                 { "review_mode", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWriteReviewMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueReviewMode = default; _explicitNullProperties?.Remove("review_mode"); AdditionalData["review_mode"] = unknown; } else { ReviewMode = parsed; AdditionalData.Remove("review_mode"); } } },
+                { "routing_mode", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWriteRoutingMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRoutingMode = default; _explicitNullProperties?.Remove("routing_mode"); AdditionalData["routing_mode"] = unknown; } else { RoutingMode = parsed; AdditionalData.Remove("routing_mode"); } } },
                 { "trigger_label", n => { TriggerLabel = n.GetStringValue(); } },
             };
         }
@@ -118,6 +124,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("provider", Provider);
             writer.WriteStringValue("repository", Repository);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWriteReviewMode>("review_mode", ReviewMode);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.StamphogRepoConfigWriteRoutingMode>("routing_mode", RoutingMode);
             writer.WriteStringValue("trigger_label", TriggerLabel);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

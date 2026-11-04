@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// A model-written summary of the issue. Present only when summary_status is &apos;ready&apos;. Treat likely_cause as a hypothesis, not a fact.
+    /// An AI-written summary of the issue. Present only when summary_status is &apos;ready&apos;. Treat likely_cause as a hypothesis, not a fact.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ErrorTrackingIssueDetailSummary : IAdditionalDataHolder, IParsable

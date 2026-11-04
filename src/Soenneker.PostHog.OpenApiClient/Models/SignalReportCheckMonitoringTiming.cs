@@ -33,6 +33,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>End of this check&apos;s soak window, independent of its target reference period and safety expiry.</summary>
         public DateTimeOffset? EndsAt { get => _explicitNullValueEndsAt; set { _explicitNullValueEndsAt = value; AdditionalData?.Remove("ends_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ends_at"); else _explicitNullProperties?.Remove("ends_at"); } }
         private DateTimeOffset? _explicitNullValueEndsAt = default!;
+        /// <summary>Final verification phase when state is paused. Null for other timing states. Read the check outcome for its verdict.* `monitoring` - Monitoring* `verifying` - Verifying* `assessment_required` - Assessment required* `verification_complete` - Verification complete</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.PostHog.OpenApiClient.Models.MonitoringCheckTimingFinalVerificationState? FinalVerificationState { get; private set; }
+#nullable restore
+#else
+        public global::Soenneker.PostHog.OpenApiClient.Models.MonitoringCheckTimingFinalVerificationState FinalVerificationState { get; private set; }
+#endif
         /// <summary>Stored next interim attempt, only when it falls before the soak deadline and expiry. Null when no interim measurement is scheduled.</summary>
         public DateTimeOffset? NextMeasurementAt { get => _explicitNullValueNextMeasurementAt; set { _explicitNullValueNextMeasurementAt = value; AdditionalData?.Remove("next_measurement_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_measurement_at"); else _explicitNullProperties?.Remove("next_measurement_at"); } }
         private DateTimeOffset? _explicitNullValueNextMeasurementAt = default!;
@@ -70,6 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "ends_at", n => { EndsAt = n.GetDateTimeOffsetValue(); } },
+                { "final_verification_state", n => { FinalVerificationState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MonitoringCheckTimingFinalVerificationState>(global::Soenneker.PostHog.OpenApiClient.Models.MonitoringCheckTimingFinalVerificationState.CreateFromDiscriminatorValue); } },
                 { "next_measurement_at", n => { NextMeasurementAt = n.GetDateTimeOffsetValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
                 { "state", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MonitoringCheckTimingState>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueState = default; _explicitNullProperties?.Remove("state"); AdditionalData["state"] = unknown; } else { State = parsed; AdditionalData.Remove("state"); } } },

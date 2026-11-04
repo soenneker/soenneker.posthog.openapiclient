@@ -22,7 +22,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{?broadcast_eligible*,broadcast_status*,created_at*,created_by*,id*,latest_send_first*,limit*,offset*,optimization_enabled*,origin_product*,search*,source_record*,status*,tags*,trigger*,type*,updated_at*}", pathParameters)
+        public EmptyPathSegmentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{?broadcast_eligible*,broadcast_status*,created_at*,created_by*,id*,latest_send_first*,limit*,name*,offset*,optimization_enabled*,origin_product*,search*,source_record*,status*,tags*,trigger*,type*,updated_at*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{?broadcast_eligible*,broadcast_status*,created_at*,created_by*,id*,latest_send_first*,limit*,offset*,optimization_enabled*,origin_product*,search*,source_record*,status*,tags*,trigger*,type*,updated_at*}", rawUrl)
+        public EmptyPathSegmentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/projects/{projectId}/hog_flows/{?broadcast_eligible*,broadcast_status*,created_at*,created_by*,id*,latest_send_first*,limit*,name*,offset*,optimization_enabled*,origin_product*,search*,source_record*,status*,tags*,trigger*,type*,updated_at*}", rawUrl)
         {
         }
         /// <returns>A <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PaginatedHogFlowMinimalList"/></returns>
@@ -117,7 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
             /// <summary>Pass `true` to return broadcasts plus the ordinary workflows the broadcasts UI can render: a batch trigger and a single email step.</summary>
             [QueryParameter("broadcast_eligible")]
             public bool? BroadcastEligible { get; set; }
-            /// <summary>Comma-separated broadcast statuses as the broadcasts UI shows them: draft, scheduled, sending, sent, failed, archived. Scheduled, sending, sent and failed come from the latest run and whether a schedule still has sends to come.</summary>
+            /// <summary>Comma-separated broadcast statuses as the broadcasts UI shows them: draft, scheduled, sending, sent, partially_sent, failed, archived. Scheduled, sending, sent, partially_sent and failed come from the latest run and whether a schedule still has sends to come. A latest run that is completed reads as sent, partially_failed as partially_sent, and failed or cancelled as failed. With a schedule still to come, a completed or partially_failed latest run reads as scheduled.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("broadcast_status")]
@@ -138,12 +138,22 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Hog_flows
             [QueryParameter("id")]
             public Guid? Id { get; set; }
             #pragma warning restore CS1591
-            /// <summary>Pass `true` to order by when each workflow&apos;s newest completed run finished, newest first. Workflows that never finished a run come last.</summary>
+            /// <summary>Pass `true` to order by when each workflow&apos;s newest completed or partially_failed run finished, newest first. Workflows that never finished such a run come last.</summary>
             [QueryParameter("latest_send_first")]
             public bool? LatestSendFirst { get; set; }
             /// <summary>Number of results to return per page.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            /// <summary>Only workflows whose name contains this text, ignoring case. Unlike `search`, it never reads descriptions, tags or step content.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("name")]
+            public string? Name { get; set; }
+#nullable restore
+#else
+            [QueryParameter("name")]
+            public string Name { get; set; }
+#endif
             /// <summary>The initial index from which to return the results.</summary>
             [QueryParameter("offset")]
             public int? Offset { get; set; }

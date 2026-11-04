@@ -3,6 +3,8 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.Connect_link;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.Connect_link_complete;
+using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.Connect_link_status;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.Item;
 using System.Collections.Generic;
 using System.IO;
@@ -20,6 +22,16 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destin
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.Connect_link.Connect_linkRequestBuilder Connect_link
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.Connect_link.Connect_linkRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The connect_link_complete property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.Connect_link_complete.Connect_link_completeRequestBuilder Connect_link_complete
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.Connect_link_complete.Connect_link_completeRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The connect_link_status property</summary>
+        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.Connect_link_status.Connect_link_statusRequestBuilder Connect_link_status
+        {
+            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.Connect_link_status.Connect_link_statusRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The EmptyPathSegment property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.External_data_destinations.EmptyPathSegmentRequestBuilder EmptyPathSegment

@@ -63,12 +63,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Recordings that matched the query. Empty unless the endpoint asks for them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SerializedGroupActorMatchedRecordingsItemProperty>? MatchedRecordings { get => _explicitNullValueMatchedRecordings; set { _explicitNullValueMatchedRecordings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_recordings"); else _explicitNullProperties?.Remove("matched_recordings"); } }
-        private List<global::Soenneker.PostHog.OpenApiClient.Models.SerializedGroupActorMatchedRecordingsItemProperty>? _explicitNullValueMatchedRecordings = default!;
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SerializedMatchedRecording>? MatchedRecordings { get => _explicitNullValueMatchedRecordings; set { _explicitNullValueMatchedRecordings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_recordings"); else _explicitNullProperties?.Remove("matched_recordings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SerializedMatchedRecording>? _explicitNullValueMatchedRecordings = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SerializedGroupActorMatchedRecordingsItemProperty> MatchedRecordings { get => _explicitNullValueMatchedRecordings; set { _explicitNullValueMatchedRecordings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_recordings"); else _explicitNullProperties?.Remove("matched_recordings"); } }
-        private List<global::Soenneker.PostHog.OpenApiClient.Models.SerializedGroupActorMatchedRecordingsItemProperty> _explicitNullValueMatchedRecordings = default!;
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SerializedMatchedRecording> MatchedRecordings { get => _explicitNullValueMatchedRecordings; set { _explicitNullValueMatchedRecordings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_recordings"); else _explicitNullProperties?.Remove("matched_recordings"); } }
+        private List<global::Soenneker.PostHog.OpenApiClient.Models.SerializedMatchedRecording> _explicitNullValueMatchedRecordings = default!;
 #endif
         /// <summary>The actor&apos;s properties.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -105,7 +105,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "group_key", n => { GroupKey = n.GetStringValue(); } },
                 { "group_type_index", n => { GroupTypeIndex = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "matched_recordings", n => { MatchedRecordings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SerializedGroupActorMatchedRecordingsItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SerializedGroupActorMatchedRecordingsItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "matched_recordings", n => { MatchedRecordings = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SerializedMatchedRecording>(global::Soenneker.PostHog.OpenApiClient.Models.SerializedMatchedRecording.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SerializedGroupActorPropertiesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.SerializedGroupActorPropertiesProperty.CreateFromDiscriminatorValue); } },
                 { "value_at_data_point", n => { ValueAtDataPoint = n.GetDoubleValue(); } },
             };
@@ -122,7 +122,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("group_key", GroupKey);
             writer.WriteIntValue("group_type_index", GroupTypeIndex);
             writer.WriteStringValue("id", Id);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SerializedGroupActorMatchedRecordingsItemProperty>("matched_recordings", MatchedRecordings);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SerializedMatchedRecording>("matched_recordings", MatchedRecordings);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SerializedGroupActorPropertiesProperty>("properties", Properties);
             writer.WriteDoubleValue("value_at_data_point", ValueAtDataPoint);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             

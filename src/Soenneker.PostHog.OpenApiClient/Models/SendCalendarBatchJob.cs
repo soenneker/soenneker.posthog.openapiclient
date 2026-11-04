@@ -25,7 +25,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>ID of the batch run.</summary>
         public Guid? Id { get; private set; }
-        /// <summary>* `waiting` - Waiting* `queued` - Queued* `active` - Active* `completed` - Completed* `cancelled` - Cancelled* `failed` - Failed</summary>
+        /// <summary>* `waiting` - Waiting* `queued` - Queued* `active` - Active* `completed` - Completed* `partially_failed` - Partially failed* `cancelled` - Cancelled* `failed` - Failed</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.SendCalendarBatchJobStatus? Status { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SendCalendarBatchJob"/> and sets the default values.

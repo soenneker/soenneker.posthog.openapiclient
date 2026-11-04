@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
-    /// <summary>* `waiting` - Waiting* `queued` - Queued* `active` - Active* `completed` - Completed* `cancelled` - Cancelled* `failed` - Failed</summary>
+    /// <summary>* `waiting` - Waiting* `queued` - Queued* `active` - Active* `completed` - Completed* `partially_failed` - Partially failed* `cancelled` - Cancelled* `failed` - Failed</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum HogFlowBatchJobStatus
     {
@@ -22,6 +22,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         [EnumMember(Value = "completed")]
         #pragma warning disable CS1591
         Completed,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "partially_failed")]
+        #pragma warning disable CS1591
+        PartiallyFailed,
         #pragma warning restore CS1591
         [EnumMember(Value = "cancelled")]
         #pragma warning disable CS1591
